@@ -140,16 +140,30 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
         'as' => 'buy_coin.payment'
     ]);
 
-
-    // Chat
-    Route::get('/chat', [
-        'uses' => 'ChatController@index',
-        'as' => 'chat'
+    // // Message List
+    // Route::get('/job-messages', [
+    //     'uses' => 'ChatController@jobChatList',
+    //     'as' => 'chat'
+    // ]);
+    // Chat list
+    Route::get('/job-messages', [
+        'uses' => 'ChatController@jobChatList',
+        'as' => 'job_messages'
     ]);
-    // Message List
-    Route::get('/messages', [
-        'uses' => 'ChatController@chatList',
-        'as' => 'chat'
+    // Messages
+    Route::get('/view-messages', [
+        'uses' => 'ChatController@viewMessage',
+        'as' => 'view_messages'
+    ]);
+    // Send Message Request
+    Route::post('/send-messages', [
+        'uses' => 'ChatController@sendMessage',
+        'as' => 'send_message'
+    ]);
+    // Get Message Request
+    Route::get('/send-messages', [
+        'uses' => 'ChatController@getMessages',
+        'as' => 'get_messages'
     ]);
 });
 

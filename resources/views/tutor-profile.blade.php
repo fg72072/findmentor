@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-  Tutor | Home
+Tutor | Home
 @stop
 
 @push('include-css')
-   <link rel="stylesheet"  href="{{ asset('asset/css/TutorProfile.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/TutorProfile.css') }}">
 @endpush
 
 @section('content')
@@ -25,7 +25,8 @@
                                     <div class="col-md-12 col-xs-12">
                                         <h2 class="display-3 card-title pt-3">{{$data->name}}</h2>
                                         <div class="d-flex flex-column flex-lg-row pr-5">
-                                            <p class="text-justify">I'm CMA final student. I have completed my graduation from MG.
+                                            <p class="text-justify">I'm CMA final student. I have completed my
+                                                graduation from MG.
                                                 University kottayam with 85%. I have completed my CMA
                                                 intermediate in first attempt itself with 65%. I'm now doing my
                                                 final. My core area is accountancy. I have scored a markable
@@ -44,11 +45,11 @@
                                         </span>
                                         <div class="subjects">
                                             @if (count($data['subject'])>0)
-                                                @foreach ($data['subject'] as $subject)
-                                                    <h6>{{ucfirst($subject->subject)}} ({{ucfirst($subject->level_to)}})</h6>
-                                                @endforeach
+                                            @foreach ($data['subject'] as $subject)
+                                            <h6>{{ucfirst($subject->subject)}} ({{ucfirst($subject->level_to)}})</h6>
+                                            @endforeach
                                             @else
-                                                <h6>No Subject mentioned.</h6>
+                                            <h6>No Subject mentioned.</h6>
                                             @endif
                                         </div>
                                     </div>
@@ -58,12 +59,14 @@
                                         </span>
                                         <div class="subjects">
                                             @if (count($data['experience'])>0)
-                                                @foreach ($data['experience'] as $experience)
-                                                    <h6>{{ucfirst($experience->designation)}}</h6>
-                                                    <p> ({{$experience->start_month}}, {{$experience->start_year}}-{{$experience->end_month}}, {{$experience->end_year}}) from {{$experience->organization_name}}</p>
-                                                @endforeach
+                                            @foreach ($data['experience'] as $experience)
+                                            <h6>{{ucfirst($experience->designation)}}</h6>
+                                            <p> ({{$experience->start_month}},
+                                                {{$experience->start_year}}-{{$experience->end_month}},
+                                                {{$experience->end_year}}) from {{$experience->organization_name}}</p>
+                                            @endforeach
                                             @else
-                                                <h6>No experience mentioned.</h6>
+                                            <h6>No experience mentioned.</h6>
                                             @endif
 
                                         </div>
@@ -74,12 +77,14 @@
                                         </span>
                                         <div class="subjects">
                                             @if (count($data['education'])>0)
-                                                @foreach ($data['education'] as $education)
-                                                    <h6>{{ucfirst($education->degree_name)}}</h6>
-                                                    <p> ({{$education->start_month}}, {{$education->start_year}}-{{$education->end_month}}, {{$education->end_year}}) from {{$education->institute_name}}</p>
-                                                @endforeach
+                                            @foreach ($data['education'] as $education)
+                                            <h6>{{ucfirst($education->degree_name)}}</h6>
+                                            <p> ({{$education->start_month}},
+                                                {{$education->start_year}}-{{$education->end_month}},
+                                                {{$education->end_year}}) from {{$education->institute_name}}</p>
+                                            @endforeach
                                             @else
-                                                <h6>No Education mentioned.</h6>
+                                            <h6>No Education mentioned.</h6>
                                             @endif
                                         </div>
                                     </div>
@@ -89,7 +94,9 @@
                                         </span>
                                         <div class="subjects">
                                             <h6>₹</h5>
-                                                <p> {{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}} (US${{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}})</p>
+                                                <p> {{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}}
+                                                    (US${{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}})
+                                                </p>
                                         </div>
                                     </div>
                                     <div class="col-lg-5 col-md-5 exp" style="background:#16a085;">
@@ -111,7 +118,7 @@
                                 <div class="wrapper">
                                     <div class="top-icons" style="line-height: 50px;">
                                         <span class="fa fa-comment message"><a
-                                                href="./AllMessages.html">Message</a></span>
+                                                href="{{route('job_messages')}}">Message</a></span>
                                         <span class="fa fa-phone phone pl-4 pr-4"><a href="#">Phone</a></span>
                                         <br>
                                         <span class="fa fa-money pay pl-4 pr-4"><a href="#"> Pay </a></span>
@@ -133,35 +140,44 @@
                                         <li>
                                             <span class="sidepanel">
                                                 <i class="fas fa-sign-in-alt mr-2"></i>
-                                                <b>Last login:</b>  {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->last_login_at)->diffForHumans()}}</span>
+                                                <b>Last login:</b>
+                                                {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->last_login_at)->diffForHumans()}}</span>
                                         </li>
 
                                         <li>
                                             <span class="sidepanel">
                                                 <i class="fas fa-user mr-2"></i>
-                                                <b>Registered:</b> {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->is_account_verified_at)->diffForHumans()}}</span>
+                                                <b>Registered:</b>
+                                                {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->is_account_verified_at)->diffForHumans()}}</span>
                                         </li>
                                         <li>
                                             <span class="idepanel">
                                                 <i class="fas fa-tachometer-alt mr-2"></i>
-                                                <b>Total Teaching exp:</b> {{$data['info']->total_experience}} yrs.</span>
+                                                <b>Total Teaching exp:</b> {{$data['info']->total_experience}}
+                                                yrs.</span>
                                         </li>
                                         <li><span class="sidepanel">
                                                 <i class="fas fa-wifi mr-2"></i>
                                                 <b>Teaches online:</b> {{$data['info']->online_available}}</span></li>
                                         <li><span class="sidepanel">
                                                 <i class="fas fa-wifi mr-2"></i>
-                                                <b>Online Teaching exp:</b> {{$data['info']->total_experience_online}} yrs.</span></li>
+                                                <b>Online Teaching exp:</b> {{$data['info']->total_experience_online}}
+                                                yrs.</span></li>
 
                                         <li><span class="sidepanel">
                                                 <i class="fas fa-home mr-2"></i>
-                                                <b>Teaches at student's home:</b> {{$data['info']->travel_to_student}}</span></li>
+                                                <b>Teaches at student's home:</b>
+                                                {{$data['info']->travel_to_student}}</span></li>
                                         <li><span class="sidepanel">
                                                 <i class="fas fa-book mr-2"></i>
                                                 <b>Homework Help:</b> {{$data['info']->help_with}}</li>
                                         <li><span class="sidepanel">
                                                 <i class="fas fa-money-bill-alt mr-2"></i>
-                                                <b>Fee:</b> Rs{{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}} (USD {{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}})</span></li>
+                                                <b>Fee:</b>
+                                                Rs{{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}}
+                                                (USD
+                                                {{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}})</span>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -177,6 +193,5 @@
 
 
 @push('include-js')
-    <script src="{{ asset('asset/js/Account.js') }}"></script>
+<script src="{{ asset('asset/js/Account.js') }}"></script>
 @endpush
-

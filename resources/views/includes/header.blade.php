@@ -14,6 +14,10 @@
                         <i class="fas fa-th navIcons"></i>
                         <a class="nav-links" href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
+                    <li class="nav-item ml-4 mt-2">
+                        <i class="fas fa-th navIcons"></i>
+                        <a class="nav-links" href="{{ route('job_messages') }}">Messages</a>
+                    </li>
                     @endhasanyrole
 
                     <li class="nav-item ml-4 mt-2">
