@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+html{
+    font-size: 62.5%;
+}
+
+.Req{
+    color: #293246;
+    font-weight: 700;
+    font-size: 5rem;
+    letter-spacing: 2px;
+}
+.btn-group-lg>.btn, .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    
+}
+.btn{
+    text-align: end;
+}
+.TeacherHead{
+    font-size: 2.3rem;
+    word-spacing: 2px;
+    color: #293246;
+
+    
+
+
+}
+.TeacherPara {
+    font-size: 1.8rem;
+    color: gray;
+}
+.BottomIconsdiv>i{
+  color: #007bff;
+    
+}
+.loc,.dollar{
+    font-size: 2rem;
+    color: #293246;
+
+    
+}
+.Location{
+    display: inline;
+    font-size: 2rem;
+    color: #293246;
+
+}
+@media only screen and (max-width: 780px){
+    
+
+}

@@ -1,0 +1,45 @@
+.check {
+	width: 5% !important;
+	/* background: #F4F4F4 !important; */
+}
+.CheckBoxTitle {
+	border-radius: 5px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	width: 100%;
+	height: 50px;
+	background: #f4f4f4 !important;
+}
+.CheckBoxTitle > p {
+	font-size: 1.5rem;
+}
+.odd {
+	background: #f4f4f4 !important;
+}
+.even {
+	background: #ffff !important;
+}
+
+.checkBox {
+	display: inline;
+}
+.InpTabSelect {
+	width: 100%;
+	height: 50px;
+	background: #f4f4f4;
+	border-radius: 5px;
+	outline: none;
+	border: none;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+}
+.CheckBoxTitle {
+	border-radius: 5px;
+	/* display: flex;
+      justify-content: flex-start;
+      align-items: center; */
+	width: 100%;
+	height: 50px;
+	/* background: #F4F4F4 !important; */
+}

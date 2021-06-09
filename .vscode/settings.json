@@ -1,0 +1,7 @@
+{
+    "html.format.indentInnerHtml": true,
+    "editor.formatOnSave": true,
+    "html.format.endWithNewline": true,
+    "blade.format.enable": true,
+    "emmet.triggerExpansionOnTab": true
+}

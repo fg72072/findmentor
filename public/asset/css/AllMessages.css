@@ -1,0 +1,132 @@
+body {
+	margin: 0;
+	/* color:#6a6f8c; */
+	background: #ffff;
+	font: 600 16px/18px 'Montserrat', sans-serif;
+}
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+.banner {
+	height: 100vh;
+	background: url("./images/FrontPagebanner.svg");
+	background: url("../images/FrontPagebanner.svg");
+	background-size: cover;
+	/* background-repeat: no-repeat; */
+}
+.frontPageContent {
+	position: relative;
+	top: 20%;
+	color: #fff;
+}
+.frontPageContent > h1 {
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+#BorderBott {
+	border: 1px solid gray;
+	border-radius: 3px;
+}
+.InputTab {
+	outline: none;
+	/* border-bottom: 1px solid gray; */
+	border: none;
+	width: 50%;
+	height: 50px;
+}
+.skillbutton {
+	/* display: inline; */
+	display: flex;
+}
+.skillbutton > p {
+	display: inline;
+}
+
+.o-button {
+	display: inline;
+	background: #4765a0 !important;
+	border-radius: 5px;
+	border: 1px solid #4765a0 !important;
+	color: #fff;
+	padding: 0.8rem 1.2rem;
+	text-align: center;
+	margin-left: 3rem;
+
+	text-decoration: none;
+	/* vertical-align: middle; */
+	line-height: 1.4;
+	font-size: 1rem;
+	font-weight: bold;
+	white-space: nowrap;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+.o-button:hover {
+	cursor: pointer;
+	background: #005ea6;
+	color: #ffff;
+}
+.line {
+	background: #0076cb;
+}
+.frontImage {
+	/* height: 560px; */
+	height: 100vh;
+
+	width: 100%;
+	bottom: 0;
+	/* background: url("./images/bannerguy.png"); */
+	background-size: 120% 100%;
+	position: relative;
+	left: 10%;
+}
+
+.top-icons {
+	/* text-align: center; */
+}
+
+.top-icons span {
+	padding: 10px;
+	color: white;
+}
+
+.top-icons a {
+	color: white;
+	text-decoration: none;
+}
+
+.top-icons span:before {
+	margin: 0 5px;
+}
+
+.message {
+	border-radius: 5px;
+	background: #16a085;
+	font-size: 15px;
+}
+
+.message:hover {
+	background: #0a5647;
+}
+
+.pay {
+	border-radius: 5px;
+	background: #16a085;
+	font-size: 15px;
+}
+
+.pay:hover {
+	background: #0a5647;
+}
+
+.phone {
+	border-radius: 5px;
+	background: #16a085;
+
+	font-size: 15px;
+}
+
+.phone:hover {
+	background: #0a5647;
+}

@@ -1,0 +1,172 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-family: 'Poppins', sans-serif;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.DashSubHead{
+    color: #ffff;
+}
+.DashHead{
+    color: #ffff;
+    letter-spacing: 2px;
+}
+.line{
+    background: #0076cb;
+
+}
+
+.icondiv{
+    
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background: #ffff;
+
+}
+.shield{
+    font-size: 3rem;
+   color: #0076cb;
+}
+ .card1:hover{
+    background: #FF5881;
+    transition: 1s;
+  
+    color: #ffff;
+    
+  
+
+}
+ .card2:hover{
+    background: #FF5881;
+    transition: 1s;
+    color: #ffff;
+
+
+   
+}
+ .card3:hover{
+    background: #FF5881;
+    transition: 1s;
+    
+    color: #ffff;
+
+
+   
+}
+
+.servicesSection{
+    min-height: 100vh;
+	background:url("../images/FrontPagebanner.svg");
+	background-size: cover;
+    
+}
+.SerPara{
+    color: #FF5881;
+}
+.SerHead{
+font-size: 2.5rem;
+color: #ffff;
+letter-spacing: 2px;
+}
+.serRightText{
+    color: #ffff;
+}
+.ServCard{
+    background: transparent;
+    border-radius: 2%;
+    border: 1px solid gray;
+}
+.Servicondiv{
+    
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    /* background: #ffff; */
+
+}
+.Servtext{
+    color: #ffff;
+    /* font-weight: bold; */
+}
+.Serv1 {
+    transition: transform .7s ease-in-out;
+    cursor: pointer;
+  }
+  .Serv1:hover {
+    transform: rotate(360deg);
+  }
+  .ServFooter{
+      color: #ffff;
+  }
+
+  .bussHead{
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+  }
+  .bussPara{
+      padding-left: 11rem;
+      padding-right: 11rem;
+      line-height: 1.8rem;
+  }
+  
+  .growBusiness{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+    text-align: center;
+}
+  
+
+@media screen and (max-width: 990px){
+   
+    .bussPara{
+        padding-left: 5rem;
+        padding-right: 5rem;
+        /* line-height: 1.8rem; */
+    }
+  
+    .businessHead{
+        position: relative;
+        right: 5%;
+        margin-left: 0rem;
+        color: #232F55;
+        /* left: 20%; */
+    }
+    .image-content{
+        position: relative;
+        top: 0%;
+        margin-left: 0rem;
+       
+    }
+    .growBusiness{
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        text-align: center;
+    }
+    .Businessbtn{
+        position: relative;
+        top: 10%;
+        left: 18%;
+      
+    }
+}
+@media screen and (max-width: 500px){
+   
+    .bussPara{
+        padding-left: 2rem;
+        padding-right:3rem;
+        /* line-height: 1.8rem; */
+    }
+    html{
+        font-size: 70%;
+    }
+}
