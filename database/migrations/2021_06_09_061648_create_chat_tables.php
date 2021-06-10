@@ -41,7 +41,7 @@ class CreateChatTables extends Migration
         Schema::create('message_notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('message_id')->unsigned();
-            $table->bigInteger('participation_id')->unsigned();
+            $table->bigInteger('notify_user_id')->unsigned();
             $table->boolean('is_seen')->default(false);
             $table->timestamps();
             $table->softDeletes();

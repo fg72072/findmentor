@@ -155,15 +155,26 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
         'uses' => 'ChatController@viewMessage',
         'as' => 'view_messages'
     ]);
-    // Send Message Request
+    // Send Message Request Ajax Request
     Route::post('/send-messages', [
         'uses' => 'ChatController@sendMessage',
         'as' => 'send_message'
     ]);
-    // Get Message Request
+    // Get Message Request Ajax Request
     Route::get('/send-messages', [
         'uses' => 'ChatController@getMessages',
         'as' => 'get_messages'
+    ]);
+    // Get Message Notification Ajax Request
+    Route::get('/notification', [
+        'uses' => 'ChatController@getNotifications',
+        'as' => 'notification'
+    ]);
+
+    // Contact User Ajax Request
+    Route::post('/contact-to-discuss-requirement', [
+        'uses' => 'UserHireController@contactUser',
+        'as' => 'contact_user'
     ]);
 });
 

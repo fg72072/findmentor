@@ -46,12 +46,18 @@ Tutor | Chat
                     </div>
                     <div class="col-lg-3 col-md-12 col-12">
                         <div class="top-icons" style="line-height: 50px; padding-top: 6rem;">
+                            @role('student')
                             <span style="padding-left:2.3rem; padding-right: 2.3rem;" class="fas fa-user phone"><a
-                                    href="{{route('tutor_profile',['id'=>$message_info->user_id])}}">View
-                                    Profile</a></span>
+                                    href="{{route('tutor_profile',['id'=>$message_info->user_id])}}">
+                                    View Profile
+                                </a>
+                            </span>
+                            @endrole
                             <span style="padding-left:2.6rem; padding-right: 2.6rem;" class="fas fa-suitcase pay"><a
-                                    href="{{route('show_tutor_job',['id'=>$message_info->post_id])}}"> View Post
-                                </a></span>
+                                    href="{{route('show_tutor_job',['id'=>$message_info->post_id])}}">
+                                    View Post
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -63,6 +69,9 @@ Tutor | Chat
 
 
 @push('include-js')
+
+
+
 <script>
     $(document).ready(function () {
         loadDefault();
@@ -70,6 +79,8 @@ Tutor | Chat
         setInterval(() => {
             loadDefault();
         }, 2500);
+
+
 
         $('.msgToSend').keypress(function(event){
             var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -82,43 +93,12 @@ Tutor | Chat
         });
     });
 
-    function loadDefault()
-    {
-        var oldscrollHeight = $("#messageBox")[0].scrollHeight - 20;
-        $.ajax({
-            url:"{{route('get_messages')}}",
-            type: 'get',
-            success: function (response) {
-                $('#messageBox').html(response);
+    var get_messages_url = "{{route('get_messages')}}";
+    var send_messages_url = "{{route('send_message')}}";
+    var get_message_notifications_url = "{{route('notification')}}";
 
-                //Auto-scroll
-                var newscrollHeight = $("#messageBox")[0].scrollHeight - 20;
-                if(newscrollHeight > oldscrollHeight){
-                    $("#messageBox").animate({ scrollTop: newscrollHeight }, 'normal');
-                }
-            },
-        });
-    }
-
-    function sendMSG()
-    {
-        var token = $('meta[name="csrf-token"]').attr('content');
-        var msg = $('.msgToSend').val();
-
-        if(msg.length == 0){
-            return false;
-        }
-
-        $.ajax({
-            url:"{{route('send_message')}}",
-            type: 'POST',
-            async: true,
-            data: {'_token': token ,'message':msg},
-            success: function (response) {
-                console.log(response);
-                $('.msgToSend').val('');
-            },
-        });
-    }
 </script>
+
+{{-- Chat Functions --}}
+<script src="{{ asset('asset/js/chat.js') }}"></script>
 @endpush

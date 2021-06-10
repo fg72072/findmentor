@@ -129,3 +129,18 @@
     <!-- Copyright -->
 </footer>
 <!-- Footer -->
+<script>
+    $(document).ready(function () {
+        load_unseen_notification();
+
+        setInterval(() => {
+            load_unseen_notification();
+        }, 3000);
+    })
+
+    var get_message_notifications_url = "{{route('notification')}}";
+
+</script>
+
+{{-- Chat Functions --}}
+<script src="{{ asset('asset/js/chat.js') }}"></script>

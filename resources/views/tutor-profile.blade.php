@@ -116,13 +116,19 @@ Tutor | Home
                         <div class="card">
                             <div class="card-body d-flex flex-column">
                                 <div class="wrapper">
+                                    <div class="alert alert-danger d-none">
+
+                                    </div>
                                     <div class="top-icons" style="line-height: 50px;">
                                         <span class="fa fa-comment message"><a
-                                                href="{{route('job_messages')}}">Message</a></span>
-                                        <span class="fa fa-phone phone pl-4 pr-4"><a href="#">Phone</a></span>
+                                                href="javascript:void(0)">Message</a></span>
+                                        <span class="fa fa-phone phone pl-4 pr-4 phone"><a
+                                                href="javascript:void(0)">Phone</a></span>
                                         <br>
-                                        <span class="fa fa-money pay pl-4 pr-4"><a href="#"> Pay </a></span>
-                                        <span class="fa fa-star-o review pl-4 pr-4"><a href="#">Review</a></span>
+                                        <span class="fa fa-money pay pl-4 pr-4 pay"><a href="javascript:void(0)"> Pay
+                                            </a></span>
+                                        <span class="fa fa-star-o review pl-4 pr-4 review"><a
+                                                href="javascript:void(0)">Review</a></span>
                                     </div>
 
                                     <ul>
@@ -141,14 +147,14 @@ Tutor | Home
                                             <span class="sidepanel">
                                                 <i class="fas fa-sign-in-alt mr-2"></i>
                                                 <b>Last login:</b>
-                                                {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->last_login_at)->diffForHumans()}}</span>
+                                                {{\App\Common::changeDate($data->last_login_at)}}</span>
                                         </li>
 
                                         <li>
                                             <span class="sidepanel">
                                                 <i class="fas fa-user mr-2"></i>
                                                 <b>Registered:</b>
-                                                {{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$data->is_account_verified_at)->diffForHumans()}}</span>
+                                                {{\App\Common::changeDate($data->is_account_verified_at)}}</span>
                                         </li>
                                         <li>
                                             <span class="idepanel">
@@ -194,4 +200,63 @@ Tutor | Home
 
 @push('include-js')
 <script src="{{ asset('asset/js/Account.js') }}"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.message').click(()=>{
+            var token = $('meta[name="csrf-token"]').attr('content');
+
+            $.ajax({
+                url: "{{route('contact_user')}}",
+                type: 'POST',
+                async: true,
+                data: { _token: token, other_user_id: '{{$data->id}}'  },
+                success: function(response) {
+                    console.log(response)
+                },
+                error: function(error) {
+                    if(error.status == 403){
+                        $('.alert').removeClass('d-none')
+                        $('.alert').html(`User is not <a href="{{route('home')}}">logged in</a>.`)
+                        // $('.alert').html(error.responseJSON.message)
+                    }
+                }
+            });
+        })
+
+
+        $('.pay').click(()=>{
+          alert();
+            // var token = $('meta[name="csrf-token"]').attr('content');
+
+            // $.ajax({
+            //     url: "{{route('contact_user')}}",
+            //     type: 'POST',
+            //     async: true,
+            //     data: { _token: token, other_user_id: '{{$data->id}}'  },
+            //     success: function(response) {
+            //         console.log(response)
+            //     },
+            //     error: function(error) {
+            //         if(error.status == 403){
+            //             $('.alert').removeClass('d-none')
+            //             $('.alert').html(`User is not <a href="{{route('home')}}">logged in</a>.`)
+            //             // $('.alert').html(error.responseJSON.message)
+            //         }
+            //     }
+            // });
+        })
+
+        $('.phone').click(()=>{
+          alert();
+        })
+
+        $('.review').click(()=>{
+          alert();
+        })
+    })
+</script>
+
+
+
 @endpush

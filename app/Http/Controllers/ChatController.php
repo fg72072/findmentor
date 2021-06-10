@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
 use Illuminate\Http\Request;
 use App\Thread;
 use App\Participant;
@@ -10,6 +11,7 @@ use App\MessageNotification;
 use App\RequestTutor;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
@@ -70,6 +72,8 @@ class ChatController extends Controller
             'requirement_id' => $message_info->post_id
         ]);
 
+        $this->messageSeen();
+
         return view('chat')->with('user_id', $user_id)->with('message_info', $message_info);
     }
 
@@ -94,7 +98,7 @@ class ChatController extends Controller
                 $html .= '<h2 class=" pt-3">' .
                     $item->username . ',
                 <span class="pl-5" style="font-size: 10px;padding-left: 0px !important;">' .
-                    Carbon::createFromFormat("Y-m-d H:i:s", $item->created_at)->diffForHumans()
+                    Common::changeDate($item->created_at)
                     . '</span>
             </h2>
             <p class="pt-3">
@@ -103,7 +107,7 @@ class ChatController extends Controller
             } else {
                 $html .= '<h2 class="pt-3 text-right">
                 <span class="pl-5" style="font-size: 10px;padding-left: 0px !important;">' .
-                    Carbon::createFromFormat("Y-m-d H:i:s", $item->created_at)->diffForHumans()
+                    Common::changeDate($item->created_at)
                     . '</span>
             </h2>
             <p class="pt-3 text-right">
@@ -180,7 +184,55 @@ class ChatController extends Controller
     {
         MessageNotification::Create([
             'message_id' => $message_id,
-            'participation_id' =>  $participant_id,
+            'notify_user_id' =>  $participant_id,
         ]);
+    }
+
+    public function getNotifications()
+    {
+        $user_id = session('user_id');
+
+        $thread_ids = Participant::where('user_id', $user_id)->get()->pluck('thread_id')->toArray();
+
+        $data = Participant::whereIn('participants.thread_id', $thread_ids)
+            ->join('threads', 'threads.id', '=', 'participants.thread_id')
+            ->leftJoin('messages', 'messages.thread_id', '=', 'threads.id')
+            ->leftJoin('message_notifications as mn', 'mn.message_id', '=', 'messages.id')
+            ->select(
+                'threads.requirement_id as post_id',
+                'mn.created_at as notification_time',
+                DB::raw('count(*) as msg_count'),
+            )
+            ->where('participants.user_id', '!=', $user_id)
+            ->where('messages.user_id', '!=', $user_id)
+            ->groupBy('threads.requirement_id')
+            ->where('mn.is_seen', 0)
+            ->get();
+
+
+        $total_unread = $data->sum('msg_count');
+        $post_wise_unread = $data->toArray();
+
+        $res = ['total_unread' => $total_unread, 'post_wise_unread' => $post_wise_unread];
+
+        return response()->json($res);
+    }
+
+    public function messageSeen()
+    {
+        $user_id = session('user_id');
+        $mThread = session('mThread');
+
+        $auth_user_rec = Participant::where('thread_id', $mThread)
+            ->where('user_id', $user_id)->first();
+
+        $auth_user_rec->update(['last_read' =>  Carbon::now()->toDateTimeString()]);
+
+
+        $setMessageSeen = Participant::join('messages', 'messages.user_id', '=', 'participants.user_id')
+            ->join('message_notifications', 'message_notifications.message_id', '=', 'messages.id')
+            ->where('participants.thread_id', $mThread)
+            ->where('message_notifications.notify_user_id', $user_id)
+            ->update(['is_seen' =>  1]);
     }
 }

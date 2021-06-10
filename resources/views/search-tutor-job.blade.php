@@ -17,8 +17,8 @@ Search Tutor Job
     <hr class="w-25 mx-auto">
     <form action="" method="get">
         <div class='container flex pt-5'>
-            <input class="mr-5" type="text" id="searchInput" placeholder="Skill.." name="skills" @if
-                (isset($params['skills']) ) value="{{ $params['skills']}}" @endif>
+            <input class="mr-5" type="text" id="searchInput" placeholder="Skill.." name="skills"
+                @if(isset($params['skills']) ) value="{{ $params['skills']}}" @endif>
             <div id='submitsearch' class="mr-5">
                 <span>Search</span>
             </div>

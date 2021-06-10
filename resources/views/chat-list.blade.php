@@ -35,26 +35,29 @@ Tutor | Messages
                             @if (count($data)>0)
                             @foreach ($data as $item)
                             @if ($item->user_id != $user_id)
-                            <h2 class=" pt-3">
-                                {{$item->username}}
-                                <span
-                                    class="pl-5">{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$item->created_at)->diffForHumans()}}</span>
-                            </h2>
-                            <p class="pt-3">
-                                Hi, Dear student how can i help you ?
-                            </p>
-                            <div class="top-icons" style="line-height: 50px;">
-                                <span class="fa fa-comment message pl-4 pr-4"><a
-                                        href="{{route('view_messages',['mThread'=>$item->thread_id])}}">Read &
-                                        Reply</a></span>
-                                @role('student')
-                                <span class="fas fa-user phone pl-4 pr-4"><a
-                                        href="{{route('tutor_profile',['id'=>$item->user_id])}}">View
-                                        Profile</a></span>
-                                @endrole
+                            <div id="post_{{$item->post_id}}">
+                                <h2 class=" pt-3">
+                                    {{$item->username}}
+                                    <span class="pl-5">{{\App\Common::changeDate($item->created_at)}}</span>
+                                    <span class="post_notification"></span>
+                                </h2>
+                                <p class="pt-3">
+                                    Hi, Dear student how can i help you ?
+                                </p>
+                                <div class="top-icons" style="line-height: 50px;">
+                                    <span class="fa fa-comment message pl-4 pr-4"><a
+                                            href="{{route('view_messages',['mThread'=>$item->thread_id])}}">Read &
+                                            Reply</a></span>
+                                    @role('student')
+                                    <span class="fas fa-user phone pl-4 pr-4"><a
+                                            href="{{route('tutor_profile',['id'=>$item->user_id])}}">View
+                                            Profile</a></span>
+                                    @endrole
 
-                                <span class="fas fa-suitcase pay pl-4 pr-4"><a
-                                        href="{{route('show_tutor_job',['id'=>$item->post_id])}}"> View Post </a></span>
+                                    <span class="fas fa-suitcase pay pl-4 pr-4"><a
+                                            href="{{route('show_tutor_job',['id'=>$item->post_id])}}"> View Post
+                                        </a></span>
+                                </div>
                             </div>
                             @endif
                             @endforeach
@@ -67,3 +70,21 @@ Tutor | Messages
     </div>
 </section>
 @stop
+
+@push('include-js')
+<script>
+    $(document).ready(function () {
+        load_unseen_notification();
+
+        setInterval(() => {
+            load_unseen_notification();
+        }, 3000);
+    })
+
+    var get_message_notifications_url = "{{route('notification')}}";
+
+</script>
+
+{{-- Chat Functions --}}
+<script src="{{ asset('asset/js/chat.js') }}"></script>
+@endpush

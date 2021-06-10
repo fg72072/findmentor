@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 
 class Common extends Model
 {
@@ -63,5 +64,10 @@ class Common extends Model
             'coin' => $coin,
             'description' => $description
         ]);
+    }
+
+    public static function changeDate($date)
+    {
+        return Carbon::createFromFormat("Y-m-d H:i:s", $date)->diffForHumans();
     }
 }
