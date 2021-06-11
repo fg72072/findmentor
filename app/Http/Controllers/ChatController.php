@@ -43,7 +43,6 @@ class ChatController extends Controller
 
         $user_id = session('user_id');
 
-
         $validate = Thread::join('participants', 'participants.thread_id', '=', 'threads.id')
             ->where('threads.id', $request->mThread)
             ->where('participants.user_id', $user_id)->first();
@@ -65,23 +64,16 @@ class ChatController extends Controller
             ->where('threads.id', $request->mThread)
             ->first();
 
-
-        session([
-            'mThread' => $request->mThread,
-            'other_user_id' => $message_info->user_id,
-            'requirement_id' => $message_info->post_id
-        ]);
-
-        $this->messageSeen();
+        $this->messageSeen($request->mThread);
 
         return view('chat')->with('user_id', $user_id)->with('message_info', $message_info);
     }
 
 
-    public function getMessages()
+    public function getMessages($id)
     {
-        $mThread = session('mThread');
         $user_id = session('user_id');
+        $mThread = $id;
 
         $html = '';
 
@@ -122,49 +114,13 @@ class ChatController extends Controller
     public function sendMessage(Request $request)
     {
 
-        $user_id = session('user_id');
-        $other_user_id = session('other_user_id');
-        $requirement_id = session('requirement_id');
-
         $message = $request->message;
+        $other_user_id = $request->other_user;
+        $mThread = $request->mThread;
 
-        $check_auth_user = Thread::join('participants', 'participants.thread_id', '=', 'threads.id')
-            ->select('threads.id as thread_id')
-            ->where('threads.requirement_id', $requirement_id)
-            ->where('participants.user_id', $user_id)->first();
-
-        $check_other_user = Thread::join('participants', 'participants.thread_id', '=', 'threads.id')
-            ->where('threads.requirement_id', $requirement_id)
-            ->where('participants.user_id', $other_user_id)->first();
-
-
-        if ($check_auth_user && $check_other_user) {
-            $thread_id = $check_auth_user->thread_id;
-        }
-
-        if (!($check_auth_user && $check_other_user)) {
-
-            $thread_id = Thread::Create([
-                'requirement_id' => $requirement_id
-            ])->id;
-
-            $this->createParticipant($thread_id, $user_id);
-            $this->createParticipant($thread_id, $other_user_id);
-        }
-
-
-        $message_id = $this->createMessage($thread_id, $message);
+        $message_id = $this->createMessage($mThread, $message);
 
         $this->createNotification($message_id, $other_user_id);
-    }
-
-    public function createParticipant($thread_id, $user_id)
-    {
-        Participant::Create([
-            'thread_id' => $thread_id,
-            'user_id' => $user_id,
-            'last_read' =>  Carbon::now()->toDateTimeString()
-        ]);
     }
 
     public function createMessage($thread_id, $message)
@@ -218,16 +174,14 @@ class ChatController extends Controller
         return response()->json($res);
     }
 
-    public function messageSeen()
+    public function messageSeen($mThread)
     {
         $user_id = session('user_id');
-        $mThread = session('mThread');
 
         $auth_user_rec = Participant::where('thread_id', $mThread)
             ->where('user_id', $user_id)->first();
 
         $auth_user_rec->update(['last_read' =>  Carbon::now()->toDateTimeString()]);
-
 
         $setMessageSeen = Participant::join('messages', 'messages.user_id', '=', 'participants.user_id')
             ->join('message_notifications', 'message_notifications.message_id', '=', 'messages.id')

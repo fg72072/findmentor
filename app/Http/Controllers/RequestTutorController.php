@@ -12,26 +12,23 @@ class RequestTutorController extends Controller
 
     //    Important properties
     public $parentModel = RequestTutor::class;
-    public $parentRoute = 'student';
-    public $parentView = "student";
-
 
     public function index()
     {
-        return view($this->parentView . '.request');
+        return view('student.request');
     }
 
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
 
-        $name='';
+        $name = '';
 
-        if($request->hasFile('file')){
+        if ($request->hasFile('file')) {
             $image = $request->file('file');
             $name = $this->getFileName($image);
             $path = $this->getProfilePicPath();
-            $image->move( $path, $name);
+            $image->move($path, $name);
         }
 
         $this->parentModel::Create([
@@ -54,7 +51,6 @@ class RequestTutorController extends Controller
 
         Session::flash('success', 'New Post Successfully Created.');
         return redirect()->back();
-
     }
 
     public function postClosed(Request $request, $id)
@@ -73,14 +69,14 @@ class RequestTutorController extends Controller
         return redirect()->back();
     }
 
-    private function getFileName($image){
-        return time().'.'.str_replace(' ','_',strtolower($image->getClientOriginalName()) );
+    private function getFileName($image)
+    {
+        return time() . '.' . str_replace(' ', '_', strtolower($image->getClientOriginalName()));
     }
 
 
-    private function getProfilePicPath(){
-        return public_path()."/asset/document/request";
+    private function getProfilePicPath()
+    {
+        return public_path() . "/asset/document/request";
     }
-
-
 }

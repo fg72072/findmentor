@@ -89,6 +89,12 @@ Route::group(['middleware' => ['role:student']], function () {
         'uses' => 'RequirementController@index',
         'as' => 'student.requirement'
     ]);
+
+    // Create Requirement After Pay Tutor
+    Route::post('/requirement/create/{id}', [
+        'uses' => 'UserHireController@create',
+        'as' => 'requirement.create'
+    ])->middleware(['permission:Create']);
 });
 
 // Middleware For Student & Teacher Route
@@ -161,7 +167,7 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
         'as' => 'send_message'
     ]);
     // Get Message Request Ajax Request
-    Route::get('/send-messages', [
+    Route::get('/get-messages/{id}', [
         'uses' => 'ChatController@getMessages',
         'as' => 'get_messages'
     ]);
@@ -175,6 +181,11 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
     Route::post('/contact-to-discuss-requirement', [
         'uses' => 'UserHireController@contactUser',
         'as' => 'contact_user'
+    ]);
+    // Get User Phone Ajax Request
+    Route::post('/user-phone', [
+        'uses' => 'UserHireController@userPhone',
+        'as' => 'user_phone'
     ]);
 });
 

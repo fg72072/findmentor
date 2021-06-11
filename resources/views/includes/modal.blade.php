@@ -1,5 +1,4 @@
 <!-- Modal Code Start -->
-
 <section>
     <div class="login-wrap modal " id="myModal" style="overflow-y: hidden;">
         <div class="login-html pt-5">

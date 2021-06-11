@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use App\RequestTutor;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class TutorProfileController extends Controller
@@ -25,6 +27,15 @@ class TutorProfileController extends Controller
         if (!$teacher) {
             Session::flash('error', 'Not Found');
             return redirect()->back();
+        }
+
+
+        if (Auth::user()->roles->pluck('name')[0] == 'student') {
+            $user_id = session('user_id');
+
+            $requirement = RequestTutor::where('student_id', $user_id)->get();
+
+            return view('tutor-profile')->with('data', $teacher)->with('requirements', $requirement);
         }
 
 

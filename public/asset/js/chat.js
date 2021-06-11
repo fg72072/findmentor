@@ -29,7 +29,12 @@ function sendMSG() {
 		url: send_messages_url,
 		type: 'POST',
 		async: true,
-		data: { _token: token, message: msg },
+		data: {
+			_token: token,
+			message: msg,
+			mThread,
+			other_user
+		},
 		success: function(response) {
 			$('.msgToSend').val('');
 		}

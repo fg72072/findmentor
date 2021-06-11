@@ -93,9 +93,11 @@ Tutor | Chat
         });
     });
 
-    var get_messages_url = "{{route('get_messages')}}";
+    var get_messages_url = "{{route('get_messages',['id'=>request()->get('mThread')])}}";
     var send_messages_url = "{{route('send_message')}}";
     var get_message_notifications_url = "{{route('notification')}}";
+    var mThread = "{{request()->get('mThread')}}";
+    var other_user = "{{$message_info->user_id}}";
 
 </script>
 

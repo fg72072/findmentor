@@ -116,7 +116,7 @@ Tutor | Home
                         <div class="card">
                             <div class="card-body d-flex flex-column">
                                 <div class="wrapper">
-                                    <div class="alert alert-danger d-none">
+                                    <div class="alert alert-danger d-none text-center">
 
                                     </div>
                                     <div class="top-icons" style="line-height: 50px;">
@@ -195,6 +195,241 @@ Tutor | Home
     </div>
 </div>
 
+{{-- Buy Coin Modal --}}
+<section>
+    <div class="modal fade" id="make-requirement">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <!-- Modal body -->
+                <div class="modal-body flex">
+                    <form id="regForm" action="{{route('requirement.create',['id'=>$data->id])}}" method='POST'
+                        enctype="multipart/form-data">
+                        @csrf()
+                        <div class="progress ProgressBar">
+                            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25"
+                                aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+
+                        <div class="tab">
+                            <div class="PositionInfo pt-4">
+                                <h1 class="Info">PERSONAL INFORMATION</h1>
+                            </div>
+                            <div class="form pt-5">
+                                <h4 class="Info">Location</h4>
+                                <input class="InpTab" placeholder="Enter Location" name='location'>
+                                <h4 class="Info">Phone</h4>
+                                <input class="InpTab" placeholder="Enter Phone" name='phone'>
+                                <h4 class="Info">Details</h4>
+                                <input class="InpTab" placeholder="Enter Details" name='detail'>
+                            </div>
+                        </div>
+
+                        <div class="PositionInfo pt-4">
+                            <h1 class="Info">PERSONAL INFORMATION</h1>
+                        </div>
+
+                        <div class="form pt-5">
+
+                            <h4 class="Info">Subject</h4>
+                            <input class="InpTab" placeholder="Enter Subject" name='subject'>
+
+                            <h4 class="Info">Level</h4>
+
+                            <select class="InpTabSelect" name='grade'>
+                                <option value="" disabled selected>Select Grade</option>
+                                <option value="Grade1">Grade1</option>
+                                <option value="Grade2">Grade2</option>
+                                <option value="Grade3">Grade3</option>
+                                <option value="Grade4">Grade4</option>
+                            </select>
+
+                            <h4 class="Info">I want</h4>
+                            <select class="InpTabSelect InpTab" name='guide_type'>
+                                <option value="" disabled selected>Select</option>
+                                <option value="Assignment Help">Assignment Help</option>
+                                <option value="Tutoring">Tutoring</option>
+                            </select>
+
+                            <h4 class="Info">Meeting Option</h4>
+
+                            <div class="CheckBoxTitle odd">
+                                <input type="checkbox" class="check" name='online_class' value='yes'>
+                                <p class="Info">Online (using Skype etc)</p>
+                                <input type="checkbox" class="check" name='class_at_student_place' value='yes'>
+                                <p class="Info">At my place (home/institute)</p>
+                                <input type="checkbox" class="check" name='class_at_tutor_place' value='yes'>
+                                <p class="Info">Travel to tutor</p>
+                            </div>
+
+                        </div>
+                        <div class="PositionInfo pt-4">
+                            <h1 class="Info">PERSONAL INFORMATION</h1>
+                        </div>
+
+                        <div class="form pt-5">
+
+                            <h4 class="Info">Budget</h4>
+                            <input class="InpTab" placeholder="Enter Budget" name='budget'>
+
+                            <h4 class="Info">Gender Preference</h4>
+                            <select class="InpTabSelect" name='gender_preference'>
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="Preferably Male">Preferably Male</option>
+                                <option value="Preferably Female">Preferably Female</option>
+                                <option value="Only Male">Only Male</option>
+                                <option value="Only Female">Only Female</option>
+                            </select>
+
+                            <h4 class="Info">Tutors Wanted</h4>
+                            <select class="InpTabSelect" name='no_of_tutor'>
+                                <option value="" disabled selected>Select</option>
+                                <option value="Only One">Only One</option>
+                                <option value="More than One">More than One</option>
+                                <option value="As many as possible">As many as possible</option>
+                            </select>
+
+                            <h4 class="Info">I need someone
+                            </h4>
+                            <select class="InpTabSelect" name='working_type'>
+                                <option value="" disabled selected>Select</option>
+                                <option value="Part time">Part time</option>
+                                <option value="Full time">Full time</option>
+                            </select>
+
+                            <h4 class="Info">Upload files</h4>
+                            <input type="file" class="InpTab" placeholder="Upload files" name='file'>
+                        </div>
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{-- Buy Coin Modal End --}}
+
+
+{{-- Coin Deduction Confirmation Modal --}}
+<div class="modal fade" id="coin-confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 550px;">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title text-left" id="myModalLabel">Please read. It's important.</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div>
+                    <p style="display: none" id="acceptTermsAndCondTutorPhnNotVerified"><b>This tutor's phone is not
+                            verified. IT MAY BE WRONG.</b></p>
+                    <p id="acceptTermsAndCondDeductCoinMsg" style=""> <b>50 coins will be deducted</b> to contact this
+                        tutor.</p>
+                    <p>Please read our tips on how to <a target="_blank" href="/stay-safe">stay safe</a>.</p>
+                    <p>By contacting this tutor, you agree to our <a target="_blank" href="/terms-and-conditions">terms
+                            and conditions</a>.</p>
+                    <div id="studentContactDetailsDiv" style="display: none">
+                        <p>Following details will be shared with the tutors you will contact:</p>
+                        <ul id="studentContactDetailsToBeShared"
+                            class="list-unstyled vertical-list margin-top-10 margin-left-10-"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary acceptCoinOffer">Accept</button>
+                <a class="btn btn-danger btn-ok" data-dismiss="modal">Reject</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Coin Deduction Confirmation Modal End --}}
+
+
+{{-- Requirements Modal --}}
+<div class="modal fade" id="requirement-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center">Message {{$data->name}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <form action="{{route('requirement.create',['id'=>$data->id])}}" id="previousPostForm" method="POST">
+                    @csrf
+                    <input type="hidden" name="id" value="{{$data->id}}">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section>
+                                <select class="form-control" name="requirement_id" id="requirement_id">
+                                    <option value="" disabled selected>-- Select a post --</option>
+                                    @if (isset($requirements) && count($requirements)>0)
+                                    @foreach ($requirements as $item)
+                                    <option value="{{$item->id}}">{{$item->detail}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </section>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <section>
+                                <button id="btnContactUsingPreviousPost" type="submit"
+                                    class="btn btn-primary w-100">Submit</button>
+                            </section>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br>
+                            <center>------------ OR --------------- </center>
+                            <br>
+                        </div>
+                    </div>
+
+                    <div class="row margin-top-20">
+                        <div class="col-md-12">
+                            <section>
+                                <button id="btnContactUsingNewPost" type="button" class="btn btn-success w-100">Contact
+                                    for new requirement
+                                </button>
+                            </section>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Requirements Modal End --}}
+
+
+
+{{--  Phone Not Verified Modal --}}
+<div class="modal fade" id="phone-not-verified" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center">{{$data->name}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p>User Cannot give access publicly</p>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Phone Not Verified Modal End --}}
+
 @stop
 
 
@@ -203,9 +438,11 @@ Tutor | Home
 
 <script>
     $(document).ready(function () {
-        $('.message').click(()=>{
-            var token = $('meta[name="csrf-token"]').attr('content');
+        var token = $('meta[name="csrf-token"]').attr('content');
 
+        $('.message').click(()=>{
+            $('.alert').addClass('d-none')
+            $('.alert').html('');
             $.ajax({
                 url: "{{route('contact_user')}}",
                 type: 'POST',
@@ -213,6 +450,26 @@ Tutor | Home
                 data: { _token: token, other_user_id: '{{$data->id}}'  },
                 success: function(response) {
                     console.log(response)
+
+                    if(response.message == 'go-to-message'  ){
+                        window.location.href = "{{route('job_messages')}}";
+                    }
+
+                    if(response.message == 'deduct-coins'  ){
+                        $('#coin-confirm').modal('show');
+                    }
+
+                    if(response.message == 'buy-coin'  ){
+                        $('.alert').removeClass('d-none')
+                        $('.alert').html(`
+                        <div>
+                            50 coins required to view contact.
+                        </div>
+                        You have ${response.coins} coins.
+                        <a target="_blank" href="{{route('buyCoin')}}">Buy Coins</a>
+                        `)
+                    }
+
                 },
                 error: function(error) {
                     if(error.status == 403){
@@ -220,41 +477,79 @@ Tutor | Home
                         $('.alert').html(`User is not <a href="{{route('home')}}">logged in</a>.`)
                         // $('.alert').html(error.responseJSON.message)
                     }
+
                 }
             });
         })
 
+        $('.phone').click(()=>{
+            $('.alert').addClass('d-none')
+            $('.alert').html('');
+            $.ajax({
+                url: "{{route('user_phone')}}",
+                type: 'POST',
+                async: true,
+                data: { _token: token, other_user_id: '{{$data->id}}'  },
+                success: function(response) {
+                    console.log(response)
+
+                    if(response.message == 'phone-not-verified'  ){
+                        $('#phone-not-verified').modal('show');
+                    }
+
+                    if(response.message == 'show-number'  ){
+                        $('#phone-not-verified').modal('show');
+                    }
+
+                    if(response.message == 'deduct-coins'  ){
+                        $('#coin-confirm').modal('show');
+                    }
+
+                    if(response.message == 'buy-coin'  ){
+                        $('.alert').removeClass('d-none')
+                        $('.alert').html(`
+                        <div>
+                            50 coins required to view contact.
+                        </div>
+                        You have ${response.coins} coins.
+                        <a target="_blank" href="{{route('buyCoin')}}">Buy Coins</a>
+                        `)
+                    }
+
+                },
+                error: function(error) {
+                    if(error.status == 403){
+                        $('.alert').removeClass('d-none')
+                        $('.alert').html(`User is not <a href="{{route('home')}}">logged in</a>.`)
+                    }
+
+                }
+            });
+
+        })
 
         $('.pay').click(()=>{
           alert();
-            // var token = $('meta[name="csrf-token"]').attr('content');
-
-            // $.ajax({
-            //     url: "{{route('contact_user')}}",
-            //     type: 'POST',
-            //     async: true,
-            //     data: { _token: token, other_user_id: '{{$data->id}}'  },
-            //     success: function(response) {
-            //         console.log(response)
-            //     },
-            //     error: function(error) {
-            //         if(error.status == 403){
-            //             $('.alert').removeClass('d-none')
-            //             $('.alert').html(`User is not <a href="{{route('home')}}">logged in</a>.`)
-            //             // $('.alert').html(error.responseJSON.message)
-            //         }
-            //     }
-            // });
         })
 
-        $('.phone').click(()=>{
-          alert();
-        })
 
         $('.review').click(()=>{
           alert();
         })
+
+
+        $('.acceptCoinOffer').click(()=>{
+            $('#coin-confirm').modal('toggle')
+            $('#requirement-modal').modal('show')
+        })
+
+        $('#btnContactUsingNewPost').click(()=>{
+            $('#requirement-modal').modal('hide')
+            $('#make-requirement').modal('show')
+        })
+
     })
+
 </script>
 
 
