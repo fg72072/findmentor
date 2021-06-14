@@ -17,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','profile','phone', 'last_login_at','last_login_ip'
+        'name', 'email', 'password', 'profile', 'phone', 'last_login_at', 'last_login_ip', 'email_verified_at'
     ];
 
     /**
@@ -40,21 +40,24 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function subject()
     {
-        return $this->hasMany(Subject::class,'teacher_id','id');
+        return $this->hasMany(Subject::class, 'teacher_id', 'id');
     }
 
     public function experience()
     {
-        return $this->hasMany(Qualification::class,'teacher_id','id');
+        return $this->hasMany(Qualification::class, 'teacher_id', 'id');
     }
 
     public function education()
     {
-        return $this->hasMany(Education::class,'teacher_id','id');
+        return $this->hasMany(Education::class, 'teacher_id', 'id');
     }
     public function info()
     {
-        return $this->hasOne(Teacher::class,'teacher_id','id');
+        return $this->hasOne(Teacher::class, 'teacher_id', 'id');
     }
-
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'review_to_user_id', 'id');
+    }
 }

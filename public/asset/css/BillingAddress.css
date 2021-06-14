@@ -99,8 +99,8 @@ input {
 }
 
 /* Mark input boxes that gets an error on validation: */
-input.invalid {
-	background-color: #ffdddd;
+.invalid {
+	background-color: #ffdddd !important;
 }
 
 /* Hide all steps by default: */

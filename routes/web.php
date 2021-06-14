@@ -146,6 +146,12 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
         'as' => 'buy_coin.payment'
     ]);
 
+    // Review
+    Route::get('/review', [
+        'uses' => 'ReviewController@index',
+        'as' => 'review'
+    ]);
+
     // // Message List
     // Route::get('/job-messages', [
     //     'uses' => 'ChatController@jobChatList',
@@ -186,6 +192,21 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
     Route::post('/user-phone', [
         'uses' => 'UserHireController@userPhone',
         'as' => 'user_phone'
+    ]);
+    // Get User Payment Detail Ajax Request
+    Route::post('/user-payment', [
+        'uses' => 'UserHireController@userPayment',
+        'as' => 'user_payment'
+    ]);
+    // Check User Review Ajax Request
+    Route::post('/user-review', [
+        'uses' => 'UserHireController@userReview',
+        'as' => 'user_review'
+    ]);
+    // Check User Review Ajax Request
+    Route::post('/review/create', [
+        'uses' => 'UserHireController@reviewCreate',
+        'as' => 'review_create'
     ]);
 });
 

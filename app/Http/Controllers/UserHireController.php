@@ -7,8 +7,10 @@ use App\Common;
 use App\Thread;
 use App\Wallet;
 use App\CoinUsed;
+use App\CoinUsedItem;
 use App\Participant;
 use App\RequestTutor;
+use App\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +27,12 @@ class UserHireController extends Controller
         $user_coins = Wallet::where('user_id', $user_id)->first()->coins;
 
         $check_coin_used_against_user = CoinUsed::where('user_id', $user_id)
+            ->join('coin_used_items as cui', 'cui.coin_used_id', '=', 'coin_used.id')
+            ->join('request_tutors as rt', 'rt.id', '=', 'cui.requirement_id')
+            ->where('rt.is_closed', 0)
             ->where('used_against_id', $request->other_user_id)
             ->first();
+
 
         if ($user_role == 'student') {
             if ($check_coin_used_against_user) {
@@ -90,6 +96,51 @@ class UserHireController extends Controller
         return response()->json($res);
     }
 
+    public function userPayment(Request $request)
+    {
+        $user_id = session('user_id');
+        $user_role = Auth::user()->roles->pluck('name')[0];
+
+        $check_user_payment_verified = User::leftJoin('user_verifications as uv', 'uv.user_id', '=', 'users.id')
+            ->where('users.id', $request->other_user_id)
+            ->first();
+
+        $user_payment_is_verified = $check_user_payment_verified->payment_verified;
+
+        if ($user_role == 'student') {
+            if ($user_payment_is_verified == 0) {
+                $res = [
+                    'message' => 'payment-not-verified'
+                ];
+            }
+        }
+        return response()->json($res);
+    }
+
+    public function userReview(Request $request)
+    {
+        $user_id = session('user_id');
+        $user_role = Auth::user()->roles->pluck('name')[0];
+
+        $check_coin_used_against_user = CoinUsed::where('user_id', $user_id)
+            ->where('used_against_id', $request->other_user_id)
+            ->first();
+
+        if ($user_role == 'student') {
+            if ($check_coin_used_against_user) {
+                $res = [
+                    'message' => 'show-review-box'
+                ];
+            } else if (!$check_coin_used_against_user) {
+                $res = [
+                    'message' => 'dont-show-review-box'
+                ];
+            }
+        }
+
+        return response()->json($res);
+    }
+
     public function create(Request $request, $id)
     {
         $user_id = session('user_id');
@@ -137,14 +188,21 @@ class UserHireController extends Controller
         $user_id = session('user_id');
         $subjects = RequestTutor::find($requirement_id)->first()->subject;
 
-        CoinUsed::Create([
+        $coin_used_id = CoinUsed::Create([
             'user_id' => $user_id,
             'used_against_id' => $other_user_id,
+
+        ])->id;
+
+        CoinUsedItem::Create([
+            'coin_used_id' => $coin_used_id,
+            'requirement_id' => $requirement_id,
             'no_of_used_coins' => $no_of_coins_use,
             'subject' => $subjects
         ]);
 
         Common::Wallet($no_of_coins_use, 'subtract-coin');
+        Common::Wallet_Log($no_of_coins_use, 'Coin Used Against', $coin_used_id);
     }
 
     public function createThread($requirement_id, $other_user_id)
@@ -178,5 +236,24 @@ class UserHireController extends Controller
     private function getProfilePicPath()
     {
         return public_path() . "/asset/document/request";
+    }
+
+    public function reviewCreate(Request $request)
+    {
+        $user_id = session('user_id');
+
+        Review::updateOrCreate([
+            'user_id' => $user_id,
+            'review_to_user_id' =>  $request->other_user_id
+        ], [
+            'user_id' => $user_id,
+            'review_to_user_id' =>  $request->other_user_id,
+            'rating' =>  $request->rating,
+            'headline' =>  $request->reviewHeading,
+            'review' =>  $request->userReview,
+        ]);
+
+        Session::flash('success', 'Review');
+        return redirect()->back();
     }
 }

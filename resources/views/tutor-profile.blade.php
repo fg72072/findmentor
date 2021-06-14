@@ -6,6 +6,7 @@ Tutor | Home
 
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/TutorProfile.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/RatingStar.css') }}">
 @endpush
 
 @section('content')
@@ -39,7 +40,7 @@ Tutor | Home
                                     </div>
                                 </div>
                                 <div class="row justify-content-around">
-                                    <div class="col-lg-5 col-md-5 exp" style="background:#16a085;">
+                                    <div class="col-lg-11 col-md-11 exp" style="background:#16a085;">
                                         <span class="fa fa-book">
                                             <h3>Subjects</h3>
                                         </span>
@@ -53,7 +54,24 @@ Tutor | Home
                                             @endif
                                         </div>
                                     </div>
-                                    <div class="col-lg-5 col-md-5 exp" style="background:#16a085;">
+                                    <div class="col-lg-11 col-md-11 exp" style="background:#4765a0;">
+                                        <span class="fa fa-graduation-cap">
+                                            <h3>Education</h3>
+                                        </span>
+                                        <div class="subjects">
+                                            @if (count($data['education'])>0)
+                                            @foreach ($data['education'] as $education)
+                                            <h6>{{ucfirst($education->degree_name)}}</h6>
+                                            <p> ({{$education->start_month}},
+                                                {{$education->start_year}}-{{$education->end_month}},
+                                                {{$education->end_year}}) from {{$education->institute_name}}</p>
+                                            @endforeach
+                                            @else
+                                            <h6>No Education mentioned.</h6>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-11 col-md-11 exp" style="background:#16a085;">
                                         <span class="fa fa-briefcase">
                                             <h3>Experience</h3>
                                         </span>
@@ -71,24 +89,8 @@ Tutor | Home
 
                                         </div>
                                     </div>
-                                    <div class="col-lg-5 col-md-5 exp" style="background:#4765a0;">
-                                        <span class="fa fa-graduation-cap">
-                                            <h3>Education</h3>
-                                        </span>
-                                        <div class="subjects">
-                                            @if (count($data['education'])>0)
-                                            @foreach ($data['education'] as $education)
-                                            <h6>{{ucfirst($education->degree_name)}}</h6>
-                                            <p> ({{$education->start_month}},
-                                                {{$education->start_year}}-{{$education->end_month}},
-                                                {{$education->end_year}}) from {{$education->institute_name}}</p>
-                                            @endforeach
-                                            @else
-                                            <h6>No Education mentioned.</h6>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-5 col-md-5 exp" style="background:#4765a0;">
+
+                                    <div class="col-lg-11 col-md-11 exp" style="background:#4765a0;">
                                         <span class="fa fa-money">
                                             <h3>Fee details</h3>
                                         </span>
@@ -99,12 +101,27 @@ Tutor | Home
                                                 </p>
                                         </div>
                                     </div>
-                                    <div class="col-lg-5 col-md-5 exp" style="background:#16a085;">
+                                    <div class="col-lg-11 col-md-11 exp" style="background:#16a085; height:auto">
                                         <span class="fa fa-thumbs-up">
                                             <h3>Reviews</h3>
                                         </span>
-                                        <div class="subjects"> <a>No reviews yet. Be the first one to <a href="#">review
-                                                    this tutor.</a></div>
+                                        <div class="subjects">
+                                            @if (count($data['reviews'])>0)
+                                            @foreach ($data['reviews'] as $review)
+                                            <div>
+                                                <h4>{{\App\User::find($review->user_id)->name}}</h4>
+                                                <p>{{ $review->rating}}</p>
+                                                <h5>{{ $review->headline}}</h5>
+                                                <h6>{{ $review->review}}</h6>
+                                            </div>
+                                            <hr>
+                                            @endforeach
+                                            @else
+                                            No reviews yet. Be the first one to
+                                            <a href="#">review this tutor.</a>
+                                            @endif
+                                        </div>
+
                                     </div>
                                     <div class="col-lg-5 col-md-5">
                                     </div>
@@ -413,8 +430,8 @@ Tutor | Home
 
 
 
-{{--  Phone Not Verified Modal --}}
-<div class="modal fade" id="phone-not-verified" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+{{--  Phone Modal --}}
+<div class="modal fade" id="phone-verification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -423,12 +440,102 @@ Tutor | Home
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
             <div class="modal-body">
-                <p>User Cannot give access publicly</p>
+                <p id="mobile_msg_box"></p>
             </div>
         </div>
     </div>
 </div>
-{{-- Phone Not Verified Modal End --}}
+{{-- Phone Modal End --}}
+
+
+{{--  Payment Modal --}}
+<div class="modal fade" id="payment-verification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center">{{$data->name}}</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <p id="payment_msg_box"></p>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- Payment Modal End --}}
+
+{{--  Review Modal --}}
+<div class="modal fade" id="review" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center"><strong>Rate & Review</strong></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form method="post" action="{{route('review_create')}}">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label class="label">Rating</label>
+                            <fieldset class="rating">
+                                <input type="radio" id="star5" name="rating" value="5" />
+                                <label class="full" for="star5" title="Awesome - 5 stars"></label>
+                                <input type="radio" id="star4half" name="rating" value="4.5" />
+                                <label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+                                <input type="radio" id="star4" name="rating" value="4" />
+                                <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+                                <input type="radio" id="star3half" name="rating" value="3.5" />
+                                <label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+                                <input type="radio" id="star3" name="rating" value="3" />
+                                <label class="full" for="star3" title="Meh - 3 stars"></label>
+                                <input type="radio" id="star2half" name="rating" value="2.5" />
+                                <label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+                                <input type="radio" id="star2" name="rating" value="2" />
+                                <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+                                <input type="radio" id="star1half" name="rating" value="1.5" />
+                                <label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+                                <input type="radio" id="star1" name="rating" value="1" />
+                                <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+                                <input type="radio" id="starhalf" name="rating" value="0.5" />
+                                <label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                <input type="radio" class="reset-option" name="rating" value="reset" />
+                            </fieldset>
+
+                            <input type="hidden" name="other_user_id" value="{{$data->id}}">
+
+                            <section>
+                                <label class="label d-block">Add a headline</label>
+                                <input type="text" autocomplete="off" placeholder="What's most important to know?"
+                                    name="reviewHeading" id="reviewHeading" name="reviewHeading" class="form-control">
+                                <span style="display: none" id="reviewHeadingCount">100 characters left.</span>
+                                <div id="reviewHeadingErrorMsg"></div>
+                            </section>
+                            <br>
+                            <section>
+                                <label class="label d-block">Write your review</label>
+                                <textarea class="form-control" rows="4" name="userReview"
+                                    placeholder="What did you like or dislike? What were the results?" name="userReview"
+                                    id="userReview" style="resize: none;"></textarea>
+                                <span style="display: none" id="userReviewCount">2500 characters left.</span>
+                                <div id="reviewErrorMsg"></div>
+                                <div id="reviewEscalateReason" style="display: none"
+                                    class="alert alert-warning fade in"></div>
+                            </section>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" id="btn_submitReview" class="btn btn-primary"><span
+                                id="btnLabelSaveOrUpdateReview">
+                                Rate and Review</span></button>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{-- Review Modal End --}}
 
 @stop
 
@@ -494,11 +601,13 @@ Tutor | Home
                     console.log(response)
 
                     if(response.message == 'phone-not-verified'  ){
-                        $('#phone-not-verified').modal('show');
+                        $('#phone-verification').modal('show');
+                        $('#mobile_msg_box').html('User Cannot give access publicly');
                     }
 
                     if(response.message == 'show-number'  ){
-                        $('#phone-not-verified').modal('show');
+                        $('#phone-verification').modal('show');
+                        $('#mobile_msg_box').html(response.phone);
                     }
 
                     if(response.message == 'deduct-coins'  ){
@@ -529,12 +638,60 @@ Tutor | Home
         })
 
         $('.pay').click(()=>{
-          alert();
+            $('.alert').addClass('d-none')
+            $('.alert').html('');
+            $.ajax({
+                url: "{{route('user_payment')}}",
+                type: 'POST',
+                async: true,
+                data: { _token: token, other_user_id: '{{$data->id}}'  },
+                success: function(response) {
+                    console.log(response)
+
+                    if(response.message == 'payment-not-verified'  ){
+                        $('#payment-verification').modal('show');
+                        $('#payment_msg_box').html('User Payment Not verified');
+                    }
+                },
+                error: function(error) {
+                    if(error.status == 403){
+                        $('.alert').removeClass('d-none')
+                        $('.alert').html(`User is not <a href="{{route('home')}}">logged in</a>.`)
+                    }
+
+                }
+            });
         })
 
 
         $('.review').click(()=>{
-          alert();
+            $('.alert').addClass('d-none')
+            $('.alert').html('');
+            $.ajax({
+                url: "{{route('user_review')}}",
+                type: 'POST',
+                async: true,
+                data: { _token: token, other_user_id: '{{$data->id}}'  },
+                success: function(response) {
+                    console.log(response)
+
+                    if(response.message == 'show-review-box'  ){
+                        $('#review').modal('show');
+                    }
+
+                    if(response.message == 'dont-show-review-box'  ){
+                        $('.alert').removeClass('d-none')
+                        $('.alert').html(`<div id="contactFlowByAjaxError" class="alert alert-danger-light margin-top-10" style=""><i class="fas fa-exclamation-triangle"></i> You have not paid this tutor via Find-Mentor. Please pay this tutor to give a review to this teacher.</div>`)
+                    }
+                },
+                error: function(error) {
+                    if(error.status == 403){
+                        $('.alert').removeClass('d-none')
+                        $('.alert').html(`User is not <a href="{{route('home')}}">logged in</a>.`)
+                    }
+
+                }
+            });
         })
 
 

@@ -42,7 +42,7 @@ Tutor | Messages
                                     <span class="post_notification"></span>
                                 </h2>
                                 <p class="pt-3">
-                                    Hi, Dear student how can i help you ?
+                                    {{$item->last_message}}
                                 </p>
                                 <div class="top-icons" style="line-height: 50px;">
                                     <span class="fa fa-comment message pl-4 pr-4"><a

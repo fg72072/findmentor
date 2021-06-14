@@ -17,6 +17,7 @@ class TutorProfileController extends Controller
             ->with('experience')
             ->with('education')
             ->with('info')
+            ->with('reviews')
             ->leftjoin('user_verifications', 'user_verifications.user_id', '=', 'users.id')
             ->where('users.id', $id)
             ->whereNotNull('user_verifications.is_account_verified_at')
@@ -29,8 +30,7 @@ class TutorProfileController extends Controller
             return redirect()->back();
         }
 
-
-        if (Auth::user()->roles->pluck('name')[0] == 'student') {
+        if (Auth::user() && Auth::user()->roles->pluck('name')[0] == 'student') {
             $user_id = session('user_id');
 
             $requirement = RequestTutor::where('student_id', $user_id)->get();

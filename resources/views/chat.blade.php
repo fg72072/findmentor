@@ -29,18 +29,21 @@ Tutor | Chat
                                 {{$message_info->post}}
                             </p>
                             <hr class=" line w-25 mx-1">
-                            <div id="messageBox" style="max-height: 490px;overflow: auto;">
+                            <div id="messageBox" style="max-height: 450px;overflow: auto;">
 
                             </div>
-                            <div class="skillbutton">
-                                <input id="BorderBott" class=" pt-2 flex pl-2 msgToSend" style="width: 100% !important;"
-                                    placeholder="Type a message here" name="message" />
-                            </div>
-                            <div class="top-icons" style="line-height: 50px;">
-                                <span class="fa fa-comment message pl-4 pr-4 sendMsgBtn">Send</span>
-                                <p style="display: inline; padding-left: 3rem;">
-                                    See all messages for this post.
-                                </p>
+                            <div style="position: fixed;bottom: 0;width: 65%;">
+                                <div class="skillbutton">
+                                    <input id="BorderBott" class=" pt-2 pb-2 flex pl-2 msgToSend"
+                                        style="width: 100% !important;" placeholder="Type a message here"
+                                        name="message" />
+                                </div>
+                                <div class="top-icons" style="line-height: 50px;">
+                                    <span class="fa fa-comment message pl-4 pr-4 sendMsgBtn">Send</span>
+                                    <p style="display: inline; padding-left: 3rem;">
+                                        See all messages for this post.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -86,10 +89,13 @@ Tutor | Chat
             var keycode = (event.keyCode ? event.keyCode : event.which);
             if(keycode == '13'){
                 sendMSG()
+                loadDefault();
+
             }
         });
         $('.sendMsgBtn').click(function(event){
             sendMSG()
+            loadDefault();
         });
     });
 

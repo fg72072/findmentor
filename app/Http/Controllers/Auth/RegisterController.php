@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use App\Common;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -32,6 +34,17 @@ class RegisterController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+    protected function redirectTo()
+    {
+        $user_role = Auth::user()->roles->pluck('name')[0];
+
+        if ($user_role == 'student') {
+            return route('home');
+        }
+
+        return route('account');
+    }
 
     /**
      * Create a new controller instance.
@@ -66,9 +79,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $verified = $data['role'] == 'student' ? Carbon::now()->toDateTimeString() : NULL;
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'email_verified_at' => $verified,
             'password' => Hash::make($data['password']),
         ]);
 
@@ -76,7 +93,7 @@ class RegisterController extends Controller
 
         session(['user_id' => $user->id]);
 
-        Common::UserAccountVerification();
+        Common::UserAccountVerification(['is_account_verified_at' => $verified]);
         Common::Wallet();
 
         return $user;

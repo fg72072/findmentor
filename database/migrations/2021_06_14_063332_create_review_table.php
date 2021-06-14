@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoinUsedTable extends Migration
+class CreateReviewTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateCoinUsedTable extends Migration
      */
     public function up()
     {
-        Schema::create('coin_used', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('used_against_id');
+            $table->unsignedBigInteger('review_to_user_id');
+            $table->string('rating');
+            $table->string('headline')->nullable();
+            $table->text('review')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -29,6 +32,6 @@ class CreateCoinUsedTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coin_used');
+        Schema::dropIfExists('reviews');
     }
 }

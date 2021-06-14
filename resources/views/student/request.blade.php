@@ -56,10 +56,9 @@ Tutor | Home
 
                     <select class="InpTabSelect" name='grade'>
                         <option value="" disabled selected>Select Grade</option>
-                        <option value="Grade1">Grade1</option>
-                        <option value="Grade2">Grade2</option>
-                        <option value="Grade3">Grade3</option>
-                        <option value="Grade4">Grade4</option>
+                        <option value="begginer">Begginer</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="expert">Expert</option>
                     </select>
 
 

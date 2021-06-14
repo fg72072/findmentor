@@ -44,7 +44,7 @@ Tutor | Dashboard
                     </a>
                 </div>
                 <div class="Serv1 col-lg-3 col-md-6 col-12 mb-4">
-                    <a href="./Review.html" style="text-decoration: none;">
+                    <a href="{{route('review')}}" style="text-decoration: none;">
                         <div class="card ServCard flex">
                             <div class="Servicondiv flex mt-2">
                                 <i class="shield fas fa-thumbs-up"></i>

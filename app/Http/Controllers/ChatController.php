@@ -33,7 +33,13 @@ class ChatController extends Controller
                 'threads.created_at'
             )
             ->where('user_id', '!=', $user_id)
+            ->where('request_tutors.is_closed', 0)
             ->get();
+
+
+        foreach ($data as $key => $value) {
+            $value->last_message = Message::where('thread_id', $value->thread_id)->orderBy('created_at', 'desc')->first()->body;
+        }
 
         return view('chat-list')->with('data', $data)->with('user_id', $user_id);
     }

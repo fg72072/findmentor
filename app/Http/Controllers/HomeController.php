@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -15,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        // $this->middleware(['auth','verified']);
+        // $this->middleware(['auth', 'verified']);
     }
 
     /**
@@ -26,6 +27,16 @@ class HomeController extends Controller
     public function index()
     {
         // Session::flash('error', 'Failed to create there is some issue');
-        return view('index');
+        $user_id = session('user_id');
+
+        $check_user_account_verified = NULL;
+
+        if ($user_id) {
+            $check_user_account_verified = User::where('users.id', $user_id)
+                ->leftJoin('user_verifications as uv', 'uv.user_id', '=', 'users.id')
+                ->first();
+        }
+
+        return view('index')->with('is_verified', $check_user_account_verified);
     }
 }

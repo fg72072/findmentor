@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-    Tutor Job
+Tutor Job
 @stop
 
 @push('include-css')
-  <link rel="stylesheet"  href="{{ asset('asset/css/FindTutor.css') }}" class="color-switcher-link">
+<link rel="stylesheet" href="{{ asset('asset/css/FindTutor.css') }}" class="color-switcher-link">
 @endpush
 
 @section('content')
@@ -13,9 +13,9 @@
     <div class="container content">
         <div class="tab-content">
             <div id="home" class="tab-pane fade in active show">
-                    @php
-                        $subjects = explode(",",$item->subject);
-                    @endphp
+                @php
+                $subjects = explode(",",$item->subject);
+                @endphp
                 <div class="col-12 col-md-12">
                     <div class="h-100 bordered rounded">
                         <div class="course-front">
@@ -25,18 +25,20 @@
                                     <p class="subject pt-3">Contact {{$item->name}}</p>
                                     <div class="tagcloud pt-4">
                                         @foreach ($subjects as $subject)
-                                        <a href="#" class="tag-cloud-link Hum"> {{$subject}} </a>
+                                        <a href="{{route('findtutor',['subject'=>$subject])}}"
+                                            class="tag-cloud-link Hum"> {{$subject}} </a>
                                         @endforeach
                                     </div>
                                     <div class="listing_desc pt-5">
                                         <p>
-                                          {{$item->detail}}
+                                            {{$item->detail}}
                                         </p>
                                     </div>
                                     <div class="listing_icons pt-5">
                                         <div class="TextIcon">
                                             <span class="fa fa-calendar icons" aria-hidden="true"></span>
-                                            <p>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$item->posted_at)->diffForHumans()}}</p>
+                                            <p>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$item->posted_at)->diffForHumans()}}
+                                            </p>
                                         </div>
                                         <div class="TextIcon">
                                             <span class="fa fa-map-marker icons" aria-hidden="true"></span>
@@ -78,7 +80,8 @@
                                         </div>
                                         <div class="TextIcon">
                                             <span class="fa fa-home icons" aria-hidden="true"></span>
-                                            <p>{{$item->class_at_student_place == 'yes'?'Available for home tutoring':'Not Available for home tutoring'}}</p>
+                                            <p>{{$item->class_at_student_place == 'yes'?'Available for home tutoring':'Not Available for home tutoring'}}
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="listing_icons pt-5">
