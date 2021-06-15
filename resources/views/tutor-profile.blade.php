@@ -24,18 +24,18 @@ Tutor | Home
                                         <img src="../asset/profile/{{$data->profile}}" style="max-width: 50%;">
                                     </div>
                                     <div class="col-md-12 col-xs-12">
-                                        <h2 class="display-3 card-title pt-3">{{$data->name}}</h2>
+                                        <h2 class="display-3 card-title pt-3">{{$data->name}}
+                                            @if(Auth::user())
+                                            @role('teacher')
+                                            <span>
+                                                <a href="javascript:void(0)" data-toggle="modal"
+                                                    data-target="#description">Edit</a>
+                                            </span>
+                                            @endrole
+                                            @endif
+                                        </h2>
                                         <div class="d-flex flex-column flex-lg-row pr-5">
-                                            <p class="text-justify">I'm CMA final student. I have completed my
-                                                graduation from MG.
-                                                University kottayam with 85%. I have completed my CMA
-                                                intermediate in first attempt itself with 65%. I'm now doing my
-                                                final. My core area is accountancy. I have scored a markable
-                                                score in accountancy. I'm good in all accounting branch like
-                                                financial, costing and management. My next strong subject is
-                                                business studies. Both of these can be handled by me with an
-                                                ease. I can also handle company accounts ( new format). I will
-                                                be also helping in home work and assignments.</p>
+                                            <p class="text-justify">{{$data['info']->description}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -531,11 +531,43 @@ Tutor | Home
                                 id="btnLabelSaveOrUpdateReview">
                                 Rate and Review</span></button>
                     </div>
+                </div>
             </form>
         </div>
     </div>
 </div>
 {{-- Review Modal End --}}
+
+
+{{--  Add Discription Modal --}}
+<div class="modal fade" id="description" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title text-center"><strong>Description</strong></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <form method="post" action="{{route('description_create')}}">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea class="form-control" name="description" id="" cols="30" rows="10"
+                                placeholder="Description..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{-- Add Discription Modal End --}}
+
+
+
 
 @stop
 

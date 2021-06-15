@@ -61,6 +61,18 @@ Route::group(['middleware' => ['role:teacher']], function () {
         'uses' => 'TeacherAccountVerificationController@store',
         'as' => 'account.create'
     ])->middleware(['permission:Create']);
+
+    // Create Requirement After Pay Student
+    Route::post('/requirement/create', [
+        'uses' => 'UserHireController@createCoinUsedTeacherToStudent',
+        'as' => 'requirement_create_teacher_to_student'
+    ])->middleware(['permission:Create']);
+
+    // Add Tutor Description
+    Route::post('/description/create', [
+        'uses' => 'TutorProfileController@createDescription',
+        'as' => 'description_create'
+    ])->middleware(['permission:Create']);
 });
 
 // Middleware For Student Route
@@ -183,10 +195,15 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
         'as' => 'notification'
     ]);
 
-    // Contact User Ajax Request
-    Route::post('/contact-to-discuss-requirement', [
-        'uses' => 'UserHireController@contactUser',
+    // Contact Student To Teacher Ajax Request
+    Route::post('/contact-teacher-to-discuss-requirement', [
+        'uses' => 'UserHireController@contactStudentToTeacher',
         'as' => 'contact_user'
+    ]);
+    // Contact Teacher To Student Ajax Request
+    Route::post('/contact-student-to-discuss-requirement', [
+        'uses' => 'UserHireController@contactTeacherToStudent',
+        'as' => 'contact_teacher_to_student'
     ]);
     // Get User Phone Ajax Request
     Route::post('/user-phone', [
@@ -209,6 +226,16 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
         'as' => 'review_create'
     ]);
 });
+
+// Admin Routes
+Route::group(['middleware' => ['role:super-admin']], function () {
+    // Admin Dashboard Route
+    Route::get('/admin/dashboard', [
+        'uses' => 'Admin\AdminDasboardController@index',
+        'as' => 'admin_dashboard'
+    ]);
+});
+
 
 Route::fallback(function () {
     Session::flash('error', 'Page Not Found');

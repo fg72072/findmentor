@@ -38,7 +38,12 @@ class ChatController extends Controller
 
 
         foreach ($data as $key => $value) {
-            $value->last_message = Message::where('thread_id', $value->thread_id)->orderBy('created_at', 'desc')->first()->body;
+
+            $getLastMsg = Message::where('thread_id', $value->thread_id)->orderBy('created_at', 'desc')->first();
+
+            if ($getLastMsg) {
+                $value->last_message = $getLastMsg->body;
+            }
         }
 
         return view('chat-list')->with('data', $data)->with('user_id', $user_id);

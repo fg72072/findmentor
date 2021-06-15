@@ -22,7 +22,7 @@ Tutor Job
                             <div class="vertical-item mt-5 ml-5 mr-5">
                                 <div class="item-content">
                                     <h4 class="title">{{$item->subject}} teacher needed in {{$item->location}}</h4>
-                                    <p class="subject pt-3">Contact {{$item->name}}</p>
+                                    {{-- <p class="subject pt-3">Contact {{$item->name}}</p> --}}
                                     <div class="tagcloud pt-4">
                                         @foreach ($subjects as $subject)
                                         <a href="{{route('findtutor',['subject'=>$subject])}}"

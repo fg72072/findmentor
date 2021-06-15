@@ -23,12 +23,13 @@ class TutorJobController extends Controller
                 'user_verifications.*',
                 'request_tutors.*',
                 'request_tutors.created_at as posted_at',
-                'request_tutors.id as request_tutors_id'
-            )->where('request_tutors.is_closed', '=', 0);
+                'request_tutors.id as request_tutors_id',
+                'request_tutors.student_id as request_tutors_student_id',
+            )->where('request_tutors.is_closed', '=', 0)
+            ->orderBy('request_tutors.created_at', 'desc');
 
-
-        if (!empty($request->skills)) {
-            $data = $data->where('request_tutors.subject', 'like', '%' . $request->skills . '%');
+        if (!empty($request->subject)) {
+            $data = $data->where('request_tutors.subject', 'like', '%' . $request->subject . '%');
         }
         if (!empty($request->location)) {
             $data = $data->where('request_tutors.location', 'like', '%' . $request->location . '%');
@@ -38,7 +39,7 @@ class TutorJobController extends Controller
 
 
         $params = [
-            'skills' => $request->skills,
+            'subject' => $request->subject,
             'location' => $request->location,
         ];
 
