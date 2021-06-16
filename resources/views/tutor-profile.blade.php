@@ -95,10 +95,10 @@ Tutor | Home
                                             <h3>Fee details</h3>
                                         </span>
                                         <div class="subjects">
-                                            <h6>₹</h5>
-                                                <p> {{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}}
-                                                    (US${{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}})
-                                                </p>
+                                            <h6>₹</h6>
+                                            <p> {{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}}
+                                                (US${{$data['info']->min_fee}}–{{$data['info']->max_fee}}/{{$data['info']->fee_charge}})
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="col-lg-11 col-md-11 exp" style="background:#16a085; height:auto">

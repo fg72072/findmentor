@@ -36,25 +36,75 @@ Tutor | Admin
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="row second-chart-list third-news-update">
-            <div class="col-xl-12 col-lg-12 col-md-12 xl-50 morning-sec box-col-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 morning-sec box-col-12">
                 <div class="card o-hidden profile-greeting">
                     <div class="card-body">
                         <div class="media">
                             <div class="badge-groups w-100">
-                                <div class="badge f-12"><i class="me-1" data-feather="clock"></i><span id="txt"></span>
+                                <div class="badge f-12">
                                 </div>
-                                <div class="badge f-12"><i class="fa fa-spin fa-cog f-14"></i></div>
+                                <div class="badge f-12"></div>
                             </div>
                         </div>
                         <div class="greeting-user text-center">
-                            <div class="profile-vector"><img class="img-fluid"
-                                    src="../assets/images/dashboard/welcome.png" alt=""></div>
-                            <h4 class="f-w-600"><span id="greeting">Good Morning</span> <span class="right-circle"><i
-                                        class="fa fa-check-circle f-14 middle"></i></span></h4>
-                            <p><span> Today's earrning is $405 & your sales increase rate is 3.7 over the last 24
-                                    hours</span></p>
-                            <div class="whatsnew-btn"><a class="btn btn-primary">Whats New !</a></div>
-                            <div class="left-icon"><i class="fa fa-bell"> </i></div>
+                            <div class="profile-vector">
+                                <img class="img-fluid" src="../assets/images/dashboard/welcome.png" alt="">
+                            </div>
+                            <h4 class="f-w-600">
+                                <span id="greeting">Good Morning</span>
+                                <span class="right-circle"></span>
+                            </h4>
+                            <div class="left-icon"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-xl-3 col-lg-6">
+                <div class="card o-hidden">
+                    <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                            <div class="media-body"><span class="m-0">Earnings</span>
+                                <h4 class="mb-0 counter">6659</h4><i class="icon-bg" data-feather="database"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3 col-lg-6">
+                <div class="card o-hidden">
+                    <div class="bg-secondary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
+                            <div class="media-body"><span class="m-0">Requirements</span>
+                                <h4 class="mb-0 counter">9856</h4><i class="icon-bg" data-feather="shopping-bag"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3 col-lg-6">
+                <div class="card o-hidden">
+                    <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i data-feather="message-circle"></i></div>
+                            <div class="media-body"><span class="m-0">Messages</span>
+                                <h4 class="mb-0 counter">893</h4><i class="icon-bg" data-feather="message-circle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-xl-3 col-lg-6">
+                <div class="card o-hidden">
+                    <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i data-feather="user-plus"></i></div>
+                            <div class="media-body"><span class="m-0">Users</span>
+                                <h4 class="mb-0 counter">45631</h4><i class="icon-bg" data-feather="user-plus"></i>
+                            </div>
                         </div>
                     </div>
                 </div>

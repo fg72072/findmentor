@@ -57,9 +57,10 @@ Tutor | Find
     </div>
 </section>
 <section class="ls s-py-60 s-pt-lg-100 s-pb-lg-70">
-    <div class="container content">
+    <div class="container content row">
         @if (count($data)>0)
         @foreach ($data as $item)
+        @if (isset($item['subject'][0]))
         <div
             class="col-12 col-md-12 all level_from_{{$item['subject'][0]->level_from}} level_to_{{$item['subject'][0]->level_to}}  @if($item['info']->online_available == 'yes') online_available @endif @if ($item['info']->help_with == 'yes') home_assignment @endif">
             <div class="h-100 bordered rounded">
@@ -116,6 +117,7 @@ Tutor | Find
                 </div>
             </div>
         </div>
+        @endif
         @endforeach
         @endif
     </div>

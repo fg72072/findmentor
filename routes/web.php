@@ -229,10 +229,89 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
 
 // Admin Routes
 Route::group(['middleware' => ['role:super-admin']], function () {
+
     // Admin Dashboard Route
     Route::get('/admin/dashboard', [
         'uses' => 'Admin\AdminDasboardController@index',
         'as' => 'admin_dashboard'
+    ]);
+
+    // Admin Teacher Account Verify View Route
+    Route::get('/admin/account-verify', [
+        'uses' => 'Admin\AccountVerifyController@index',
+        'as' => 'admin_account_verify'
+    ]);
+
+    // Admin Teacher Detail Route
+    Route::get('/admin/teacher-detail/{id}', [
+        'uses' => 'Admin\AccountVerifyController@show',
+        'as' => 'admin_user_detail'
+    ]);
+
+    // Admin Teacher Approval Route
+    Route::get('/admin/user-account-approve/{id}', [
+        'uses' => 'Admin\AccountVerifyController@approveAccount',
+        'as' => 'admin_user_approve'
+    ]);
+
+    //  Admin Teacher Reject Route
+    Route::get('/admin/user-account-reject/{id}', [
+        'uses' => 'Admin\AccountVerifyController@rejectAccount',
+        'as' => 'admin_user_reject'
+    ]);
+
+    //  Admin Teacher Reject Route
+    Route::get('/admin/user-account-activate/{id}', [
+        'uses' => 'Admin\AccountVerifyController@accountActivate',
+        'as' => 'admin_user_activate'
+    ]);
+
+    // Admin All Users Route
+    Route::get('/admin/users', [
+        'uses' => 'Admin\UserController@index',
+        'as' => 'admin_users'
+    ]);
+
+    // Admin Student Requests Route
+    Route::get('/admin/student/requests', [
+        'uses' => 'Admin\RequestTutorController@index',
+        'as' => 'admin_request'
+    ]);
+
+    // Admin Coins Route
+    Route::get('/admin/coins', [
+        'uses' => 'Admin\CoinController@index',
+        'as' => 'admin_coins'
+    ]);
+
+    // Admin Coins Route
+    Route::post('/admin/coins/add', [
+        'uses' => 'Admin\CoinController@store',
+        'as' => 'admin_add_edit_coins'
+    ]);
+
+    // Admin Coins Route
+    Route::get('/admin/coins/delete/{id}', [
+        'uses' => 'Admin\CoinController@destroy',
+        'as' => 'admin_delete_coins'
+    ]);
+
+    // Admin Setting Route
+    Route::get('/admin/setting', [
+        'uses' => 'Admin\SettingController@index',
+        'as' => 'admin_setting'
+    ]);
+
+    // Admin Setting change password Route
+    Route::post('/admin/change-password', [
+        'uses' => 'Admin\SettingController@updatePassword',
+        'as' => 'admin_change_password'
+    ]);
+
+    // Admin Setting change username Route
+    Route::post('/admin/change-username', [
+        'uses' => 'Admin\SettingController@updateUsername',
+        'as' => 'admin_change_username'
     ]);
 });
 

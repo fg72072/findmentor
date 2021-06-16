@@ -37,25 +37,31 @@
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_dashboard')}}">
-                            <i data-feather="user-check"></i>
-                            <span>Account Verification</span>
+                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_users')}}">
+                            <i data-feather="user"></i>
+                            <span>Users</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_dashboard')}}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_account_verify')}}">
+                            <i data-feather="user-check"></i>
+                            <span>Account Verify</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_coins')}}">
                             <i data-feather="stop-circle"></i>
                             <span>Coins</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_dashboard')}}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_request')}}">
                             <i data-feather="book-open"></i>
                             <span>Requirements</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_dashboard')}}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_setting')}}">
                             <i data-feather="settings"></i>
                             <span>Settings</span>
                         </a>
