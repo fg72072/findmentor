@@ -15,27 +15,34 @@ Tutor | Messages
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
-                        <div class="frontPageContent">
+                        <div class="" style="color: white;">
                             <h1 class="display-4">
                                 All Messages
                             </h1>
-                            <a href="">
-                                <button type="button" style="background: #4765a0 !important; border: #4765a0;"
-                                    class="btn btn-primary btn-lg mt-2">View Unread Message</button>
-                            </a>
+                            <button type="button" style="background: #4765a0 !important; border: #4765a0;"
+                                class="btn btn-primary btn-lg mt-2 showUnread">View Unread Message</button>
                             <hr class=" line w-25 mx-1">
-                            <div class="skillbutton">
-                                <input class="InputTab mt-2 flex pl-2" id="BorderBott"
-                                    placeholder="Select Requirement to filter Message">
-                            </div>
-                            <a href="">
-                                <button type="button" style="background: #4765a0 !important; border: #4765a0;"
+                            <form>
+                                <div class="skillbutton">
+                                    <input class="InputTab mt-2 flex pl-2" id="BorderBott"
+                                        placeholder="Select Requirement to filter Message" list="id" name="id">
+                                    <datalist id="id">
+                                        @if (count($data)>0)
+                                        @foreach ($data as $item)
+                                        @if ($item->user_id != $user_id)
+                                        <option value="{{$item->subject}} teacher needed in {{$item->location}}">
+                                            @endif
+                                            @endforeach
+                                            @endif
+                                    </datalist>
+                                </div>
+                                <button type="submit" style="background: #4765a0 !important; border: #4765a0;"
                                     class="btn btn-primary btn-lg mt-3">Search</button>
-                            </a>
+                            </form>
                             @if (count($data)>0)
                             @foreach ($data as $item)
                             @if ($item->user_id != $user_id)
-                            <div id="post_{{$item->post_id}}">
+                            <div id="post_{{$item->post_id}}" class="messageRow">
                                 <h2 class=" pt-3">
                                     {{$item->username}}
                                     <span class="pl-5">{{\App\Common::changeDate($item->created_at)}}</span>
@@ -79,6 +86,13 @@ Tutor | Messages
         setInterval(() => {
             load_unseen_notification();
         }, 3000);
+
+        $('.showUnread').click(function(){
+            if($('.unread').length>0){
+                $('.messageRow').hide()
+                $('.unread').show()
+            }
+            })
     })
 
     var get_message_notifications_url = "{{route('notification')}}";

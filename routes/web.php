@@ -50,8 +50,7 @@ Route::get('/tutor-profile/{id}', [
 ]);
 
 // Middleware For Teacher Route
-Route::group(['middleware' => ['role:teacher']], function () {
-
+Route::group(['middleware' => ['role:teacher', 'auth', 'verified']], function () {
     // Account
     Route::get('/account-verify', [
         'uses' => 'TeacherAccountVerificationController@index',

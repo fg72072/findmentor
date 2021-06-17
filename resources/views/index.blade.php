@@ -31,8 +31,20 @@ Tutor | Home
                                 We are proud to say that since our opening in ’98
                             </p>
                             <hr class=" line w-25 mx-1">
-
-                            <form action="{{route('findtutor')}}" method="get">
+                            @php
+                            $route = route('findtutor');
+                            @endphp
+                            @role('student')
+                            @php
+                            $route = route('findtutor');
+                            @endphp
+                            @endrole
+                            @role('teacher')
+                            @php
+                            $route = route('tutor_job');
+                            @endphp
+                            @endrole
+                            <form action="{{$route}}" method="get">
                                 <div class="skillbutton">
                                     <input class="InputTab mt-2 flex pl-2" id="BorderBott" placeholder="Find Skill"
                                         name='subject'>

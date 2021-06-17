@@ -30,12 +30,14 @@ class ChatController extends Controller
                 'participants.user_id as user_id',
                 'users.name as username',
                 'request_tutors.id as post_id',
+                'request_tutors.subject',
+                'request_tutors.location',
+                'request_tutors.is_closed',
                 'threads.created_at'
             )
             ->where('user_id', '!=', $user_id)
             ->where('request_tutors.is_closed', 0)
             ->get();
-
 
         foreach ($data as $key => $value) {
 

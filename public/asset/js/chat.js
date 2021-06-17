@@ -60,6 +60,10 @@ function load_unseen_notification() {
 				if (value.msg_count) {
 					$('#post_' + value.post_id + ' .post_notification').addClass('badge badge-danger');
 					$('#post_' + value.post_id + ' .post_notification').html(value.msg_count);
+
+					if (!$('#post_' + value.post_id).hasClass('unread')) {
+						$('#post_' + value.post_id).addClass('unread');
+					}
 				}
 			});
 		}
