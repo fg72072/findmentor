@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
 use App\Common;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SettingController extends Controller
 {
-        //    Important properties
-        public $parentModel = User::class;
+    //    Important properties
+    public $parentModel = User::class;
 
     public function index()
     {
@@ -27,12 +28,48 @@ class SettingController extends Controller
         $user_id = Auth::user()->id;
         $this->parentModel::find($user_id)->update(['phone' => $request->verified_no]);
 
-        Common::UserAccountVerification(['phone_verified'=>1]);
+        Common::UserAccountVerification(['phone_verified' => 1]);
 
         return redirect()->back();
     }
 
-    public function profile(){
+    public function username()
+    {
+        return view('change-name');
+    }
+    public function changeName(Request $request)
+    {
+        $user_id = Auth::user()->id;
+        User::find($user_id)->update(['name' => $request->username]);
+
+        Session::flash('success', 'Successfully Changed');
+
+        return redirect()->back();
+    }
+
+    public function email()
+    {
+        return view('change-email');
+    }
+    public function changeEmail(Request $request)
+    {
+        $request->validate([
+            'newEmail' => 'required|email|string|max:255'
+        ]);
+
+        $user = Auth::user();
+        $user->email = $request['newEmail'];
+        $user->email_verified_at = NULL;
+        $user->save();
+
+        Session::flash('success', 'Successfully Changed');
+
+        return redirect()->back();
+    }
+
+
+    public function profile()
+    {
         return view('profile-picture');
     }
 
@@ -42,50 +79,49 @@ class SettingController extends Controller
         $name    = '';
         $items   = $this->parentModel::find($user_id)->first();
 
-        if($request->hasFile('profile'))
-        {
+        if ($request->hasFile('profile')) {
             $image = $request->file('profile');
             $name  = $this->getFileName($image);
             $path  = $this->getProfilePicPath();
-            $image->move( $path, $name);
+            $image->move($path, $name);
 
-            if($items){
+            if ($items) {
                 $this->unlinkProfilePic($items->profile);
             }
         }
 
-        $this->parentModel::find($user_id)->update(['profile' =>$name]);
+        $this->parentModel::find($user_id)->update(['profile' => $name]);
+
+        Session::flash('success', 'Successfully Changed');
 
         return redirect()->back();
     }
 
 
 
-    private function getFileName($image){
-        return time().'.'.str_replace(' ','_',strtolower($image->getClientOriginalName()) );
+    private function getFileName($image)
+    {
+        return time() . '.' . str_replace(' ', '_', strtolower($image->getClientOriginalName()));
     }
 
 
-    private function getProfilePicPath(){
-        return public_path()."/asset/profile/";
+    private function getProfilePicPath()
+    {
+        return public_path() . "/asset/profile/";
     }
 
 
-    private function unlinkProfilePic($file){
+    private function unlinkProfilePic($file)
+    {
 
         $file_path = $this->getProfilePicPath();
-        $file = $file_path.$file;
+        $file = $file_path . $file;
 
-        if( file_exists($file) )
-        {
-           @unlink($file);
-           return true;
+        if (file_exists($file)) {
+            @unlink($file);
+            return true;
         }
 
         return false;
-
     }
-
-
-
 }

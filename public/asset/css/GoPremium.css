@@ -1,0 +1,22 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+  font-family: 'Montserrat', sans-serif;
+
+
+}
+html{
+    font-size: 62.5%;
+}
+.flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.premMembershipContent{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+   width: 60%;
+   
+}

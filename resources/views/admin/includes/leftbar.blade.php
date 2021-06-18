@@ -31,7 +31,7 @@
                         </div>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_dashboard')}}">
+                        <a class="sidebar-link sidebar-title link-nav active" href="{{route('admin_dashboard')}}">
                             <i data-feather="home"></i>
                             <span>Dashboards</span>
                         </a>

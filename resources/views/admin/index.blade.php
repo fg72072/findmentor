@@ -67,7 +67,8 @@ Tutor | Admin
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="database"></i></div>
                             <div class="media-body"><span class="m-0">Earnings</span>
-                                <h4 class="mb-0 counter">6659</h4><i class="icon-bg" data-feather="database"></i>
+                                <h4 class="mb-0 counter">{{$earning}}</h4><i class="icon-bg"
+                                    data-feather="database"></i>
                             </div>
                         </div>
                     </div>
@@ -79,7 +80,8 @@ Tutor | Admin
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
                             <div class="media-body"><span class="m-0">Requirements</span>
-                                <h4 class="mb-0 counter">9856</h4><i class="icon-bg" data-feather="shopping-bag"></i>
+                                <h4 class="mb-0 counter">{{$requirements}}</h4><i class="icon-bg"
+                                    data-feather="shopping-bag"></i>
                             </div>
                         </div>
                     </div>
@@ -91,7 +93,8 @@ Tutor | Admin
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="message-circle"></i></div>
                             <div class="media-body"><span class="m-0">Messages</span>
-                                <h4 class="mb-0 counter">893</h4><i class="icon-bg" data-feather="message-circle"></i>
+                                <h4 class="mb-0 counter">{{$messages}}</h4><i class="icon-bg"
+                                    data-feather="message-circle"></i>
                             </div>
                         </div>
                     </div>
@@ -103,7 +106,7 @@ Tutor | Admin
                         <div class="media static-top-widget">
                             <div class="align-self-center text-center"><i data-feather="user-plus"></i></div>
                             <div class="media-body"><span class="m-0">Users</span>
-                                <h4 class="mb-0 counter">45631</h4><i class="icon-bg" data-feather="user-plus"></i>
+                                <h4 class="mb-0 counter">{{$users}}</h4><i class="icon-bg" data-feather="user-plus"></i>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@
 
 <section>
     @role('teacher')
+    @if (isset($is_verified))
     @if (!$is_verified->email_verified_at || !$is_verified->is_account_verified_at)
     <div id="top-alert" class="alert alert-danger" role="alert">
         @if (!$is_verified->email_verified_at)
@@ -17,6 +18,7 @@
         @endif
     </div>
     @endif
+    @endif
     @endrole
     <nav class="navbar navbar-expand-lg ">
         <div class="container-fluid ">
@@ -28,7 +30,8 @@
                         <a class="nav-links" href="./">Home</a>
                     </li>
                     @hasanyrole('teacher|student')
-                    @if ($is_verified->email_verified_at && $is_verified->is_account_verified_at)
+                    @if (isset($is_verified))
+                    @if (@$is_verified->email_verified_at && @$is_verified->is_account_verified_at)
                     <li class="nav-item ml-4 mt-2">
                         <i class="fas fa-th navIcons"></i>
                         <a class="nav-links" href="{{ route('dashboard') }}">Dashboard</a>
@@ -39,13 +42,19 @@
                         <span id="message_notification"></span>
                     </li>
                     @endif
+                    @endif
                     @endhasanyrole
 
                     <li class="nav-item ml-4 mt-2">
                         <i class="fas fa-book-open navIcons"></i>
                         <a class="nav-links" href="{{ route('findtutor') }}">Courses</a>
                     </li>
-
+                    @role('super-admin')
+                    <li class="nav-item ml-4 mt-2">
+                        <i class="fas fa-th navIcons"></i>
+                        <a class="nav-links" href="{{ route('admin_dashboard') }}">Dashboard</a>
+                    </li>
+                    @endrole
                     @role('teacher')
                     <li class="nav-item ml-4 mt-2">
                         <i class="fas fa-book-open navIcons"></i>
@@ -54,11 +63,13 @@
                     @endrole
 
                     @hasanyrole('teacher|student')
+                    @if (isset($is_verified))
                     @if ($is_verified->email_verified_at && $is_verified->is_account_verified_at)
                     <li class="nav-item ml-4 mt-2">
                         <i class="fas fa-comment-dots navIcons"></i>
                         <a class="nav-links" href="{{ route('buyCoin') }}">Wallet</a>
                     </li>
+                    @endif
                     @endif
                     @endhasanyrole
 
@@ -69,7 +80,6 @@
                     </li>
                     <a class="btn  nav-links" href="{{ route('student.request') }}">Request Tutor</a>
                     @endrole
-
                     <li class="nav-item dropdown">
                         <a class="nav-link " href="#" id="navbardrop" data-toggle="dropdown">
                             <i class="fas fa-user-circle Account"></i>
@@ -82,8 +92,10 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+                            @if (isset($is_verified))
                             @if ($is_verified->email_verified_at && $is_verified->is_account_verified_at)
                             <a class="dropdown-item" href="{{route('setting')}}">Setting</a>
+                            @endif
                             @endif
                             @else
                             <a class="dropdown-item" data-toggle="modal" data-target="#myModal" href="#">Sign In</a>

@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-  Tutor | Setting
+Tutor | Setting
 @stop
 
 @push('include-css')
-   <link rel="stylesheet"  href="{{ asset('asset/css/Setting.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/Setting.css') }}">
 @endpush
 
 @section('content')
@@ -55,16 +55,15 @@
                         <h5 style="font-weight: bold; color: #0076cb;">Profile Live</h5>
                         <p style="display: inline;">If you delete your profile, you will lose all your data
                             permanently.</p>
-                        <button data-toggle="modal" data-target="#myModal"
-                            style="float: right; padding: 0.3rem 1.5rem;" type="button"
-                            class="btn btn-outline-primary btn-sm">Delete Profile</button>
+                        <button data-toggle="modal" data-target="#myModal" style="float: right; padding: 0.3rem 1.5rem;"
+                            type="button" class="btn btn-outline-primary btn-sm">Delete Profile</button>
                     </div>
 
 
                     <div class="profileSetting pt-2">
                         <h5 style="font-weight: bold; color: #0076cb;">Email</h5>
-                        <p style="display: inline;">Your email is muhammadmoiz269@gmail.com.</p>
-                        <a href="./Email.html">
+                        <p style="display: inline;">Your email is {{ Auth::user()->email }}</p>
+                        <a href="{{route('email')}}">
 
                             <button style="float: right; padding: 0.3rem 1.4rem;" type="button"
                                 class="btn btn-outline-primary btn-sm">Change Email</button>
@@ -83,7 +82,7 @@
                     <div class="profileSetting pt-2">
                         <h5 style="font-weight: bold; color: #0076cb;">Name</h5>
                         <p style="display: inline;">Manage how others see your name.</p>
-                        <a href="./Name.html">
+                        <a href="{{route('username')}}">
                             <button style="float: right; padding: 0.3rem 1.3rem;" type="button"
                                 class="btn btn-outline-primary btn-sm">Manage Name</button>
                         </a>
@@ -104,14 +103,17 @@
                         <button style="float: right; padding: 0.3rem 1.5rem;" type="button"
                             class="btn btn-outline-primary btn-sm">Always Public</button>
                     </div>
+                    @role('teacher')
                     <div class="profileSetting pt-2">
                         <h5 style="font-weight: bold; color: #0076cb;">Tutor Account Setting</h5>
                         <p style="display: inline;">Open Tutor account.</p>
-                        <a href="./Account.html">
+                        <a href="{{route('tutor_profile',['id'=>Auth::user()->id])}}">
                             <button style="float: right; padding: 0.3rem 1.4rem;" type="button"
                                 class="btn btn-outline-primary btn-sm">Open Account</button>
                         </a>
                     </div>
+                    @endrole
+
                 </div>
             </div>
         </div>

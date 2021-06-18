@@ -32,7 +32,14 @@ Tutor | Dashboard
                     </a>
                 </div>
                 <div class="Serv1 col-lg-3 col-md-6 col-12 mb-4">
-                    <a href="{{route('setting')}}" style="text-decoration: none;">
+                    <a href="
+                    @role('teacher')
+                    {{route('tutor_profile',['id'=>Auth::user()->id])}}
+                    @endrole
+                    @role('student')
+                    {{route('setting')}}
+                    @endrole
+                    " style="text-decoration: none;">
                         <div class="card ServCard flex">
                             <div class="Servicondiv flex mt-2">
                                 <i class="shield far fa-eye"></i>

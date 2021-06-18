@@ -45,6 +45,10 @@ Tutor | Admin
                                 <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab"
                                         href="#top-profile" role="tab" aria-controls="top-profile"
                                         aria-selected="false"><i data-feather="info"></i>Password</a></li>
+                                <li class="nav-item"><a class="nav-link" id="profile-top-tab" data-bs-toggle="tab"
+                                        href="#top-profile-picture" role="tab" aria-controls="top-profile"
+                                        aria-selected="false" style="white-space: nowrap;"><i
+                                            data-feather="info"></i>Profile Picture</a></li>
                             </ul>
                         </div>
                     </div>
@@ -66,11 +70,12 @@ Tutor | Admin
                                         @csrf
 
                                         <div class="form-group row mb-2">
-                                            <label for="password"
+                                            <label for="username"
                                                 class="col-md-4 col-form-label text-md-right">Username</label>
 
                                             <div class="col-md-6">
-                                                <input id="password" type="text" class="form-control" name="username">
+                                                <input id="username" type="text" class="form-control" name="username"
+                                                    value="{{ Auth::user()->name }}">
                                             </div>
                                         </div>
 
@@ -104,7 +109,7 @@ Tutor | Admin
                                                 Password</label>
 
                                             <div class="col-md-6">
-                                                <input id="password" type="password" class="form-control"
+                                                <input required id="password" type="password" class="form-control"
                                                     name="current_password" autocomplete="current-password">
                                             </div>
                                         </div>
@@ -114,7 +119,7 @@ Tutor | Admin
                                                 Password</label>
 
                                             <div class="col-md-6">
-                                                <input id="new_password" type="password" class="form-control"
+                                                <input required id="new_password" type="password" class="form-control"
                                                     name="new_password" autocomplete="current-password">
                                             </div>
                                         </div>
@@ -124,8 +129,9 @@ Tutor | Admin
                                                 Confirm Password</label>
 
                                             <div class="col-md-6">
-                                                <input id="new_confirm_password" type="password" class="form-control"
-                                                    name="new_confirm_password" autocomplete="current-password">
+                                                <input required id="new_confirm_password" type="password"
+                                                    class="form-control" name="new_confirm_password"
+                                                    autocomplete="current-password">
                                             </div>
                                         </div>
 
@@ -133,6 +139,34 @@ Tutor | Admin
                                             <div class="col-md-8 offset-md-4">
                                                 <button type="submit" class="btn btn-primary">
                                                     Update Password
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="top-profile-picture" role="tabpanel"
+                                aria-labelledby="profile-top-tab">
+                                <div class="row">
+                                    <div class="col-xl-12 box-col-12">
+                                        <h4>Change Profile Picture</h4>
+                                    </div>
+                                    <br>
+                                    <form id="regForm" action="{{route('admin.profile.upload')}}" method='POST'
+                                        enctype="multipart/form-data">
+                                        @csrf()
+                                        <div class="form pt-3">
+                                            <label for="profile" class="col-md-4 col-form-label text-md-right">Profile
+                                            </label>
+                                            <div class="col-md-6">
+                                                <input id="profile" required type="file" class="form-control"
+                                                    name="profile">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-0 mt-2">
+                                            <div class="col-md-8 offset-md-4">
+                                                <button type="submit" class="btn btn-primary">
+                                                    Change Profile
                                                 </button>
                                             </div>
                                         </div>

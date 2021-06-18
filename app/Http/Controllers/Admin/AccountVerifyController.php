@@ -16,6 +16,12 @@ class AccountVerifyController extends Controller
 
         $data = User::role('teacher')
             ->join('user_verifications', 'user_verifications.user_id', '=', 'users.id')
+            ->select(
+                'user_verifications.*',
+                'users.id',
+                'users.name',
+                'users.profile'
+            )
             ->whereNull('user_verifications.is_account_verified_at')
             ->where('user_verifications.active_status', 1)
             ->get();

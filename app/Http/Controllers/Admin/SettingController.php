@@ -6,36 +6,18 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class SettingController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('admin.setting');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function updatePassword(Request $request)
     {
         $request->validate([
@@ -49,61 +31,60 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
-
     public function updateUsername(Request $request)
     {
-        $request->validate([
-            'current_password' => ['required', new MatchOldPassword],
-            'new_password' => ['required'],
-            'new_confirm_password' => ['same:new_password'],
-        ]);
-
-        User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
+        $user_id = Auth::user()->id;
+        User::find($user_id)->update(['name' => $request->username]);
 
         return redirect()->back();
     }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function upload(Request $request)
     {
-        //
+        $user_id = Auth::user()->id;
+        $name    = '';
+        $items   = User::find($user_id)->first();
+
+        if ($request->hasFile('profile')) {
+            $image = $request->file('profile');
+            $name  = $this->getFileName($image);
+            $path  = $this->getProfilePicPath();
+            $image->move($path, $name);
+
+            if ($items) {
+                $this->unlinkProfilePic($items->profile);
+            }
+        }
+
+        User::find($user_id)->update(['profile' => $name]);
+
+        Session::flash('success', 'Successfully Changed');
+
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    private function getFileName($image)
     {
-        //
+        return time() . '.' . str_replace(' ', '_', strtolower($image->getClientOriginalName()));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+
+    private function getProfilePicPath()
     {
-        //
+        return public_path() . "/asset/profile/";
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    private function unlinkProfilePic($file)
     {
-        //
+
+        $file_path = $this->getProfilePicPath();
+        $file = $file_path . $file;
+
+        if (file_exists($file)) {
+            @unlink($file);
+            return true;
+        }
+
+        return false;
     }
 }

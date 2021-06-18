@@ -67,4 +67,14 @@ class Common extends Model
     {
         return Carbon::createFromFormat("Y-m-d H:i:s", $date)->diffForHumans();
     }
+
+
+    public static function CheckUserAccountAccess()
+    {
+        $user_id = session('user_id');
+
+        return User::join('user_verifications', 'user_verifications.user_id', '=', 'users.id')
+            ->where('users.id', $user_id)
+            ->first();
+    }
 }

@@ -14,7 +14,7 @@ Tutor | Buy Coin
         <p class="text-center text-capitalize pt-5 CoinSubHead">Our Services</p>
         <hr class="w-25 mx-auto">
         <h1 class="display-1 pl-5 pr-5 text-center CoinHead">Coin Wallet</h1>
-
+        <h1 class="display-1 pl-5 pr-5 text-center CoinHead">{{$my_coins}}</h1>
         <div style="text-align: center;">
             <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-primary  mt-5 FindBtn">Buy
                 Coins</button>
@@ -23,8 +23,8 @@ Tutor | Buy Coin
 </section>
 <section>
     <div class="container pt-5">
-        <input class="mr-5" type="text" id="searchInput" placeholder="Search..">
-        <div style="float: right;">
+        {{-- <input class="mr-5" type="text" id="searchInput" placeholder="Search.."> --}}
+        {{-- <div style="float: right;">
             <p class="Rec">Records Per Page</p>
             <select name="cars" id="Grades" class="level selLev">
                 <option value="" disabled selected>10</option>
@@ -32,7 +32,7 @@ Tutor | Buy Coin
                 <option value="30">30</option>
                 <option value="40">40</option>
             </select>
-        </div>
+        </div> --}}
     </div>
 </section>
 <section>
@@ -52,6 +52,22 @@ Tutor | Buy Coin
             <div class="columns-content">
                 @if (count($wallet_log)>0)
                 @foreach ($wallet_log as $log)
+                @if ($log->coin_used_id > 0)
+                <div class="content1 outercontent">
+                    <div class="cont-date cont flex">
+                        <p>{{date('M d, Y', strtotime($log->created_at))}}</p>
+                    </div>
+                    <div class="cont-desdes cont flex">
+                        <p>Coins used against {{$log->name}} requirement <a
+                                href="{{route('show_tutor_job',['id'=>$log->requirement_id])}}"> I Need
+                                {{$log->subject}} teacher in
+                                {{$log->location}}</a> </p>
+                    </div>
+                    <div class="cont-credit cont flex">
+                        <p>{{$log->coin}}</p>
+                    </div>
+                </div>
+                @else
                 <div class="content1 outercontent">
                     <div class="cont-date cont flex">
                         <p>{{date('M d, Y', strtotime($log->created_at))}}</p>
@@ -63,14 +79,21 @@ Tutor | Buy Coin
                         <p>{{$log->coin}}</p>
                     </div>
                 </div>
+                @endif
                 @endforeach
+                @else
+                <div class="content1 outercontent">
+                    <div class="cont-date cont flex">
+                        <p>No Record </p>
+                    </div>
+                </div>
                 @endif
             </div>
-            <div class="cont-icons cont contIcon pt-5">
+            {{-- <div class="cont-icons cont contIcon pt-5">
                 <i class="fas fa-chevron-left"></i>
                 <h3 style="display: inline;">10</h3>
                 <i class="fas fa-chevron-right"></i>
-            </div>
+            </div> --}}
         </div>
     </div>
 

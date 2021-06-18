@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Common;
+use App\Wallet;
+use App\Payment;
+use App\WalletLog;
+use App\BillingInfo;
+use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Common;
-use App\BillingInfo;
-use App\Payment;
-use App\Transaction;
-use App\WalletLog;
 use Illuminate\Support\Facades\Session;
 
 class CoinController extends Controller
@@ -18,8 +19,30 @@ class CoinController extends Controller
         $user_id = session('user_id');
 
         $coins = DB::table('coins')->get();
-        $wallet_log = WalletLog::orderBy('created_at', 'desc')->get();
-        return view('buy-coin')->with('coins', $coins)->with('wallet_log', $wallet_log);
+        $wallet_log = WalletLog::leftjoin('coin_used as cu', 'cu.id', '=', 'wallet_log.coin_used_id')
+            ->leftjoin('coin_used_items as cui', 'cui.coin_used_id', '=', 'cu.id')
+            ->leftjoin('users', 'cu.used_against_id', '=', 'users.id')
+            ->leftjoin('request_tutors as rt', 'cui.requirement_id', '=', 'rt.id')
+            ->select(
+                'wallet_log.description',
+                'wallet_log.user_id',
+                'cui.requirement_id',
+                'cu.used_against_id',
+                'wallet_log.coin',
+                'wallet_log.coin_used_id',
+                'wallet_log.created_at',
+                'users.name',
+                'rt.id as requirement_id',
+                'rt.location',
+                'rt.subject'
+            )
+            ->orderBy('wallet_log.created_at', 'desc')
+            ->where('wallet_log.user_id', $user_id)
+            ->get();
+
+        $my_coins = Wallet::where('user_id', $user_id)->first()->coins;
+
+        return view('buy-coin')->with('my_coins', $my_coins)->with('coins', $coins)->with('wallet_log', $wallet_log);
     }
 
     public function billing(Request $request)

@@ -22,6 +22,7 @@ class TutorProfileController extends Controller
             ->leftjoin('user_verifications', 'user_verifications.user_id', '=', 'users.id')
             ->where('users.id', $id)
             ->whereNotNull('user_verifications.is_account_verified_at')
+            ->whereNotNull('users.email_verified_at')
             ->where('user_verifications.active_status', 1)
             ->first();
 

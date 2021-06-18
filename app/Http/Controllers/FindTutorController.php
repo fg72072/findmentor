@@ -17,6 +17,7 @@ class FindTutorController extends Controller
             ->with('info')
             ->leftjoin('user_verifications', 'user_verifications.user_id', '=', 'users.id')
             ->whereNotNull('user_verifications.is_account_verified_at')
+            ->whereNotNull('users.email_verified_at')
             ->where('user_verifications.active_status', 1);
 
         if (!empty($request->subject)) {

@@ -7,6 +7,8 @@ Tutor | Home
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/TutorProfile.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/RatingStar.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/tutorProfileRequirementForm.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/request.css') }}">
 @endpush
 
 @section('content')
@@ -24,19 +26,21 @@ Tutor | Home
                                         <img src="../asset/profile/{{$data->profile}}" style="max-width: 50%;">
                                     </div>
                                     <div class="col-md-12 col-xs-12">
-                                        <h2 class="display-3 card-title pt-3">{{$data->name}}
-                                            @if(Auth::user())
-                                            @role('teacher')
-                                            <span>
-                                                <a href="javascript:void(0)" data-toggle="modal"
-                                                    data-target="#description">Edit</a>
-                                            </span>
-                                            @endrole
-                                            @endif
-                                        </h2>
+                                        <h2 class="display-3 card-title pt-3">{{$data->name}}</h2>
                                         <div class="d-flex flex-column flex-lg-row pr-5">
                                             <p class="text-justify">{{$data['info']->description}}</p>
                                         </div>
+                                        @if(Auth::user() && Auth::user()->id == $data->id)
+                                        @role('teacher')
+                                        <div class="top-icons"
+                                            style="line-height: 50px; text-align: end; padding-right: 4rem;">
+                                            <span data-toggle="modal" data-target="#description"
+                                                style="padding-left: 1rem; padding-right: 1.5rem;"
+                                                class="fa fa-comment message"><a> Edit
+                                                </a></span>
+                                        </div>
+                                        @endrole
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row justify-content-around">
@@ -226,6 +230,7 @@ Tutor | Home
                     <form id="regForm" action="{{route('requirement.create',['id'=>$data->id])}}" method='POST'
                         enctype="multipart/form-data">
                         @csrf()
+
                         <div class="progress ProgressBar">
                             <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="25"
                                 aria-valuemin="0" aria-valuemax="100"></div>
@@ -245,82 +250,105 @@ Tutor | Home
                             </div>
                         </div>
 
-                        <div class="PositionInfo pt-4">
-                            <h1 class="Info">PERSONAL INFORMATION</h1>
-                        </div>
+                        <div class="tab">
+                            <div class="PositionInfo pt-4">
+                                <h1 class="Info">PERSONAL INFORMATION</h1>
+                            </div>
 
-                        <div class="form pt-5">
+                            <div class="form pt-5">
 
-                            <h4 class="Info">Subject</h4>
-                            <input class="InpTab" placeholder="Enter Subject" name='subject'>
+                                <h4 class="Info">Subject</h4>
+                                <input class="InpTab" placeholder="Enter Subject" name='subject'>
 
-                            <h4 class="Info">Level</h4>
+                                <h4 class="Info">Level</h4>
 
-                            <select class="InpTabSelect" name='grade'>
-                                <option value="" disabled selected>Select Grade</option>
-                                <option value="Grade1">Grade1</option>
-                                <option value="Grade2">Grade2</option>
-                                <option value="Grade3">Grade3</option>
-                                <option value="Grade4">Grade4</option>
-                            </select>
+                                <select class="InpTabSelect" name='grade'>
+                                    <option value="" disabled selected>Select Grade</option>
+                                    <option value="begginer">Begginer</option>
+                                    <option value="intermediate">Intermediate</option>
+                                    <option value="expert">Expert</option>
+                                </select>
 
-                            <h4 class="Info">I want</h4>
-                            <select class="InpTabSelect InpTab" name='guide_type'>
-                                <option value="" disabled selected>Select</option>
-                                <option value="Assignment Help">Assignment Help</option>
-                                <option value="Tutoring">Tutoring</option>
-                            </select>
 
-                            <h4 class="Info">Meeting Option</h4>
+                                <h4 class="Info">I want</h4>
+                                <select class="InpTabSelect InpTab" name='guide_type'>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="Assignment Help">Assignment Help</option>
+                                    <option value="Tutoring">Tutoring</option>
+                                </select>
 
-                            <div class="CheckBoxTitle odd">
-                                <input type="checkbox" class="check" name='online_class' value='yes'>
-                                <p class="Info">Online (using Skype etc)</p>
-                                <input type="checkbox" class="check" name='class_at_student_place' value='yes'>
-                                <p class="Info">At my place (home/institute)</p>
-                                <input type="checkbox" class="check" name='class_at_tutor_place' value='yes'>
-                                <p class="Info">Travel to tutor</p>
+                                <h4 class="Info">Meeting Option</h4>
+
+                                <div class="CheckBoxTitle odd">
+                                    <input type="checkbox" class="check" name='online_class' value='yes'>
+                                    <p class="Info">Online (using Skype etc)</p>
+                                    <input type="checkbox" class="check" name='class_at_student_place' value='yes'>
+                                    <p class="Info">At my place (home/institute)</p>
+                                    <input type="checkbox" class="check" name='class_at_tutor_place' value='yes'>
+                                    <p class="Info">Travel to tutor</p>
+                                </div>
+
                             </div>
 
                         </div>
-                        <div class="PositionInfo pt-4">
-                            <h1 class="Info">PERSONAL INFORMATION</h1>
+
+                        <div class="tab">
+                            <div class="PositionInfo pt-4">
+                                <h1 class="Info">PERSONAL INFORMATION</h1>
+                            </div>
+
+                            <div class="form pt-5">
+
+                                <h4 class="Info">Budget</h4>
+                                <input class="InpTab" placeholder="Enter Budget" name='budget'>
+
+                                <h4 class="Info">Gender Preference</h4>
+                                <select class="InpTabSelect" name='gender_preference'>
+                                    <option value="" disabled selected>Select Gender</option>
+                                    <option value="Preferably Male">Preferably Male</option>
+                                    <option value="Preferably Female">Preferably Female</option>
+                                    <option value="Only Male">Only Male</option>
+                                    <option value="Only Female">Only Female</option>
+                                </select>
+
+
+                                <h4 class="Info">Tutors Wanted</h4>
+                                <select class="InpTabSelect" name='no_of_tutor'>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="Only One">Only One</option>
+                                    <option value="More than One">More than One</option>
+                                    <option value="As many as possible">As many as possible</option>
+                                </select>
+
+                                <h4 class="Info">I need someone
+                                </h4>
+                                <select class="InpTabSelect" name='working_type'>
+                                    <option value="" disabled selected>Select</option>
+                                    <option value="Part time">Part time</option>
+                                    <option value="Full time">Full time</option>
+                                </select>
+
+                                <h4 class="Info">Upload files</h4>
+                                <input type="file" class="InpTab" placeholder="Upload files" name='file'>
+                            </div>
                         </div>
 
-                        <div class="form pt-5">
-
-                            <h4 class="Info">Budget</h4>
-                            <input class="InpTab" placeholder="Enter Budget" name='budget'>
-
-                            <h4 class="Info">Gender Preference</h4>
-                            <select class="InpTabSelect" name='gender_preference'>
-                                <option value="" disabled selected>Select Gender</option>
-                                <option value="Preferably Male">Preferably Male</option>
-                                <option value="Preferably Female">Preferably Female</option>
-                                <option value="Only Male">Only Male</option>
-                                <option value="Only Female">Only Female</option>
-                            </select>
-
-                            <h4 class="Info">Tutors Wanted</h4>
-                            <select class="InpTabSelect" name='no_of_tutor'>
-                                <option value="" disabled selected>Select</option>
-                                <option value="Only One">Only One</option>
-                                <option value="More than One">More than One</option>
-                                <option value="As many as possible">As many as possible</option>
-                            </select>
-
-                            <h4 class="Info">I need someone
-                            </h4>
-                            <select class="InpTabSelect" name='working_type'>
-                                <option value="" disabled selected>Select</option>
-                                <option value="Part time">Part time</option>
-                                <option value="Full time">Full time</option>
-                            </select>
-
-                            <h4 class="Info">Upload files</h4>
-                            <input type="file" class="InpTab" placeholder="Upload files" name='file'>
+                        <div style="overflow:auto;">
+                            <div class="py-3" style="float:right;">
+                                <button type="button" id="prevBtn" class="btn btn-successback"
+                                    onclick="nextPrev(-1)">Back</button>
+                                <button type="button" id="nextBtn" class="btn btn-success"
+                                    onclick="nextPrev(1)">Continue</button>
+                            </div>
                         </div>
-                        <button type="submit">Save</button>
+
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                        </div>
+
+                        {{-- <button type="submit">Save</button> --}}
                     </form>
                 </div>
             </div>

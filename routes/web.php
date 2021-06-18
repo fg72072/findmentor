@@ -49,6 +49,11 @@ Route::get('/tutor-profile/{id}', [
     'as' => 'tutor_profile'
 ]);
 
+//Error Page Route
+Route::get('/error', function () {
+    return view('error-message');
+})->name('error');
+
 // Middleware For Teacher Route
 Route::group(['middleware' => ['role:teacher', 'auth', 'verified']], function () {
     // Account
@@ -65,17 +70,23 @@ Route::group(['middleware' => ['role:teacher', 'auth', 'verified']], function ()
     Route::post('/requirement/create', [
         'uses' => 'UserHireController@createCoinUsedTeacherToStudent',
         'as' => 'requirement_create_teacher_to_student'
-    ])->middleware(['permission:Create']);
+    ])->middleware(['permission:Create', 'user_account_verification']);
 
     // Add Tutor Description
     Route::post('/description/create', [
         'uses' => 'TutorProfileController@createDescription',
         'as' => 'description_create'
-    ])->middleware(['permission:Create']);
+    ])->middleware(['permission:Create', 'user_account_verification']);
+
+    // Add Tutor Description
+    Route::get('/go-premium', [
+        'uses' => 'PremiumCoinController@index',
+        'as' => 'go_premium'
+    ])->middleware(['permission:Create', 'user_account_verification']);
 });
 
 // Middleware For Student Route
-Route::group(['middleware' => ['role:student']], function () {
+Route::group(['middleware' => ['role:student', 'user_account_verification']], function () {
 
     // Request a Tutor
     Route::get('/request', [
@@ -109,7 +120,7 @@ Route::group(['middleware' => ['role:student']], function () {
 });
 
 // Middleware For Student & Teacher Route
-Route::group(['middleware' => ['role:student|teacher']], function () {
+Route::group(['middleware' => ['role:student|teacher', 'user_account_verification']], function () {
 
     // Dashboard
     Route::get('/dashboard', [
@@ -135,6 +146,24 @@ Route::group(['middleware' => ['role:student|teacher']], function () {
     Route::post('/phone-verified', [
         'uses' => 'SettingController@phoneVerified',
         'as' => 'changePhone'
+    ])->middleware(['permission:Edit']);
+
+    Route::get('/change-name', [
+        'uses' => 'SettingController@username',
+        'as' => 'username'
+    ])->middleware(['permission:Edit']);
+    Route::post('/name/change', [
+        'uses' => 'SettingController@changeName',
+        'as' => 'changeName'
+    ])->middleware(['permission:Edit']);
+
+    Route::get('/change-email', [
+        'uses' => 'SettingController@email',
+        'as' => 'email'
+    ])->middleware(['permission:Edit']);
+    Route::post('/name/email', [
+        'uses' => 'SettingController@changeEmail',
+        'as' => 'changeEmail'
     ])->middleware(['permission:Edit']);
 
     // Settings
@@ -312,6 +341,10 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         'uses' => 'Admin\SettingController@updateUsername',
         'as' => 'admin_change_username'
     ]);
+    Route::post('/admin/profile/upload', [
+        'uses' => 'Admin\SettingController@upload',
+        'as' => 'admin.profile.upload'
+    ])->middleware(['permission:Create']);
 });
 
 

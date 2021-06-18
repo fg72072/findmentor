@@ -9,6 +9,9 @@ use App\Qualification;
 use App\Subject;
 use App\User;
 use App\Common;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Middleware\UserAccountVerificationRedirection;
+use App\UserVerification;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -18,44 +21,44 @@ class TeacherAccountVerificationController extends Controller
     {
         $user_id = Auth::user()->id;
 
-        $data['teacher']        = Teacher::where('teacher_id',$user_id)->first();
-        $data['education']      = Education::where('teacher_id',$user_id)->first();
-        $data['qualification']  = Qualification::where('teacher_id',$user_id)->first();
-        $data['subject']        = Subject::where('teacher_id',$user_id)->first();
+        $data['teacher']        = Teacher::where('teacher_id', $user_id)->first();
+        $data['education']      = Education::where('teacher_id', $user_id)->first();
+        $data['qualification']  = Qualification::where('teacher_id', $user_id)->first();
+        $data['subject']        = Subject::where('teacher_id', $user_id)->first();
 
-        return view('teacher.account')->with('data',$data);
+        return view('teacher.account')->with('data', $data);
     }
 
     public function store(Request $request)
     {
         $user_id = Auth::user()->id;
 
-        $name='';
+        $name = '';
 
         $postal_code = $request->postal_code;
 
-        if(isset($request->postal_code_available) && $request->postal_code_available == 'no'){
+        if (isset($request->postal_code_available) && $request->postal_code_available == 'no') {
             $postal_code = NULL;
         }
 
         $items = User::find($user_id)->first();
 
-        if($request->hasFile('profile')){
+        if ($request->hasFile('profile')) {
             $image = $request->file('profile');
             $name = $this->getFileName($image);
             $path = $this->getProfilePicPath();
-            $image->move( $path, $name);
+            $image->move($path, $name);
 
-            if($items){
+            if ($items) {
                 $this->unlinkProfilePic($items->profile);
             }
         }
 
-        User::find($user_id)->update([ 'profile' => $name ]);
+        User::find($user_id)->update(['profile' => $name]);
 
         Teacher::updateOrCreate([
             'teacher_id' => $user_id
-        ],[
+        ], [
             'teacher_id' => $user_id,
             'type' => $request->type,
             'current_role' => $request->role,
@@ -63,7 +66,7 @@ class TeacherAccountVerificationController extends Controller
             'dob' => $request->dob,
             'location' => $request->location,
             'phone' => $request->phone,
-            'postal_code' => $postal_code ,
+            'postal_code' => $postal_code,
             'fee_charge' => $request->charge_by,
             'min_fee' => $request->min_fee,
             'max_fee' => $request->max_fee,
@@ -81,7 +84,7 @@ class TeacherAccountVerificationController extends Controller
 
         Education::updateOrCreate([
             'teacher_id' => $user_id
-        ],[
+        ], [
             'teacher_id' => $user_id,
             'institute_name' => $request->institute_name,
             'degree_type' => $request->degree_type,
@@ -97,7 +100,7 @@ class TeacherAccountVerificationController extends Controller
 
         Qualification::updateOrCreate([
             'teacher_id' => $user_id
-        ],[
+        ], [
             'teacher_id' => $user_id,
             'organization_name' => $request->organization_name,
             'designation' => $request->designation,
@@ -112,12 +115,19 @@ class TeacherAccountVerificationController extends Controller
 
         Subject::updateOrCreate([
             'teacher_id' => $user_id
-        ],[
+        ], [
             'teacher_id' => $user_id,
             'subject' => $request->subject,
             'level_from' => $request->level_from,
             'level_to' => $request->level_to,
         ]);
+
+        UserVerification::updateOrCreate([
+            'user_id' => $user_id
+        ], [
+            'is_verification_detail_complete' => 1,
+        ]);
+
 
         Session::flash('success', 'Your Account Has Under Verification Process');
         return redirect()->back();
@@ -125,30 +135,29 @@ class TeacherAccountVerificationController extends Controller
 
 
 
-    private function getFileName($image){
-        return time().'.'.str_replace(' ','_',strtolower($image->getClientOriginalName()) );
+    private function getFileName($image)
+    {
+        return time() . '.' . str_replace(' ', '_', strtolower($image->getClientOriginalName()));
     }
 
 
-    private function getProfilePicPath(){
-        return public_path()."/asset/profile/";
+    private function getProfilePicPath()
+    {
+        return public_path() . "/asset/profile/";
     }
 
 
-    private function unlinkProfilePic($file){
+    private function unlinkProfilePic($file)
+    {
 
         $file_path = $this->getProfilePicPath();
-        $file = $file_path.$file;
+        $file = $file_path . $file;
 
-        if( file_exists($file) )
-        {
-           @unlink($file);
-           return true;
+        if (file_exists($file)) {
+            @unlink($file);
+            return true;
         }
 
         return false;
-
     }
-
-
 }
