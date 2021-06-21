@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
 
 /*
@@ -15,6 +16,23 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
+Route::get('/clear-cache', function () {
+    $text = "Start...";
+    Artisan::call('cache:clear');
+    $text = $text . Artisan::output();
+    Artisan::call('route:clear');
+    $text = $text . Artisan::output();
+    Artisan::call('config:clear');
+    $text = $text . Artisan::output();
+    Artisan::call('view:clear');
+    $text = $text . Artisan::output();
+    return $text;
+});
+
+Route::get('/phpinfo', function () {
+    echo phpinfo();
+});
+
 Auth::routes(['verify' => true]);
 
 // Default Home Route
@@ -26,7 +44,10 @@ Route::get('/home', [
     'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
-
+Route::get('/refer/{reference_id}', [
+    'uses' => 'HomeController@referenceRegister',
+    'as' => 'home.reference'
+]);
 // Find Tutor Job
 Route::get('/tutor-jobs', [
     'uses' => 'TutorJobController@find',
@@ -83,10 +104,16 @@ Route::group(['middleware' => ['role:teacher', 'auth', 'verified']], function ()
         'uses' => 'PremiumCoinController@index',
         'as' => 'go_premium'
     ])->middleware(['permission:Create', 'user_account_verification']);
+
+    // Buy Premium Coins
+    Route::post('/premium-billing', [
+        'uses' => 'CoinController@premiumCoinBilling',
+        'as' => 'premium.billing'
+    ])->middleware(['permission:Create', 'user_account_verification']);
 });
 
 // Middleware For Student Route
-Route::group(['middleware' => ['role:student', 'user_account_verification']], function () {
+Route::group(['middleware' => ['role:student', 'auth', 'user_account_verification']], function () {
 
     // Request a Tutor
     Route::get('/request', [
@@ -192,11 +219,12 @@ Route::group(['middleware' => ['role:student|teacher', 'user_account_verificatio
         'as' => 'review'
     ]);
 
-    // // Message List
-    // Route::get('/job-messages', [
-    //     'uses' => 'ChatController@jobChatList',
-    //     'as' => 'chat'
-    // ]);
+    // Refer & Earn
+    Route::get('/refer-and-earn', [
+        'uses' => 'ReferController@index',
+        'as' => 'refer_and_earn'
+    ]);
+
     // Chat list
     Route::get('/job-messages', [
         'uses' => 'ChatController@jobChatList',

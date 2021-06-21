@@ -155,16 +155,18 @@ Tutor | Verify User
                                                         <i class="fas fa-map-marker-alt mr-2"></i>
                                                         <b>Location:</b> {{$data['info']->location}} </span>
                                                 </li>
+
                                                 <li>
                                                     <span class="sidepanel">
                                                         <b>Can travel:</b> {{$data['info']->travel_to_student}}</span>
                                                 </li>
-
+                                                @isset($data['info']->last_login_at)
                                                 <li>
                                                     <span class="sidepanel">
                                                         <b>Last login:</b>
                                                         {{\App\Common::changeDate($data->last_login_at)}}</span>
                                                 </li>
+                                                @endisset
 
                                                 <li>
                                                     <span class="idepanel">

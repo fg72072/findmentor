@@ -50,10 +50,14 @@ class Common extends Model
         return Wallet::updateOrCreate(['user_id' =>  $user_id], ['user_id' => $user_id, 'coins' => $total_coin]);
     }
 
-    public static function Wallet_Log($coin = 0, $description = '', $coin_used_id = 0)
+    public static function Wallet_Log($coin = 0, $description = '', $coin_used_id = 0, $user_id = 0)
     {
 
-        $user_id = session('user_id');
+        if ($user_id != 0) {
+            $user_id = $user_id;
+        } else {
+            $user_id = session('user_id');
+        }
 
         return WalletLog::Create([
             'user_id' =>  $user_id,

@@ -27,15 +27,28 @@ Tutor | Premium
             premium subscription and check the corresponding rank for each subject.
         </p>
         <h1 style="color: #4765a0; font-weight: 700;padding-top: 1rem;">Coins / Month </h1>
-        <div class="input-group mb-3" style="width: 30%;">
-            <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
-        </div>
-        <div class="top-icons" style="line-height: 50px; text-align: start; padding-right: 1rem;">
-            <span data-dismiss="modal" style="padding-left: 1.5rem; padding-right: 1.5rem;" class="message"><a>Check
-                    Rank</a></span>
-            <span style="padding-left: 1.5rem; padding-right: 1.5rem;" class="phone"><a>Reset</a></span>
-        </div>
-        <p style="font-size: 1.5rem; color: #e74c3c; padding-top: 2rem;">No Subjects Found</p>
+        <form action="{{route('premium.billing')}}" method="post">
+            @csrf
+            <div class="input-group mb-3" style="width: 30%;">
+                <input required type="number" name="no_of_premium_coins" class="form-control" aria-label="Default"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="top-icons" style="line-height: 50px; text-align: start; padding-right: 1rem;">
+                <button type="button" style="padding-left: 1.5rem; padding-right: 1.5rem;cursor: pointer;color:white;"
+                    class="message mr-2">
+                    CheckRank
+                </button>
+                <button type="submit" style="padding-left: 1.5rem; padding-right: 1.5rem;cursor: pointer;color:white;"
+                    class="message mr-2">
+                    Buy
+                </button>
+                <button type="button" style="padding-left: 1.5rem; padding-right: 1.5rem; cursor: pointer;color:white;"
+                    class="phone">
+                    Reset
+                </button>
+            </div>
+        </form>
+        {{-- <p style="font-size: 1.5rem; color: #e74c3c; padding-top: 2rem;">No Subjects Found</p> --}}
     </div>
 
 </section>

@@ -130,7 +130,7 @@ class TeacherAccountVerificationController extends Controller
 
 
         Session::flash('success', 'Your Account Has Under Verification Process');
-        return redirect()->back();
+        return redirect('/');
     }
 
 

@@ -35,16 +35,16 @@ class RegisterController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    protected function redirectTo()
-    {
-        $user_role = Auth::user()->roles->pluck('name')[0];
+    // protected function redirectTo()
+    // {
+    //     $user_role = Auth::user()->roles->pluck('name')[0];
 
-        if ($user_role == 'student') {
-            return route('home');
-        }
+    //     if ($user_role == 'student') {
+    //         return route('home');
+    //     }
 
-        return route('account');
-    }
+    //     return route('home');
+    // }
 
     /**
      * Create a new controller instance.
@@ -92,6 +92,13 @@ class RegisterController extends Controller
         $user->assignRole($data['role']);
 
         session(['user_id' => $user->id]);
+
+        if (session()->has('referer_user_id')) {
+            $referer_user_id = session('referer_user_id');
+            Common::Wallet(50, 'add-coin', $referer_user_id);
+            Common::Wallet_Log(50,  'Reference User Register', 0, $referer_user_id);
+            session()->forget('referer_user_id');
+        }
 
         Common::UserAccountVerification(['is_account_verified_at' => $verified]);
         Common::Wallet();

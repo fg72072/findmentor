@@ -37,6 +37,7 @@ class AccountVerifyController extends Controller
             ->with('info')
             ->with('reviews')
             ->leftjoin('user_verifications', 'user_verifications.user_id', '=', 'users.id')
+            ->select('users.*', 'user_verifications.*', 'users.id')
             ->where('users.id', $id)
             ->first();
 

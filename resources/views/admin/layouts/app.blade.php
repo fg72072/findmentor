@@ -60,7 +60,7 @@
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- tap on tap ends-->
     <!-- page-wrapper Start-->
-    <div class="page-wrapper compact-wrapper page-body-wrapper" id="pageWrapper">
+    <div class="page-wrapper compact-wrapper page-body-wrapper dark-sidebar" id="pageWrapper">
 
         <!-- Header -->
         @yield('header')

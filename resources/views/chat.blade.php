@@ -40,9 +40,9 @@ Tutor | Chat
                                 </div>
                                 <div class="top-icons" style="line-height: 50px;">
                                     <span class="fa fa-comment message pl-4 pr-4 sendMsgBtn">Send</span>
-                                    <p style="display: inline; padding-left: 3rem;">
+                                    {{-- <p style="display: inline; padding-left: 3rem;">
                                         See all messages for this post.
-                                    </p>
+                                    </p> --}}
                                 </div>
                             </div>
                         </div>
@@ -56,8 +56,8 @@ Tutor | Chat
                                 </a>
                             </span>
                             @endrole
-                            <span style="padding-left:2.6rem; padding-right: 2.6rem;" class="fas fa-suitcase pay"><a
-                                    href="{{route('show_tutor_job',['id'=>$message_info->post_id])}}">
+                            <span style="padding-left:2.6rem; padding-right: 2.6rem;" class="fas fa-suitcase pay">
+                                <a href="{{route('show_tutor_job',['id'=>$message_info->post_id])}}">
                                     View Post
                                 </a>
                             </span>

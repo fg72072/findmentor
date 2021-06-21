@@ -7,6 +7,7 @@ use App\Wallet;
 use App\Payment;
 use App\WalletLog;
 use App\BillingInfo;
+use App\Membership;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,8 +41,8 @@ class CoinController extends Controller
             ->where('wallet_log.user_id', $user_id)
             ->get();
 
-        $my_coins = Wallet::where('user_id', $user_id)->first()->coins;
-
+        $my_coins = Wallet::where('user_id', $user_id)->first();
+        $my_coins = $my_coins ? $my_coins->coins : 0;
         return view('buy-coin')->with('my_coins', $my_coins)->with('coins', $coins)->with('wallet_log', $wallet_log);
     }
 
@@ -51,12 +52,24 @@ class CoinController extends Controller
         return view('billing');
     }
 
+    public function premiumCoinBilling(Request $request)
+    {
+        session(['coin_id' => 0, 'coins' => $request->no_of_premium_coins]);
+        return view('billing');
+    }
+
 
     public function coin_payment(Request $request)
     {
         $coin_id = session('coin_id');
         $user_id = session('user_id');
-        $coins = DB::table('coins')->find($coin_id);
+        $coins = session('coins');
+        $description = 'Buy Premium Coins';
+
+        if ($coin_id > 0) {
+            $coins = DB::table('coins')->find($coin_id)->no_of_coin;
+            $description = 'Buy New Coins';
+        }
 
         $payment_id = Payment::create([
             'user_id' => $user_id,
@@ -65,10 +78,9 @@ class CoinController extends Controller
 
         Transaction::create([
             'payment_id' => $payment_id,
-            'txn_id' => 'London to Paris',
-            'description' => 'London to Paris',
+            'txn_id' => '10254831842313',
+            'description' =>  $description,
             'amount' => 100,
-
         ]);
 
         BillingInfo::create([
@@ -83,9 +95,16 @@ class CoinController extends Controller
             'postal_code' =>  $request->postal_code
         ]);
 
-        $no_of_coins =  $coins->no_of_coin;
+        if ($coin_id == 0) {
+            Membership::create([
+                'member_id' => $user_id,
+                'coins' => $coins
+            ]);
+        }
+
+        $no_of_coins =  $coins;
         Common::Wallet($no_of_coins, 'add-coin');
-        Common::Wallet_Log($no_of_coins, 'New Coins Purchased');
+        Common::Wallet_Log($no_of_coins,  $description);
 
         Session::flash('success', 'Successfully Purchased ' . $no_of_coins . ' Coins');
 

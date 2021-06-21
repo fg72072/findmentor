@@ -39,4 +39,12 @@ class HomeController extends Controller
 
         return view('index')->with('is_verified', $check_user_account_verified);
     }
+
+
+    public function referenceRegister(Request $request, $reference_id)
+    {
+        $referer_user_id =  explode("-", base64_decode($reference_id))[1];
+        session(['referer_user_id' => $referer_user_id]);
+        return redirect('/');
+    }
 }
