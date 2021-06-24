@@ -14,18 +14,19 @@ class TutorProfileController extends Controller
 
     public function profile($id)
     {
-        $teacher = User::role('teacher')->with('subject')
+        $teacher = User::role('teacher')
+            ->with('subject')
             ->with('experience')
             ->with('education')
             ->with('info')
             ->with('reviews')
             ->leftjoin('user_verifications', 'user_verifications.user_id', '=', 'users.id')
+            ->select('users.*','user_verifications.is_account_verified_at')
             ->where('users.id', $id)
             ->whereNotNull('user_verifications.is_account_verified_at')
             ->whereNotNull('users.email_verified_at')
             ->where('user_verifications.active_status', 1)
             ->first();
-
 
         if (!$teacher) {
             Session::flash('error', 'Not Found');

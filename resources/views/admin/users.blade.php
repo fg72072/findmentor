@@ -85,6 +85,12 @@ Tutor | Admin
                                                 <a href="{{route('admin_user_reject',['id'=>$student->id])}}">
                                                     <span class="badge badge-primary">Account Block</span>
                                                 </a>
+                                                <a href="{{route('admin.user.reviews',['id'=>$student->id])}}">
+                                                    <span class="badge badge-primary">Reviews</span>
+                                                </a>
+                                                <a href="{{route('admin.user.chat',['id'=>$student->id])}}">
+                                                    <span class="badge badge-primary">Chat</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -116,6 +122,12 @@ Tutor | Admin
                                                 <a href="{{route('admin_user_reject',['id'=>$teacher->id])}}">
                                                     <span class="badge badge-primary">Account Block</span>
                                                 </a>
+                                                <a href="{{route('admin.user.reviews',['id'=>$teacher->id])}}">
+                                                    <span class="badge badge-primary">Reviews</span>
+                                                </a>
+                                                <a href="{{route('admin.user.chat',['id'=>$student->id])}}">
+                                                    <span class="badge badge-primary">Chat</span>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -146,6 +158,12 @@ Tutor | Admin
                                                 </a>
                                                 <a href="{{route('admin_user_reject',['id'=>$teacher->id])}}">
                                                     <span class="badge badge-primary">Account Block</span>
+                                                </a>
+                                                <a href="{{route('admin.user.reviews',['id'=>$teacher->id])}}">
+                                                    <span class="badge badge-primary">Reviews</span>
+                                                </a>
+                                                <a href="{{route('admin.user.chat',['id'=>$student->id])}}">
+                                                    <span class="badge badge-primary">Chat</span>
                                                 </a>
                                             </div>
                                         </div>

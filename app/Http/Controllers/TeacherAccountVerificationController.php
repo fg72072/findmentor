@@ -17,9 +17,23 @@ use Illuminate\Support\Facades\Session;
 
 class TeacherAccountVerificationController extends Controller
 {
+
     public function index()
     {
         $user_id = Auth::user()->id;
+
+        $detail_is_filled = User::join('user_verifications as uv', 'uv.user_id', '=', 'users.id')
+            ->where('users.id', $user_id)
+            ->first();
+
+        if ($detail_is_filled->is_account_verified_at == NULL) {
+            Session::flash('error', 'Your Account Has Under Verification Process');
+            return redirect('/');
+        }
+
+        if ($detail_is_filled->is_verification_detail_complete == 1) {
+            return redirect('/');
+        }
 
         $data['teacher']        = Teacher::where('teacher_id', $user_id)->first();
         $data['education']      = Education::where('teacher_id', $user_id)->first();

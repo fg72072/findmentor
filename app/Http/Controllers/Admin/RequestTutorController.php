@@ -26,6 +26,9 @@ class RequestTutorController extends Controller
         if (!empty($request->std_id)) {
             $data = $data->where('request_tutors.student_id', $request->std_id);
         }
+        if (!empty($request->req_id)) {
+            $data = $data->where('request_tutors.id', $request->req_id);
+        }
 
         $data = $data->get();
 

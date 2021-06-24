@@ -15,6 +15,7 @@ class FindTutorController extends Controller
             ->with('experience')
             ->with('education')
             ->with('info')
+            ->select('users.*')
             ->leftjoin('user_verifications', 'user_verifications.user_id', '=', 'users.id')
             ->whereNotNull('user_verifications.is_account_verified_at')
             ->whereNotNull('users.email_verified_at')

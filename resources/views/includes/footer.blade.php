@@ -21,7 +21,7 @@
             <!--Grid row-->
             <div class="row">
                 <!--Grid column-->
-                <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <div class="col-lg-7 col-md-11 mb-7 mb-md-0">
                     <h5 class="text-uppercase footerHead">Tutor</h5>
 
                     <p class="footerPara">
@@ -33,42 +33,8 @@
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-lg-4 col-md-6 pl-5">
-                    <h5 class="text-uppercase followHead">Follow Us</h5>
-
-                    <ul class="list-unstyled mb-0 followPara">
-                        <li>
-                            <i class="fab fa-facebook-f pr-3"></i>
-                            <a href="https://www.facebook.com/">Facebook</a>
-                        </li>
-                        <li>
-                            <i class="fab fa-instagram pr-3"></i>
-                            <a href="https://www.instagram.com/">Instagram</a>
-                        </li>
-                        <li>
-                            <i class="fab fa-whatsapp pr-3"></i>
-                            <a href="https://web.whatsapp.com/">WhatsApp</a>
-                        </li>
-                        <li>
-                            <i class="fab fa-twitter pr-3"></i>
-                            <a href="https://twitter.com/">Twitter</a>
-                        </li>
-                        <li>
-                            <i class="fab fa-youtube pr-3"></i>
-                            <a href="https://www.youtube.com/">Youtube</a>
-                        </li>
-                    </ul>
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-4 col-md-6 ">
+                <div class="col-lg-5 col-md-7 ">
                     <h5 class="text-uppercase footerHead">Contact</h5>
-
 
                     <ul class="list-unstyled mb-0 footerPara">
                         <li>
@@ -89,6 +55,60 @@
                         </li>
                     </ul>
                 </div>
+            </div>
+
+
+
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-5 mb-3 mb-md-0">
+                    <h5 class="text-uppercase footerHead">Resources</h5>
+
+                    <ul class="list-unstyled mb-0 followPara">
+                        <li><a href="{{route('about')}}"> About us</a></li>
+                        <li><a href="{{route('stay_safe')}}"> Stay safe</a></li>
+                        <li><a href="{{route('blog')}}">Blog</a></li>
+                        <li><a href="{{route('refer')}}">Refer &amp; earn coins</a></li>
+                        <li><a href="{{route('faq')}}">FAQs</a></li>
+                        <li><a href="{{route('coins')}}">Coins &amp; Pricing</a></li>
+                        <li><a href="{{route('how_it_works_student')}}">How it works - Students</a></li>
+                        <li><a href="{{route('pay_teachers')}}">Pay teachers</a></li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-6 pl-5">
+                    <h5 class="text-uppercase followHead">For teachers</h5>
+
+                    <ul class="list-unstyled mb-0 followPara">
+                        <li><a href="/get-paid">Get paid</a></li>
+                        <li><a href="/premium-membership-for-tutors">Premium membership</a></li>
+                        <li><a href="/blog/online-teaching-guide">Online teaching guide</a></li>
+                        <li><a href="/how-it-works-teachers">How it works - Teachers</a></li>
+                        <li><a href="/blog/how-to-get-students-and-teaching-jobs">How to get jobs</a></li>
+                        <li><a href="/how-to-apply-to-a-job-and-contact-students">Applying to jobs</a></li>
+                        <li><a href="/blog/how-we-rank-teachers-on-teacheron">Teacher Rankings</a></li>
+                        <li><a href="/share-stories">Share a story</a></li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-5 col-md-7 ">
+                    <h5 class="text-uppercase footerHead">Help and Feedback</h5>
+
+                    <ul class="list-unstyled mb-0 footerPara">
+                        <ul class="list-unstyled black-bg-links">
+                            <li><a href="/feedback">Feedback</a></li>
+                            <li><a href="/testimonials">Testimonials</a></li>
+                            <li><a href="/contact"> Contact us</a></li>
+                            <li><a href="/refund-policy"> Refund Policy</a></li>
+                            <li><a href="/privacy-policy"> Privacy Policy</a></li>
+                            <li><a href="/terms-and-conditions"> Terms</a></li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
 
         </section>
         <!-- Section: Links -->

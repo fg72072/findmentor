@@ -373,10 +373,41 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         'uses' => 'Admin\SettingController@upload',
         'as' => 'admin.profile.upload'
     ])->middleware(['permission:Create']);
-});
 
+    // Admin Reviews Route
+    Route::get('/admin/user/reviews/{id}', [
+        'uses' => 'Admin\ReviewController@index',
+        'as' => 'admin.user.reviews'
+    ]);
+
+    // Admin Reviews Delete Route
+    Route::get('/admin/user/review/trash/{id}', [
+        'uses' => 'Admin\ReviewController@destroy',
+        'as' => 'admin.user.review.trash'
+    ]);
+
+    // Admin User Chat list Route
+    Route::get('/admin/user/chat/{id}', [
+        'uses' => 'Admin\ChatController@index',
+        'as' => 'admin.user.chat'
+    ]);
+
+    // Admin User Messages
+    Route::get('/admin/user/messages', [
+        'uses' => 'Admin\ChatController@viewMessage',
+        'as' => 'admin.user.messages'
+    ]);
+});
+Route::get('/about-us', 'StaticPagesController@aboutUs')->name('about');
+Route::get('/stay-safe', 'StaticPagesController@staySafe')->name('stay_safe');
+Route::get('/blog', 'StaticPagesController@blog')->name('blog');
+Route::get('/refer-and-earn-coins', 'StaticPagesController@referAndEarnCoin')->name('refer');
+Route::get('/faq', 'StaticPagesController@faq')->name('faq');
+Route::get('/coins', 'StaticPagesController@coins')->name('coins');
+Route::get('/how-it-works-students', 'StaticPagesController@howItWorkStudent')->name('how_it_works_student');
+Route::get('/pay-teachers', 'StaticPagesController@payTeacher')->name('pay_teachers');
 
 Route::fallback(function () {
     Session::flash('error', 'Page Not Found');
-    return redirect('/');
+    return redirect()->back();
 });
