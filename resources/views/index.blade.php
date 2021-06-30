@@ -142,7 +142,7 @@ Tutor | Home
                         class="img-fluid">
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12 col-12 pt-5">
+            <div class="col-lg-6 col-md-12 col-12">
                 <div class="lower2 pl-5">
                     <h1 class="display-4  text-start businessHead ">Just Take Our <br>Teachers</h1>
                     <p class="businessPara pt-3">Naxly bring the power of data science and artificial intelligence to

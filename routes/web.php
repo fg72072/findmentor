@@ -36,18 +36,14 @@ Route::get('/phpinfo', function () {
 Auth::routes(['verify' => true]);
 
 // Default Home Route
-Route::get('/', [
-    'uses' => 'HomeController@index',
-    'as' => 'home'
-]);
-Route::get('/home', [
-    'uses' => 'HomeController@index',
-    'as' => 'home'
-]);
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index');
+
 Route::get('/refer/{reference_id}', [
     'uses' => 'HomeController@referenceRegister',
     'as' => 'home.reference'
 ]);
+
 // Find Tutor Job
 Route::get('/tutor-jobs', [
     'uses' => 'TutorJobController@find',
@@ -407,7 +403,24 @@ Route::get('/coins', 'StaticPagesController@coins')->name('coins');
 Route::get('/how-it-works-students', 'StaticPagesController@howItWorkStudent')->name('how_it_works_student');
 Route::get('/pay-teachers', 'StaticPagesController@payTeacher')->name('pay_teachers');
 
+Route::get('/feedback', 'StaticPagesController@feedback')->name('feedback');
+Route::get('/testimonials', 'StaticPagesController@testimonials')->name('testimonials');
+Route::get('/contact', 'StaticPagesController@contact')->name('contact');
+Route::get('/refund-policy', 'StaticPagesController@refundPolicy')->name('refund_policy');
+Route::get('/privacy-policy', 'StaticPagesController@privacyPolicy')->name('privacy_policy');
+Route::get('/terms-and-conditions', 'StaticPagesController@termsAndConditions')->name('terms_and_conditions');
+
+Route::get('/get-paid', 'StaticPagesController@getPaid')->name('get_paid');
+Route::get('/premium-membership-for-tutors', 'StaticPagesController@premiumMembershipForTutors')->name('premium_membership');
+Route::get('/how-it-works-teachers', 'StaticPagesController@howItWorksTeachers')->name('how_it_works_teachers');
+Route::get('/how-to-apply-to-a-job-and-contact-students', 'StaticPagesController@ApplyAndContactStudents')->name('apply_and_contact_students');
+Route::get('/share-stories', 'StaticPagesController@shareStories')->name('share_stories');
+// Route::get('/online-teaching-guide', 'StaticPagesController@feedback')->name('feedback');
+// Route::get('/how-we-rank-teachers-on-teacheron', 'StaticPagesController@feedback')->name('feedback');
+// Route::get('/how-to-get-students-and-teaching-jobs', 'StaticPagesController@feedback')->name('feedback');
+
+
 Route::fallback(function () {
     Session::flash('error', 'Page Not Found');
-    return redirect()->back();
+    return redirect()->route('home');
 });

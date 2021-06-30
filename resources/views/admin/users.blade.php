@@ -125,7 +125,7 @@ Tutor | Admin
                                                 <a href="{{route('admin.user.reviews',['id'=>$teacher->id])}}">
                                                     <span class="badge badge-primary">Reviews</span>
                                                 </a>
-                                                <a href="{{route('admin.user.chat',['id'=>$student->id])}}">
+                                                <a href="{{route('admin.user.chat',['id'=>$teacher->id])}}">
                                                     <span class="badge badge-primary">Chat</span>
                                                 </a>
                                             </div>
@@ -162,7 +162,7 @@ Tutor | Admin
                                                 <a href="{{route('admin.user.reviews',['id'=>$teacher->id])}}">
                                                     <span class="badge badge-primary">Reviews</span>
                                                 </a>
-                                                <a href="{{route('admin.user.chat',['id'=>$student->id])}}">
+                                                <a href="{{route('admin.user.chat',['id'=>$teacher->id])}}">
                                                     <span class="badge badge-primary">Chat</span>
                                                 </a>
                                             </div>

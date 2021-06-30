@@ -78,33 +78,33 @@
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-lg-4 col-md-6 pl-5">
+                <div class="col-lg-4 col-md-6">
                     <h5 class="text-uppercase followHead">For teachers</h5>
 
                     <ul class="list-unstyled mb-0 followPara">
-                        <li><a href="/get-paid">Get paid</a></li>
-                        <li><a href="/premium-membership-for-tutors">Premium membership</a></li>
+                        <li><a href="{{route('get_paid')}}">Get paid</a></li>
+                        <li><a href="{{route('premium_membership')}}">Premium membership</a></li>
                         <li><a href="/blog/online-teaching-guide">Online teaching guide</a></li>
-                        <li><a href="/how-it-works-teachers">How it works - Teachers</a></li>
+                        <li><a href="{{route('how_it_works_teachers')}}">How it works - Teachers</a></li>
                         <li><a href="/blog/how-to-get-students-and-teaching-jobs">How to get jobs</a></li>
-                        <li><a href="/how-to-apply-to-a-job-and-contact-students">Applying to jobs</a></li>
+                        <li><a href="{{route('apply_and_contact_students')}}">Applying to jobs</a></li>
                         <li><a href="/blog/how-we-rank-teachers-on-teacheron">Teacher Rankings</a></li>
-                        <li><a href="/share-stories">Share a story</a></li>
+                        <li><a href="{{route('share_stories')}}">Share a story</a></li>
                     </ul>
                 </div>
                 <!--Grid column-->
                 <!--Grid column-->
-                <div class="col-lg-5 col-md-7 ">
+                <div class="col-lg-5 col-md-7">
                     <h5 class="text-uppercase footerHead">Help and Feedback</h5>
 
                     <ul class="list-unstyled mb-0 footerPara">
                         <ul class="list-unstyled black-bg-links">
-                            <li><a href="/feedback">Feedback</a></li>
-                            <li><a href="/testimonials">Testimonials</a></li>
-                            <li><a href="/contact"> Contact us</a></li>
-                            <li><a href="/refund-policy"> Refund Policy</a></li>
-                            <li><a href="/privacy-policy"> Privacy Policy</a></li>
-                            <li><a href="/terms-and-conditions"> Terms</a></li>
+                            <li><a href="{{route('feedback')}}">Feedback</a></li>
+                            <li><a href="{{route('testimonials')}}">Testimonials</a></li>
+                            <li><a href="{{route('contact')}}"> Contact us</a></li>
+                            <li><a href="{{route('refund_policy')}}"> Refund Policy</a></li>
+                            <li><a href="{{route('privacy_policy')}}"> Privacy Policy</a></li>
+                            <li><a href="{{route('terms_and_conditions')}}"> Terms</a></li>
                         </ul>
                     </ul>
                 </div>
@@ -117,28 +117,34 @@
     <!-- Section: Social media -->
     <section class="mb-4">
         <!-- Facebook -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/" role="button"><i
-                class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/" role="button">
+            <i class="fab fa-facebook-f"></i>
+        </a>
 
         <!-- Twitter -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/" role="button"><i
-                class="fab fa-twitter"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/" role="button">
+            <i class="fab fa-twitter"></i>
+        </a>
 
         <!-- Google -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://www.google.com/" role="button"><i
-                class="fab fa-google"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.google.com/" role="button">
+            <i class="fab fa-google"></i>
+        </a>
 
         <!-- Instagram -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button"><i
-                class="fab fa-instagram"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/" role="button">
+            <i class="fab fa-instagram"></i>
+        </a>
 
         <!-- Linkedin -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/feed/" role="button"><i
-                class="fab fa-linkedin-in"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://www.linkedin.com/feed/" role="button">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
 
         <!-- Github -->
-        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/" role="button"><i
-                class="fab fa-github"></i></a>
+        <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/" role="button">
+            <i class="fab fa-github"></i>
+        </a>
     </section>
 
     <!-- Copyright -->

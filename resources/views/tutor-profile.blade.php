@@ -163,13 +163,14 @@ Tutor | Home
                                                 <i class="fas fa-car mr-2"></i>
                                                 <b>Can travel:</b> {{$data['info']->travel_to_student}}</span>
                                         </li>
-
+                                        @isset($data->last_login_at)
                                         <li>
                                             <span class="sidepanel">
                                                 <i class="fas fa-sign-in-alt mr-2"></i>
                                                 <b>Last login:</b>
                                                 {{\App\Common::changeDate($data->last_login_at)}}</span>
                                         </li>
+                                        @endisset
 
                                         <li>
                                             <span class="sidepanel">
@@ -764,6 +765,14 @@ Tutor | Home
             $('#requirement-modal').modal('hide')
             $('#make-requirement').modal('show')
         })
+
+
+        var maxLength = 50;
+        $('#requirement_id > option').text(function(i, text) {
+            if (text.length > maxLength) {
+                return text.substr(0, maxLength) + '...';
+            }
+        });
 
     })
 

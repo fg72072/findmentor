@@ -239,7 +239,7 @@ Search Tutor Job
                     created_at
                 },
                 success: function(response) {
-                    console.log(response)
+                    // console.log(response)
 
                     if(response.message == 'go-to-message'  ){
                         window.location.href = "{{route('job_messages')}}";
@@ -255,7 +255,7 @@ Search Tutor Job
                     }
 
                     if(response.message == 'wait for your access'  ){
-                        toastr["error"]('Wait for your access ');
+                        toastr["error"]('Wait for your time');
                     }
 
                 },

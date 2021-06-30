@@ -45,4 +45,59 @@ class StaticPagesController extends Controller
     {
         return view('static pages.pay-teachers');
     }
+
+    static function feedback()
+    {
+        return view('static pages.feedback');
+    }
+
+    static function testimonials()
+    {
+        return view('static pages.testimonials');
+    }
+
+    static function contact()
+    {
+        return view('static pages.contact');
+    }
+
+    static function refundPolicy()
+    {
+        return view('static pages.refund-policy');
+    }
+
+    static function privacyPolicy()
+    {
+        return view('static pages.privacy-policy');
+    }
+
+    static function termsAndConditions()
+    {
+        return view('static pages.terms-and-conditions');
+    }
+
+    static function getPaid()
+    {
+        return view('static pages.get-paid');
+    }
+
+    static function premiumMembershipForTutors()
+    {
+        return view('static pages.premium-membership-for-tutors');
+    }
+
+    static function howItWorksTeachers()
+    {
+        return view('static pages.how-it-works-teachers');
+    }
+
+    static function ApplyAndContactStudents()
+    {
+        return view('static pages.how-to-apply-to-a-job-and-contact-students');
+    }
+
+    static function shareStories()
+    {
+        return view('static pages.share-stories');
+    }
 }

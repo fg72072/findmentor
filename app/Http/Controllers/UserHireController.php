@@ -87,7 +87,7 @@ class UserHireController extends Controller
                 $res = [
                     'message' => 'go-to-message'
                 ];
-            } else if ($checkPremiumAccess['message'] == 'wait') {
+            } else if ($checkPremiumAccess && $checkPremiumAccess['message'] == 'wait') {
                 $res = [
                     'message' => 'wait for your access'
                 ];
@@ -165,7 +165,7 @@ class UserHireController extends Controller
     public function checkTeacherRankToAccessStudent($requirement_created_at)
     {
         $user_id = session('user_id');
-        $timeForPremiumMember = 120;
+        $timeForPremiumMember = 120 - 8;
 
         $RequirementPostTimeDiff = $this->getDiffInMinutes($requirement_created_at);
 
@@ -188,21 +188,22 @@ class UserHireController extends Controller
             ->get();
 
 
-        $getTimeforEachMemberToAccess = $premiunMembers->count() > 0 && $timeForPremiumMember / $premiunMembers->count();
+        $getTimeforEachMemberToAccess = $premiunMembers->count() > 0 ? $timeForPremiumMember / $premiunMembers->count() : 0;
 
         $timeForAuthUserToAccessStudent = 0;
-
-        foreach ($premiunMembers as $key => $member) {
+        foreach ($premiunMembers as $rank => $member) {
             if ($member->member_id == $user_id) {
-                $timeForAuthUserToAccessStudent = $getTimeforEachMemberToAccess * $key;
+                $PrviousRankTime = -$getTimeforEachMemberToAccess * ($rank - 2);
+                $timeForAuthUserToAccessStudent = $getTimeforEachMemberToAccess * ($rank + 1);
             }
         }
+        if ($PrviousRankTime == $timeForPremiumMember) $PrviousRankTime = 1;
 
-        if ($timeForAuthUserToAccessStudent >= $RequirementPostTimeDiff) {
+        if ($RequirementPostTimeDiff > $PrviousRankTime &&  $timeForAuthUserToAccessStudent >= $RequirementPostTimeDiff) {
             return [$RequirementPostTimeDiff, 'message' => 'success'];
         }
 
-        if ($timeForAuthUserToAccessStudent < $RequirementPostTimeDiff) {
+        if ($timeForAuthUserToAccessStudent > $RequirementPostTimeDiff) {
             return [$RequirementPostTimeDiff, 'message' => 'wait'];
         }
     }

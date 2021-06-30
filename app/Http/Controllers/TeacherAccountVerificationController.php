@@ -26,7 +26,7 @@ class TeacherAccountVerificationController extends Controller
             ->where('users.id', $user_id)
             ->first();
 
-        if ($detail_is_filled->is_account_verified_at == NULL) {
+        if ($detail_is_filled->is_verification_detail_complete == 1 && $detail_is_filled->is_account_verified_at == NULL) {
             Session::flash('error', 'Your Account Has Under Verification Process');
             return redirect('/');
         }
