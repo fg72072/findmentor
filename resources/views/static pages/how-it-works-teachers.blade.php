@@ -111,7 +111,7 @@ Tutor | Home
                             payment mode with your&nbsp;students/clients.&nbsp;</p>
 
                         <p>You can secure your payment by <a target="_blank" href="/get-paid">getting paid via
-                                TeacherOn</a>. If you chose to get paid directly, please read <a target="_blank"
+                                FindMentor</a>. If you chose to get paid directly, please read <a target="_blank"
                                 href="/stay-safe">stay safe</a> to secure&nbsp;yourself from bad clients.</p>
 
                         <p>&nbsp;</p>

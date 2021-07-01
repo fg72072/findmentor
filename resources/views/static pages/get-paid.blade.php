@@ -26,7 +26,7 @@ Tutor | Home
 
                         <h1 class="no-margin-top ">Get paid securely from students around the world</h1>
 
-                        <p>Now, you can get payments&nbsp;from students anywhere in the world via TeacherOn.</p>
+                        <p>Now, you can get payments&nbsp;from students anywhere in the world via FindMentor.</p>
 
                         <h2>Why did we develop this feature?</h2>
 
@@ -49,7 +49,7 @@ Tutor | Home
                             <li>The payment is released to you.</li>
                         </ul>
 
-                        <h2>Why get payment via TeacherOn?</h2>
+                        <h2>Why get payment via FindMentor?</h2>
 
                         <p>Getting payments via us has the following advantages. You can:</p>
 
@@ -78,17 +78,17 @@ Tutor | Home
                                     countries</a>.&nbsp;When we send you a PayPal payment, we pay the fee so you get the
                                 full amount we send. You don't pay the usual 4% fee to PayPal for receiving payments.
                             </li>
-                            <li><strong>TeacherOn Coins</strong> (10% fee) - For everybody else, you can get paid in
-                                TeacherOn coins.</li>
+                            <li><strong>FindMentor Coins</strong> (10% fee) - For everybody else, you can get paid in
+                                FindMentor coins.</li>
                         </ul>
 
                         <h2>How much is the fee for receiving payments?</h2>
 
                         <p>It's 15% if you are getting paid in Bank account or PayPal. It's 10% if you get paid in
-                            TeacherOn coins.&nbsp;We use this fee to pay taxes,&nbsp;payment gateway providers (people
+                            FindMentor coins.&nbsp;We use this fee to pay taxes,&nbsp;payment gateway providers (people
                             who help us to collect payment online), and for food.&nbsp;</p>
 
-                        <h2>How to get payment via TeacherOn?</h2>
+                        <h2>How to get payment via FindMentor?</h2>
 
                         <p>Once logged in as a tutor, you can go to Menu &gt; Wallet &gt;&nbsp;<a
                                 href="/userPayoutSettings" target="_blank">Accounts (Getting paid)</a>&nbsp;and set up
@@ -96,7 +96,7 @@ Tutor | Home
 
                         <p>Students can go to your profile link and click on the "Pay" button to pay you.</p>
 
-                        <h2>Benefits and disadvantages of&nbsp;getting paid in TeacherOn coins?</h2>
+                        <h2>Benefits and disadvantages of&nbsp;getting paid in FindMentor coins?</h2>
 
                         <h3>Benefits</h3>
 
@@ -109,10 +109,10 @@ Tutor | Home
                         <h3>Disadvantages</h3>
 
                         <ul>
-                            <li>You can spend coins only in TeacherOn and can't buy a Pizza with them.</li>
+                            <li>You can spend coins only in FindMentor and can't buy a Pizza with them.</li>
                         </ul>
 
-                        <h2>Is it mandatory to receive payments via TeacherOn?</h2>
+                        <h2>Is it mandatory to receive payments via FindMentor?</h2>
 
                         <p>No.</p>
 

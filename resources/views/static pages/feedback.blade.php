@@ -24,7 +24,7 @@ Tutor | Home
                 <div class="col-sm-12-">
                     <div class="blog-page-article">
 
-                        <h1 class="no-margin-top ">Your Feedback powers TeacherOn</h1>
+                        <h1 class="no-margin-top ">Your Feedback powers FindMentor</h1>
 
                         <p>Your feedback is very important to us. In fact it's so important, that we pay you for the
                             feedback. How many coins we pay depends on the quality of the problem/feature you contact us

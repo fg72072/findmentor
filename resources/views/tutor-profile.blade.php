@@ -282,11 +282,11 @@ Tutor | Home
 
                                 <div class="CheckBoxTitle odd">
                                     <input type="checkbox" class="check" name='online_class' value='yes'>
-                                    <p class="Info">Online (using Skype etc)</p>
+                                    <p class="Info" style="font-size: 0.7em">Online (using Skype etc)</p>
                                     <input type="checkbox" class="check" name='class_at_student_place' value='yes'>
-                                    <p class="Info">At my place (home/institute)</p>
+                                    <p class="Info" style="font-size: 0.7em">At my place (home/institute)</p>
                                     <input type="checkbox" class="check" name='class_at_tutor_place' value='yes'>
-                                    <p class="Info">Travel to tutor</p>
+                                    <p class="Info" style="font-size: 0.7em">Travel to tutor</p>
                                 </div>
 
                             </div>
@@ -330,7 +330,7 @@ Tutor | Home
                                 </select>
 
                                 <h4 class="Info">Upload files</h4>
-                                <input type="file" class="InpTab" placeholder="Upload files" name='file'>
+                                <input type="file" class="InpTab" placeholder="Upload files" name='profile'>
                             </div>
                         </div>
 

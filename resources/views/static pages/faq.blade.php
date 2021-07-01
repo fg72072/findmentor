@@ -72,7 +72,7 @@ Tutor | Home
                                         hiring you directly, you should ask them. If however, you work independently,
                                         then it works the same way as it worked before the internet:</p>
                                     <p><strong>You charge as much as you want.</strong></p>
-                                    <p>Teachers registered on teacheron.com charge from less than $1 to over $100 per
+                                    <p>Teachers registered on FindMentor.com charge from less than $1 to over $100 per
                                         hour. Everyone charges based on their skills, living standard, the country they
                                         are in, existing clientele, and the demand for their particular skill.</p>
 
@@ -179,7 +179,8 @@ Tutor | Home
                             <div class="question">How to collect payment for online work?</div>
                             <div class="answer margin-bottom-20">
                                 <div>
-                                    <p>You can ask to be paid via <a href="/blog/get-payments-via-teacheron">Teacheron's
+                                    <p>You can ask to be paid via <a
+                                            href="/blog/get-payments-via-FindMentor">FindMentor's
                                             escrow system</a>, directly in the bank, Transferwise, PayPal, Western
                                         Union, Payoneer. Check <a
                                             href="/online-teaching-guide#howToReceivePayments">details about these
@@ -191,7 +192,7 @@ Tutor | Home
                             <div class="question">How to find students to teach online?</div>
                             <div class="answer margin-bottom-20">
                                 <div>
-                                    <p>Register at teacheron.com and make an attractive profile. Don't rush through
+                                    <p>Register at FindMentor.com and make an attractive profile. Don't rush through
                                         while making your profile. Take time and do it right. Consider it as an
                                         investment. Contact on posted jobs with relevant and personalized
                                         messages.&nbsp;</p>
@@ -378,7 +379,8 @@ Tutor | Home
                             <div class="question">How to collect payment for online work?</div>
                             <div class="answer margin-bottom-20">
                                 <div>
-                                    <p>You can ask to be paid via <a href="/blog/get-payments-via-teacheron">Teacheron's
+                                    <p>You can ask to be paid via <a
+                                            href="/blog/get-payments-via-FindMentor">FindMentor's
                                             escrow system</a>, directly in the bank, Transferwise, PayPal, Western
                                         Union, Payoneer. Check <a
                                             href="/online-teaching-guide#howToReceivePayments">details about these
@@ -508,6 +510,22 @@ $(".accordion5 .question").each(function (index, element)
        }
    });
 });
+
+let questions=$('.qaBlock');
+$('#filter').on('keyup',function() {
+    let text = $(this).val();
+
+    $('.qaBlock').hide();
+
+    questions.each(function( index ) {
+        if($( this ).find('.question').text().includes(text) || $( this ).find('.answer').text().includes(text)){
+            // console.log( $( this ).find('.question').text() );
+            // console.log( $( this ).find('.answer').text() );
+            $( this ).show()
+        }
+    });
+})
+
 </script>
 @endpush
 

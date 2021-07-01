@@ -61,6 +61,12 @@
                         </a>
                     </li>
                     <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin.blog')}}">
+                            <i data-feather="bold"></i>
+                            <span>Blogs</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_setting')}}">
                             <i data-feather="settings"></i>
                             <span>Settings</span>

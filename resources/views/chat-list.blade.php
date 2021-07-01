@@ -6,6 +6,7 @@ Tutor | Messages
 
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/AllMessages.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/plugins/Select-2/css/select2.min.css') }}">
 @endpush
 
 @section('content')
@@ -24,17 +25,19 @@ Tutor | Messages
                             <hr class=" line w-25 mx-1">
                             <form>
                                 <div class="skillbutton">
-                                    <input class="InputTab mt-2 flex pl-2" id="BorderBott"
-                                        placeholder="Select Requirement to filter Message" list="id" name="id">
-                                    <datalist id="id">
+                                    <select class="InputTab mt-2 flex pl-2" id='selUser' name="id">
+                                        <option value='0' disabled selected>Select Requirement to filter Message
+                                        </option>
                                         @if (count($data)>0)
                                         @foreach ($data as $item)
                                         @if ($item->user_id != $user_id)
-                                        <option value="{{$item->subject}} teacher needed in {{$item->location}}">
-                                            @endif
-                                            @endforeach
-                                            @endif
-                                    </datalist>
+                                        <option value="{{$item->post_id}}">
+                                            {{$item->subject}} teacher needed in{{$item->location}}
+                                        </option>
+                                        @endif
+                                        @endforeach
+                                        @endif
+                                    </select>
                                 </div>
                                 <button type="submit" style="background: #4765a0 !important; border: #4765a0;"
                                     class="btn btn-primary btn-lg mt-3">Search</button>
@@ -79,6 +82,7 @@ Tutor | Messages
 @stop
 
 @push('include-js')
+<script src="{{ asset('asset/plugins/Select-2/js/select2.min.js') }}"></script>
 <script>
     $(document).ready(function () {
         load_unseen_notification();
@@ -92,7 +96,15 @@ Tutor | Messages
                 $('.messageRow').hide()
                 $('.unread').show()
             }
-            })
+        })
+
+        $("#selUser").select2();
+        $('#but_read').click(function(){
+            var username = $('#selUser option:selected').text();
+            var userid = $('#selUser').val();
+
+            $('#result').html("id : " + userid + ", name : " + username);
+        });
     })
 
     var get_message_notifications_url = "{{route('notification')}}";

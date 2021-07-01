@@ -26,7 +26,7 @@ Tutor | Home
 
                         <h1 class="no-margin-top ">Pay teachers securely</h1>
 
-                        <p>In TeacherOn, you can&nbsp;pay any teacher on the website - no matter which country the
+                        <p>In FindMentor, you can&nbsp;pay any teacher on the website - no matter which country the
                             teacher is in.&nbsp;</p>
 
                         <h2>Why did we develop this feature?</h2>
@@ -54,7 +54,7 @@ Tutor | Home
                             <li>You release the payment to the teacher.</li>
                         </ul>
 
-                        <h2>Why pay via TeacherOn?</h2>
+                        <h2>Why pay via FindMentor?</h2>
 
                         <p>Paying via us has the following advantages. You can:</p>
 
@@ -71,19 +71,19 @@ Tutor | Home
 
                         <p>It's free for you. However, to cover the taxes, payment gateway fees, and snacks, we
                             charge&nbsp;15% of the payment from teachers. If you pay them in <a href="/coins"
-                                onclick="window.open(this.href, '', 'resizable=yes,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">TeacherOn
+                                onclick="window.open(this.href, '', 'resizable=yes,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">FindMentor
                                 coins</a>, then we reduce the fee to 10%&nbsp;</p>
 
-                        <h2>Is it mandatory to pay teachers via TeacherOn?</h2>
+                        <h2>Is it mandatory to pay teachers via FindMentor?</h2>
 
                         <p>No.</p>
 
-                        <h2>What to say to teachers who ask for advance payment outside TeacherOn?</h2>
+                        <h2>What to say to teachers who ask for advance payment outside FindMentor?</h2>
 
                         <p>You can say them&nbsp;something like:&nbsp;</p>
 
                         <p>"I am afraid of paying in advance without any security. I will deposit money in your
-                            TeacherOn account and release it once you have completed the work."</p>
+                            FindMentor account and release it once you have completed the work."</p>
 
                         <p>If you have lost money to someone, do mention that as well.</p>
 

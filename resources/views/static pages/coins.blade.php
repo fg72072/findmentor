@@ -24,7 +24,7 @@ Tutor | Home
                 <div class="col-sm-12-">
                     <div class="blog-page-article">
 
-                        <h1 class="no-margin-top ">Coins - Teacheron Currency</h1>
+                        <h1 class="no-margin-top ">Coins - FindMentor Currency</h1>
 
                         <p class="alert alert-info">For payments between students and teachers, please read <a
                                 target="_blank" class="underline" href="/pay-teachers">Sending payments</a> and <a
@@ -32,7 +32,8 @@ Tutor | Home
 
                         <p>Since we have teachers and students from over 130 countries, discussing prices
                             in&nbsp;individual currencies can be confusing. Therefore, we use a common currency,
-                            "TeacherOn coins" or just "coins" for most&nbsp;transactions. You can get 50 coins for 1USD.
+                            "FindMentor coins" or just "coins" for most&nbsp;transactions. You can get 50 coins for
+                            1USD.
                             You can view available discounts&nbsp;and prices for other currencies on the&nbsp;<a
                                 target="_blank" href="/buyCoins">Buy coins page</a>.</p>
 
@@ -42,8 +43,9 @@ Tutor | Home
 
                         <ol>
                             <li>Contact students i.e. apply to jobs</li>
-                            <li>Get&nbsp;<a href="https://www.teacheron.com/premium-membership-for-tutors">Premium</a><a
-                                    href="https://www.teacheron.com/premium-membership-for-tutors"> membership</a></li>
+                            <li>Get&nbsp;<a
+                                    href="https://www.FindMentor.com/premium-membership-for-tutors">Premium</a><a
+                                    href="https://www.FindMentor.com/premium-membership-for-tutors"> membership</a></li>
                             <li><a target="_blank" href="/showContactSettings">Show contact details</a>&nbsp;to students
                                 directly</li>
                         </ol>
@@ -66,7 +68,7 @@ Tutor | Home
                             <li><strong>Invite Friends:</strong>&nbsp;We include your referral link and send mails on
                                 your behalf when you <a target="_blank" href="/friendsInvite">invite friends</a>. If any
                                 of your invited friends join, you get coins as per our referral plan above.</li>
-                            <li><strong>Buy:</strong>&nbsp;You can&nbsp;<a href="http://www.teacheron.com/buyCoins">buy
+                            <li><strong>Buy:</strong>&nbsp;You can&nbsp;<a href="http://www.FindMentor.com/buyCoins">buy
                                     coins</a>&nbsp;if you need coins instantly.&nbsp;</li>
                         </ul>
 

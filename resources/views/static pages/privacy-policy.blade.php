@@ -63,7 +63,7 @@ Tutor | Home
                         <h2>I want to remove data from Google</h2>
 
                         <p>Please check our guide on&nbsp;<a
-                                href="https://www.teacheron.com/blog/how-to-remove-personal-data-from-google">how to
+                                href="https://www.FindMentor.com/blog/how-to-remove-personal-data-from-google">how to
                                 remove personal data from Google</a>.</p>
 
                         <h2>Data management from Google login</h2>

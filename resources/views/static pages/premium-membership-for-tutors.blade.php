@@ -87,7 +87,7 @@ Tutor | Home
                         <h2>Is premium membership renewed monthly?</h2>
 
                         <p>Yes. Coins you chose to use for premium membership are automatically deducted from your
-                            TeacherOn wallet on the 1st of every month.</p>
+                            FindMentor wallet on the 1st of every month.</p>
 
                         <p>&nbsp;</p>
 

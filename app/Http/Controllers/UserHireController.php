@@ -115,8 +115,8 @@ class UserHireController extends Controller
 
         if (empty($requirement_id)) {
 
-            if ($request->hasFile('file')) {
-                $image = $request->file('file');
+            if ($request->hasFile('profile')) {
+                $image = $request->file('profile');
                 $name = $this->getFileName($image);
                 $path = $this->getProfilePicPath();
                 $image->move($path, $name);

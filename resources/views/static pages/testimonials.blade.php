@@ -46,12 +46,12 @@ Tutor | Home
                         <h2>Few things you can consider to put in your testimonial:</h2>
 
                         <ol>
-                            <li>How did TeacherOn help you?</li>
-                            <li>How was your life before TeacherOn?</li>
-                            <li>How did your life improve after joining TeacherOn?</li>
+                            <li>How did FindMentor help you?</li>
+                            <li>How was your life before FindMentor?</li>
+                            <li>How did your life improve after joining FindMentor?</li>
                             <li>How many students did you get?</li>
                             <li>Do you tell your friends about us? If yes, Why?</li>
-                            <li>If you were to compare TeacherOn&nbsp;to one of the person/things in your life, what
+                            <li>If you were to compare FindMentor&nbsp;to one of the person/things in your life, what
                                 would it be?</li>
                         </ol>
 

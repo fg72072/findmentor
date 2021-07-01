@@ -26,7 +26,7 @@ Tutor | Home
 
                         <h1 class="no-margin-top ">Refund Policy</h1>
 
-                        <p>This refund policy applies if you are dealing directly with TeacherOn&nbsp;staff. If you are
+                        <p>This refund policy applies if you are dealing directly with FindMentor&nbsp;staff. If you are
                             dealing with students and teachers listed on the website, please see the&nbsp;<a
                                 target="_blank" href="/terms-and-conditions">terms and conditions</a>.&nbsp;</p>
 
@@ -52,16 +52,16 @@ Tutor | Home
                         <p>Coins used to contact a tutor, free or paid, are not refunded if you are unable to reach the
                             tutor for whatever reason.&nbsp;</p>
 
-                        <h2>For student payments to tutors outside of teacheron.com</h2>
+                        <h2>For student payments to tutors outside of FindMentor.com</h2>
 
                         <p>If any payment is made outside our website, we can't do anything about it. You may still
                             contact us and we will try to help but we can't guarantee that we will be able to get your
                             refund. Please see <a href="#refundFromTutorsThroughUs">how refunds work when you pay via
-                                teacheron.com</a>.</p>
+                                FindMentor.com</a>.</p>
 
-                        <h2 id="refundFromTutorsThroughUs">For student payments to tutors via teacheron.com</h2>
+                        <h2 id="refundFromTutorsThroughUs">For student payments to tutors via FindMentor.com</h2>
 
-                        <p>When you pay tutors via teacheron.com:</p>
+                        <p>When you pay tutors via FindMentor.com:</p>
 
                         <ul>
                             <li>Chose the option to "Release payment after work is complete"
@@ -90,7 +90,7 @@ Tutor | Home
                             </li>
                             <li>Examples of Payment<br>
                                 <img class="img-responsive w-100 h-100" alt=""
-                                    src="https://blogassets2.teacheron.com/Payout-samples.png">
+                                    src="https://blogassets2.FindMentor.com/Payout-samples.png">
                             </li>
                         </ul>
                     </div>

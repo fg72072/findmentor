@@ -393,6 +393,12 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         'uses' => 'Admin\ChatController@viewMessage',
         'as' => 'admin.user.messages'
     ]);
+
+    // Admin Blogd
+    Route::get('/admin/blog', [
+        'uses' => 'Admin\BlogController@index',
+        'as' => 'admin.blog'
+    ]);
 });
 Route::get('/about-us', 'StaticPagesController@aboutUs')->name('about');
 Route::get('/stay-safe', 'StaticPagesController@staySafe')->name('stay_safe');

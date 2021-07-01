@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
-    public function jobChatList()
+    public function jobChatList(Request $request)
     {
+        // dd($request->all());
         $user_id = session('user_id');
 
         $thread_ids = Participant::where('user_id', $user_id)->get()->pluck('thread_id')->toArray();
@@ -34,8 +35,13 @@ class ChatController extends Controller
                 'request_tutors.location',
                 'request_tutors.is_closed',
                 'threads.created_at'
-            )
-            ->where('user_id', '!=', $user_id)
+            );
+
+        if (isset($request->id)) {
+            $data = $data->where('request_tutors.id', '=', $request->id);
+        }
+
+        $data = $data->where('user_id', '!=', $user_id)
             ->where('request_tutors.is_closed', 0)
             ->get();
 

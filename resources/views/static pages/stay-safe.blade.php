@@ -37,11 +37,11 @@ Tutor | Home
                             <li>If you are meeting in person, <strong>meet at a public location</strong> like a
                                 library/mall, etc.</li>
                             <li><strong><a target="_blank" href="/pay-teachers">Pay</a> and <a target="_blank"
-                                        href="/get-paid">receive payments</a> via TeacherOn.com</strong>. If payment is
+                                        href="/get-paid">receive payments</a> via FindMentor.com</strong>. If payment is
                                 made via us, we secure payment for teachers and ensure services for students.&nbsp;</li>
                             <li>For students:
                                 <ol>
-                                    <li>If you chose to pay outside of TeacherOn: try to&nbsp;<strong>pay with
+                                    <li>If you chose to pay outside of FindMentor: try to&nbsp;<strong>pay with
                                             PayPal</strong> - they have fraud protection.</li>
                                     <li>If paying directly in a bank account: if the tutor's profile name doesn't match
                                         bank account etc, you should&nbsp;be skeptical that the tutor might be a fraud.
@@ -50,7 +50,8 @@ Tutor | Home
                             </li>
                             <li>For teachers:&nbsp;
                                 <ol>
-                                    <li>If receiving payment outside of TeacherOn, start work only after you <strong>get
+                                    <li>If receiving payment outside of FindMentor, start work only after you
+                                        <strong>get
                                             at the least a partial payment</strong>.</li>
                                 </ol>
                             </li>
@@ -71,7 +72,7 @@ Tutor | Home
                         <p><strong>For Teachers</strong></p>
 
                         <ol>
-                            <li>Ask to <a target="_blank" href="/get-paid">be paid via TeacherOn</a>. Most students are
+                            <li>Ask to <a target="_blank" href="/get-paid">be paid via FindMentor</a>. Most students are
                                 unwilling to pay in advance because they are unsure of the services. However, since we
                                 are protecting their payment (via escrow) from bad tutors, they will pay you as it's
                                 risk-free for them. You will get the funds in 30 days even if the student&nbsp;stops
@@ -88,17 +89,17 @@ Tutor | Home
                         <p><strong>For Students</strong></p>
 
                         <ol>
-                            <li><a target="_blank" href="/pay-teachers">Pay via TeacherOn</a>. We hold your funds with
+                            <li><a target="_blank" href="/pay-teachers">Pay via FindMentor</a>. We hold your funds with
                                 us until you are happy with the provided service. We also help you secure a&nbsp;refund
                                 if you are unsatisfied with the tutor.</li>
-                            <li>If you chose to pay outside of Teacheron, pay with PayPal. They have a buyer protection
+                            <li>If you chose to pay outside of FindMentor, pay with PayPal. They have a buyer protection
                                 policy.&nbsp;Make sure you have selected the "Paying for services" option while making
                                 the payment.&nbsp;</li>
                             <li>Raise a dispute if you don't get the promised service.</li>
                             <li>If the expert says to close a dispute as they will deliver shortly, just say politely
                                 that you will close dispute once they deliver as promised. This is important as you
                                 can't raise dispute again once you close a dispute in PayPal.</li>
-                            <li>If not paying with TeacherOn or PayPal, tread carefully, and pay as little as possible
+                            <li>If not paying with FindMentor or PayPal, tread carefully, and pay as little as possible
                                 initially.</li>
                             <li>Check our&nbsp;<a target="_blank" href="/scammers">list of known scammers</a>.</li>
                             <li>Search online for known scammers by just googling "{tutor name}+scam".</li>
