@@ -394,15 +394,41 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         'as' => 'admin.user.messages'
     ]);
 
-    // Admin Blogd
+    // Admin Blog
     Route::get('/admin/blog', [
         'uses' => 'Admin\BlogController@index',
         'as' => 'admin.blog'
     ]);
+    // Admin Blog Create
+    Route::get('/admin/blog/create', [
+        'uses' => 'Admin\BlogController@create',
+        'as' => 'admin.blog.create'
+    ]);
+    // Admin Blog Store
+    Route::post('/admin/blog/store', [
+        'uses' => 'Admin\BlogController@store',
+        'as' => 'admin.blog.store'
+    ]);
+    // Admin Blog Edit
+    Route::get('/admin/blog/edit/{id}', [
+        'uses' => 'Admin\BlogController@edit',
+        'as' => 'admin.blog.edit'
+    ]);
+    // Admin Blog Update
+    Route::post('/admin/blog/update/{id}', [
+        'uses' => 'Admin\BlogController@update',
+        'as' => 'admin.blog.update'
+    ]);
+    // Admin Blog Trash
+    Route::get('/admin/blog/destroy/{id}', [
+        'uses' => 'Admin\BlogController@destroy',
+        'as' => 'admin.blog.delete'
+    ]);
 });
 Route::get('/about-us', 'StaticPagesController@aboutUs')->name('about');
 Route::get('/stay-safe', 'StaticPagesController@staySafe')->name('stay_safe');
-Route::get('/blog', 'StaticPagesController@blog')->name('blog');
+Route::get('/blog', 'StaticPagesController@blog')->name('blogs');
+Route::get('/blog/{title}', 'StaticPagesController@blog')->name('single.blog');
 Route::get('/refer-and-earn-coins', 'StaticPagesController@referAndEarnCoin')->name('refer');
 Route::get('/faq', 'StaticPagesController@faq')->name('faq');
 Route::get('/coins', 'StaticPagesController@coins')->name('coins');

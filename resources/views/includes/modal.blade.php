@@ -22,8 +22,14 @@
                             <input id="pass" type="password" name="password" class="input" data-type="password">
                         </div>
                         <div class="group">
-                            <input id="check" type="checkbox" class="check" checked>
-                            <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                    {{ old('remember') ? 'checked' : '' }}>
+                                <label class="form-check-label" for="remember">
+                                    {{ __('Keep me Signed in') }}
+                                </label>
+                            </div>
+                            {{-- <label for="check"><span class="icon"></span> Keep me Signed in</label> --}}
                         </div>
                         <div class="group">
                             <input type="submit" class="button" value="Sign In">

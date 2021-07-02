@@ -67,7 +67,7 @@
                     <ul class="list-unstyled mb-0 followPara">
                         <li><a href="{{route('about')}}"> About us</a></li>
                         <li><a href="{{route('stay_safe')}}"> Stay safe</a></li>
-                        <li><a href="{{route('blog')}}">Blog</a></li>
+                        <li><a href="{{route('blogs')}}">Blog</a></li>
                         <li><a href="{{route('refer')}}">Refer &amp; earn coins</a></li>
                         <li><a href="{{route('faq')}}">FAQs</a></li>
                         <li><a href="{{route('coins')}}">Coins &amp; Pricing</a></li>
@@ -84,11 +84,15 @@
                     <ul class="list-unstyled mb-0 followPara">
                         <li><a href="{{route('get_paid')}}">Get paid</a></li>
                         <li><a href="{{route('premium_membership')}}">Premium membership</a></li>
-                        <li><a href="/blog/online-teaching-guide">Online teaching guide</a></li>
+                        <li><a href="{{route('single.blog',["title"=>"online-teaching-guide"])}}">Online teaching
+                                guide</a>
+                        </li>
                         <li><a href="{{route('how_it_works_teachers')}}">How it works - Teachers</a></li>
-                        <li><a href="/blog/how-to-get-students-and-teaching-jobs">How to get jobs</a></li>
+                        <li><a href="{{route('single.blog',["title"=>"how-to-get-students-and-teaching-jobs"])}}">How to
+                                get jobs</a></li>
                         <li><a href="{{route('apply_and_contact_students')}}">Applying to jobs</a></li>
-                        <li><a href="/blog/how-we-rank-teachers-on-teacheron">Teacher Rankings</a></li>
+                        <li><a href="{{route('single.blog',["title"=>"how-we-rank-teachers-on-findmentor"])}}">Teacher
+                                Rankings</a></li>
                         <li><a href="{{route('share_stories')}}">Share a story</a></li>
                     </ul>
                 </div>

@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Blog;
+use App\Common;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class StaticPagesController extends Controller
 {
@@ -16,9 +19,27 @@ class StaticPagesController extends Controller
         return view('static pages.stay-safe');
     }
 
-    static function blog()
+    static function blog($title = NULL)
     {
-        return view('static pages.blog');
+        if ($title) {
+            $blogs = Blog::orderBy('created_at', 'ASC')->get();
+            $single_blog = false;
+            foreach ($blogs as $key => $blog) {
+                if (Common::cleanString($blog->title) == $title) {
+                    $single_blog = $blog;
+                }
+            }
+
+            if (!$single_blog) {
+                Session::flash('error', 'Blog Not Found');
+                return redirect()->back();
+            }
+
+            return view('static pages.blog')->with('blog', $single_blog);
+        }
+
+        $blogs = Blog::orderBy('created_at', 'ASC')->paginate(10);
+        return view('static pages.blog')->with('blogs', $blogs);
     }
 
     static function referAndEarnCoin()

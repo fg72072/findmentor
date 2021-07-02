@@ -62,7 +62,7 @@ Tutor | Find
         @foreach ($data as $item)
         @if (isset($item['subject'][0]))
         <div
-            class="col-12 col-md-12 all level_from_{{$item['subject'][0]->level_from}} level_to_{{$item['subject'][0]->level_to}}  @if($item['info']->online_available == 'yes') online_available @endif @if ($item['info']->help_with == 'yes') home_assignment @endif">
+            class="col-12 col-md-12 all level_from_{{$item['subject'][0]->level_from}} level_to_{{$item['subject'][0]->level_to}}  @if($item['info']->travel_to_student == 'yes') home_available @endif @if($item['info']->online_available == 'yes') online_available @endif @if ($item['info']->help_with == 'yes') home_assignment @endif">
             <div class="h-100 bordered rounded">
                 <div class="course-front">
                     <div class="vertical-item mt-5 ml-5 mr-5">
@@ -131,21 +131,65 @@ Tutor | Find
 <script>
     $(document).ready(function () {
         var search = '';
+        var level = '';
+
         $('.categories li a').click(function(e){
 
             search = $(this).html();
 
-            if(search == 'All'){
-                $('.all').show()
+            $('.all').hide()
+
+            if(search == 'Assignment'){
+                $('.home_assignment').show()
+            }
+            if(level == 'Beginner'){
+                $('.level_to_begginer').show()
+            }
+            if(level == 'Intermediate'){
+                $('.level_to_intermediate').show()
+            }
+            if(level == 'Expert'){
+                $('.level_to_expert').show()
             }
             if(search == 'Home'){
-                $('.all').hide()
                 $('.home_assignment').show()
             }
             if(search == 'Online'){
-                $('.all ').hide()
                 $('.online_available').show()
             }
+            if(search == 'Assignment'){
+                $('.home_assignment').show()
+            }
+            if(search == 'All'){
+                $('.all').show()
+            }
+        });
+
+        $('#Grades').change(function(e){
+
+            level = $(this).val();
+
+            $('.all').hide()
+
+            if(search == 'Home'){
+                $('.home_assignment').show()
+            }
+            if(search == 'Online'){
+                $('.online_available').show()
+            }
+            if(search == 'Assignment'){
+                $('.home_assignment').show()
+            }
+            if(level == 'Beginner'){
+                $('.level_to_begginer').show()
+            }
+            if(level == 'Intermediate'){
+                $('.level_to_intermediate').show()
+            }
+            if(level == 'Expert'){
+                $('.level_to_expert').show()
+            }
+
         });
     });
 

@@ -35,7 +35,7 @@
                 <li class="profile-nav onhover-dropdown p-0 me-0" style="width: 30%">
                     <div class="media profile-media">
                         <img class="b-r-10"
-                            src="../asset/profile/{{Auth::user()->profile ? Auth::user()->profile : 'fall-back.png' }}"
+                            src="../public/asset/profile/{{Auth::user()->profile ? Auth::user()->profile : 'fall-back.png' }}"
                             alt="" style="width: 30%">
                         <div class="media-body"><span> @if(Auth::user()){{ Auth::user()->name }} @endif</span>
                             <p class="mb-0 font-roboto">{{Auth::user()->getRoleNames()[0]}}

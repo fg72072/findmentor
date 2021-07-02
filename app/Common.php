@@ -81,4 +81,10 @@ class Common extends Model
             ->where('users.id', $user_id)
             ->first();
     }
+
+    public static function cleanString($string)
+    {
+        $string = str_replace(' ', '-', $string);
+        return  strtolower(preg_replace('/[^A-Za-z0-9\-]/', '', $string));
+    }
 }

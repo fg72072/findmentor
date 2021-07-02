@@ -64,7 +64,7 @@ Tutor | Admin
                                                 data-feather="edit"></i></a>
                                         <a href="{{route('admin_delete_coins',['id'=>$coin->id])}}"
                                             onclick="return confirm('Are you sure?')"><i style="color: red"
-                                                data-feather="delete"></i></a>
+                                                data-feather="trash-2"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach
