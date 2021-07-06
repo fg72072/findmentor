@@ -43,7 +43,7 @@ Tutor | Home
                     </div>
                     <div class="BottomIconsdiv pt-5">
                         <i class="far fa-envelope dollar pr-3 "></i>
-                        <p class="Location pt-2">View Message</p>
+                        <a href="{{route('job_messages',['id'=> $post->id])}}" class="Location pt-2">View Message</a>
                         <i class="fas fa-times dollar pr-3 pl-5"></i>
                         <a href="{{ route('request.closed',['id'=>$post->id]) }}" class="Location pt-2"
                             @if($post->is_closed == 1)

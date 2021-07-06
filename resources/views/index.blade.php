@@ -151,7 +151,8 @@ Tutor | Home
 
                         We are proud to say that since our opening in ’98 in the best possible way.
                     </p>
-                    <a href="./FindTutor.html">
+
+                    <a href="{{$route}}">
                         <button type="button" class="btn btn-primary btn-lg mt-2">Find Course</button>
                     </a>
                 </div>

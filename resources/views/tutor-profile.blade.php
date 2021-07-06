@@ -12,7 +12,12 @@ Tutor | Home
 @endpush
 
 @section('content')
-
+@php
+$profile_url = asset('asset/profile').'/fall-back.png';
+if($data->profile){
+$profile_url = asset('asset/profile').'/'.$data->profile;
+}
+@endphp
 <div class="container-scroller">
     <div class="container-fluid page-body-wrapper">
         <div class="main-panel">
@@ -23,7 +28,7 @@ Tutor | Home
                             <div class="card-body">
                                 <div class="row" style="margin-bottom: 40px;">
                                     <div class="col-md-12 col-xs-12">
-                                        <img src="../asset/profile/{{$data->profile}}" style="max-width: 50%;">
+                                        <img src="{{$profile_url}}" style="max-width: 50%;">
                                     </div>
                                     <div class="col-md-12 col-xs-12">
                                         <h2 class="display-3 card-title pt-3">{{$data->name}}</h2>

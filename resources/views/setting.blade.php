@@ -13,7 +13,7 @@ Tutor | Setting
     <div class="banner flex">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-12 col-12  settingOuter1">
+                <div class="col-lg-3 col-md-12 col-12  settingOuter1 d-none d-sm-block d-md-none d-lg-block">
                     <div class="profile pt-2 mt-5 icon">
                         <i class="far fa-user"></i>
                         <p style="display: inline;" class="pl-2">Profile</p>
@@ -53,10 +53,18 @@ Tutor | Setting
 
                     <div class="profileSetting pt-2">
                         <h5 style="font-weight: bold; color: #0076cb;">Profile Live</h5>
-                        <p style="display: inline;">If you delete your profile, you will lose all your data
-                            permanently.</p>
-                        <button data-toggle="modal" data-target="#myModal" style="float: right; padding: 0.3rem 1.5rem;"
-                            type="button" class="btn btn-outline-primary btn-sm">Delete Profile</button>
+                        <p style="display: inline;">
+                            If you delete your profile, you will lose all your data permanently.
+                        </p>
+                        <a href="javascript:void(0)" id="deleteFormBtn">
+                            <button style="float: right; padding: 0.3rem 1.5rem;" type="button"
+                                class="btn btn-outline-primary btn-sm">
+                                Delete Profile
+                            </button>
+                        </a>
+                        <form id="accountDeleteForm" action="{{route('delete.account')}}" method="post">
+                            @csrf
+                        </form>
                     </div>
 
 
@@ -96,13 +104,22 @@ Tutor | Setting
                                 class="btn btn-outline-primary btn-sm">Manage Profile</button>
                         </a>
                     </div>
-
+                    @role('student')
                     <div class="profileSetting pt-2">
                         <h5 style="font-weight: bold; color: #0076cb;">Post Visibility</h5>
                         <p style="display: inline;">Select how your posts are made public.</p>
-                        <button style="float: right; padding: 0.3rem 1.5rem;" type="button"
-                            class="btn btn-outline-primary btn-sm">Always Public</button>
+                        <a href="{{route('post.visibility',['visibility'=> $is_verified->post_is_public?0:1])}}">
+                            <button style="float: right; padding: 0.3rem 1.5rem;min-width: 148px;" type="button"
+                                class="btn btn-outline-primary btn-sm">
+                                @if ($is_verified->post_is_public)
+                                Always Public
+                                @else
+                                Only Me
+                                @endif
+                            </button>
+                        </a>
                     </div>
+                    @endrole
                     @role('teacher')
                     <div class="profileSetting pt-2">
                         <h5 style="font-weight: bold; color: #0076cb;">Tutor Account Setting</h5>
@@ -149,3 +166,27 @@ Tutor | Setting
     </div>
 </section>
 @stop
+
+
+
+
+@push('include-js')
+<script>
+    $(document).ready(function () {
+        $('#deleteFormBtn').click(()=>{
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this Account!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete){
+                    $('#accountDeleteForm').submit();
+                }
+            });
+        })
+    })
+</script>
+@endpush

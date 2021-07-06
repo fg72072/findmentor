@@ -79,8 +79,10 @@ Tutor | Home
                                         <div class="row- margin-bottom-30 hidden"></div>
 
 
-                                        <form style="" action="javascript:void(0);" method="post" id="contactUsForm"
-                                            class="sky-form contact-style col-md-12-" novalidate="novalidate">
+                                        <form style="" action="{{route('contactPost')}}" method="post"
+                                            id="contactUsForm" class="sky-form contact-style col-md-12-"
+                                            novalidate="novalidate">
+                                            @csrf
                                             <input type="hidden" name="" value="">
                                             <div id="showMeWhenContactKeyFoundDiv" style="display: none;">
                                                 Name: (<a href="https://www.findmentor.com/contact">not ?</a>)
@@ -121,15 +123,24 @@ Tutor | Home
                                                 </div>
                                                 <div class="suggestedAnswer" id="assignmenthelp" style="display: none;"
                                                     data-showorder="13">
-                                                    <p>Please click <strong><a
-                                                                href="https://www.teacheron.com/post-requirement?type=assignment">here</a></strong>
-                                                        for assignment help.</p>
+                                                    <p>
+                                                        Please click
+                                                        <strong>
+                                                            <a href="">here</a>
+                                                        </strong>
+                                                        for assignment help.
+                                                    </p>
                                                 </div>
                                                 <div class="suggestedAnswer" id="onlinetutoring" style="display:none;">
-                                                    <p>Please <strong><a
-                                                                href="https://www.teacheron.com/post-requirement">Post
-                                                                your requirements</a></strong> so a relevant teacher can
-                                                        contact you.</p>
+                                                    <p>
+                                                        Please
+                                                        <strong>
+                                                            <a href="">
+                                                                Post your requirements
+                                                            </a>
+                                                        </strong>
+                                                        so a relevant teacher can contact you.
+                                                    </p>
                                                 </div>
 
                                                 <div id="iAmTeacher" style="display: none;" data-showorder="39">
@@ -2086,6 +2097,7 @@ Tutor | Home
                                                         data-hide="#stillNeedHelp" style="display: none;">I still need
                                                         help with this</button>
                                                 </div>
+                                                <br>
                                                 <div class="no-padding margin-top-20 otherContact" id="otherContact"
                                                     style="display: none;" data-showorder="44">
 
@@ -2097,7 +2109,7 @@ Tutor | Home
                                                             <label>Name </label>
                                                             <label class="input">
                                                                 <input type="text" maxlength="100" name="name" id="name"
-                                                                    class="form-control" value="">
+                                                                    class="form-control" value="" required>
                                                             </label>
                                                         </section>
                                                     </div>
@@ -2107,15 +2119,14 @@ Tutor | Home
                                                             <label>Email </label>
                                                             <label class="input">
                                                                 <input type="text" name="email" id="email"
-                                                                    class="form-control" value="">
+                                                                    class="form-control" value="" required>
                                                             </label>
                                                         </section>
                                                     </div>
 
                                                     <div class="">
+                                                        <label> Contact No. </label> <br>
                                                         <div class="inline-group inline">
-                                                            <label> Contact No. </label> <br>
-
                                                             <div class="phoneCodeDiv">
                                                                 <span class="state-success">
                                                                     <select id="phoneCode" name="phoneCode"
@@ -2124,152 +2135,28 @@ Tutor | Home
                                                                         class="phone-code-select2 form-control vertical-align-middle select2-hidden-accessible valid"
                                                                         tabindex="-1" aria-hidden="true">
                                                                         <option value=""> </option>
-
-
-
-
                                                                         <option value="93">+93 Afghanistan </option>
-
-
-
-
-
-
                                                                         <option value="358">+358 Åland Islands </option>
-
-
-
-
-
-
                                                                         <option value="355">+355 Albania </option>
-
-
-
-
-
-
                                                                         <option value="213">+213 Algeria </option>
-
-
-
-
-
-
                                                                         <option value="1684">+1684 American Samoa
                                                                         </option>
-
-
-
-
-
-
                                                                         <option value="376">+376 Andorra </option>
-
-
-
-
-
-
                                                                         <option value="244">+244 Angola </option>
-
-
-
-
-
-
                                                                         <option value="1264">+1264 Anguilla </option>
-
-
-
-
-
-
                                                                         <option value="672">+672 Antarctica </option>
-
-
-
-
-
-
                                                                         <option value="1268">+1268 Antigua and Barbuda
                                                                         </option>
-
-
-
-
-
-
                                                                         <option value="54">+54 Argentina </option>
-
-
-
-
-
-
                                                                         <option value="374">+374 Armenia </option>
-
-
-
-
-
-
                                                                         <option value="297">+297 Aruba </option>
-
-
-
-
-
-
                                                                         <option value="61">+61 Australia </option>
-
-
-
-
-
-
                                                                         <option value="43">+43 Austria </option>
-
-
-
-
-
-
                                                                         <option value="994">+994 Azerbaijan </option>
-
-
-
-
-
-
                                                                         <option value="973">+973 Bahrain </option>
-
-
-
-
-
-
                                                                         <option value="880">+880 Bangladesh </option>
-
-
-
-
-
-
                                                                         <option value="1246">+1246 Barbados </option>
-
-
-
-
-
-
                                                                         <option value="375">+375 Belarus </option>
-
-
-
-
-
-
                                                                         <option value="32">+32 Belgium </option>
 
 
@@ -3609,90 +3496,18 @@ Tutor | Home
 
 
                                                                         <option value="992">+992 Tajikistan </option>
-
-
-
-
-
-
                                                                         <option value="255">+255 Tanzania </option>
-
-
-
-
-
-
                                                                         <option value="66">+66 Thailand </option>
-
-
-
-
-
-
                                                                         <option value="1242">+1242 The Bahamas </option>
-
-
-
-
-
-
                                                                         <option value="220">+220 The Gambia </option>
-
-
-
-
-
-
                                                                         <option value="670">+670 Timor-Leste </option>
-
-
-
-
-
-
                                                                         <option value="228">+228 Togo </option>
-
-
-
-
-
-
                                                                         <option value="690">+690 Tokelau </option>
-
-
-
-
-
-
                                                                         <option value="676">+676 Tonga </option>
-
-
-
-
-
-
                                                                         <option value="1868">+1868 Trinidad and Tobago
                                                                         </option>
-
-
-
-
-
-
                                                                         <option value="216">+216 Tunisia </option>
-
-
-
-
-
-
                                                                         <option value="90">+90 Turkey </option>
-
-
-
-
-
-
                                                                         <option value="993">+993 Turkmenistan </option>
                                                                         <option value="1649">+1649 Turks and Caicos
                                                                             Islands </option>
@@ -3721,22 +3536,34 @@ Tutor | Home
                                                                         <option value="260">+260 Zambia </option>
                                                                         <option value="263">+263 Zimbabwe </option>
 
-                                                                    </select><span
+                                                                    </select>
+                                                                    <span
                                                                         class="select2 select2-container select2-container--default"
-                                                                        dir="ltr" style="width: 150px;"><span
-                                                                            class="selection"><span
+                                                                        dir="ltr" style="width: 150px;">
+                                                                        <span class="selection">
+                                                                            <span
                                                                                 class="select2-selection select2-selection--single"
                                                                                 role="combobox" aria-haspopup="true"
                                                                                 aria-expanded="false" tabindex="-1"
-                                                                                aria-labelledby="select2-phoneCode-container"><span
+                                                                                aria-labelledby="select2-phoneCode-container">
+                                                                                <span
                                                                                     class="select2-selection__rendered"
-                                                                                    id="select2-phoneCode-container"><span
-                                                                                        class="select2-selection__placeholder">Code</span></span><span
-                                                                                    class="select2-selection__arrow"
-                                                                                    role="presentation"><b
-                                                                                        role="presentation"></b></span></span></span><span
-                                                                            class="dropdown-wrapper"
-                                                                            aria-hidden="true"></span></span>
+                                                                                    id="select2-phoneCode-container">
+                                                                                    {{-- <span
+                                                                                        class="select2-selection__placeholder">
+                                                                                        Code
+                                                                                    </span> --}}
+                                                                                </span>
+                                                                                <span class="select2-selection__arrow"
+                                                                                    role="presentation">
+                                                                                    <b role="presentation"></b>
+                                                                                </span>
+                                                                            </span>
+                                                                        </span>
+                                                                        <span class="dropdown-wrapper"
+                                                                            aria-hidden="true">
+                                                                        </span>
+                                                                    </span>
                                                                 </span>
                                                             </div>
                                                             <div class="phoneDivAfterPhoneCode">
@@ -3832,15 +3659,20 @@ Tutor | Home
             openChatWindow();
             return false;
         });
-        ContactForm.initContactForm();
-        initSelect2Msg();
-        if(contactKeyFound=='true'){
-            $('#hideMeWhenContactKeyFoundDiv').hide();
-            $('#showMeWhenContactKeyFoundDiv').show();
-        } else {
-            $('#hideMeWhenContactKeyFoundDiv').show();
-            $('#showMeWhenContactKeyFoundDiv').hide();
-        }
+        // ContactForm.initContactForm();
+        // initSelect2Msg();
+        // if(contactKeyFound=='true'){
+        //     $('#hideMeWhenContactKeyFoundDiv').hide();
+        //     $('#showMeWhenContactKeyFoundDiv').show();
+        // } else {
+        //     $('#hideMeWhenContactKeyFoundDiv').show();
+        //     $('#showMeWhenContactKeyFoundDiv').hide();
+        // }
+
+        $('#stillNeedHelp').on('click', function(){
+            $("#otherContact").show();
+            $(".otherContact").show();
+        });
     });
 
 

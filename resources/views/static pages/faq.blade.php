@@ -18,9 +18,9 @@ Tutor | Home
 
 @section('content')
 <div class="container content">
-    <div class="row mb-5">
+    <div class="row mb-5 pl-4 pr-4">
         <!-- Begin Content -->
-        <div class="" style="max-width:700px; margin:0 auto;">
+        <div class="" style="width:700px; margin:0 auto;">
             <h1 class="mt-5 mb-2">Frequently Asked Questions</h1>
             <div class="mt-2 mb-5" style="overflow: auto;">
                 <div class="input-group g-brd-primary--focus">
@@ -392,11 +392,6 @@ Tutor | Home
                     </ol>
                 </div>
             </div>
-
-
-
-
-
         </div>
         <!-- End Content -->
     </div>
@@ -511,6 +506,7 @@ $(".accordion5 .question").each(function (index, element)
    });
 });
 
+
 let questions=$('.qaBlock');
 $('#filter').on('keyup',function() {
     let text = $(this).val();
@@ -519,10 +515,22 @@ $('#filter').on('keyup',function() {
 
     questions.each(function( index ) {
         if($( this ).find('.question').text().includes(text) || $( this ).find('.answer').text().includes(text)){
-            // console.log( $( this ).find('.question').text() );
-            // console.log( $( this ).find('.answer').text() );
             $( this ).show()
         }
+
+        $('.qaCategoryBlock').each(function( index ) {
+
+            let co = $(this).find('.qaBlock').filter(function() {
+                return $(this).css('display') == 'none';
+            }).length;
+
+            if($(this).find('.qaBlock').length == co){
+                $(this).hide()
+            }else{
+               $(this).show()
+            }
+
+        });
     });
 })
 

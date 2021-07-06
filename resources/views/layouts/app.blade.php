@@ -55,6 +55,7 @@
 
         {{-- Toaster Script --}}
         <script src="{{ asset('asset/plugins/Toastr/js/toastr.min.js') }}"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <script>
             @if(Session::has('success'))

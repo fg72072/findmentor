@@ -180,6 +180,11 @@ Route::group(['middleware' => ['role:student|teacher', 'user_account_verificatio
         'as' => 'changeName'
     ])->middleware(['permission:Edit']);
 
+    Route::post('/delete-account', [
+        'uses' => 'SettingController@deleteAccount',
+        'as' => 'delete.account'
+    ])->middleware(['permission:Edit']);
+
     Route::get('/change-email', [
         'uses' => 'SettingController@email',
         'as' => 'email'
@@ -188,6 +193,11 @@ Route::group(['middleware' => ['role:student|teacher', 'user_account_verificatio
         'uses' => 'SettingController@changeEmail',
         'as' => 'changeEmail'
     ])->middleware(['permission:Edit']);
+
+    Route::get('/post-visibility/{visibility}', [
+        'uses' => 'SettingController@postVisibility',
+        'as' => 'post.visibility'
+    ]);
 
     // Settings
     Route::get('/setting', [
@@ -447,6 +457,7 @@ Route::get('/premium-membership-for-tutors', 'StaticPagesController@premiumMembe
 Route::get('/how-it-works-teachers', 'StaticPagesController@howItWorksTeachers')->name('how_it_works_teachers');
 Route::get('/how-to-apply-to-a-job-and-contact-students', 'StaticPagesController@ApplyAndContactStudents')->name('apply_and_contact_students');
 Route::get('/share-stories', 'StaticPagesController@shareStories')->name('share_stories');
+Route::post('/contact/send', 'StaticPagesController@contactPost')->name('contactPost');
 // Route::get('/online-teaching-guide', 'StaticPagesController@feedback')->name('feedback');
 // Route::get('/how-we-rank-teachers-on-teacheron', 'StaticPagesController@feedback')->name('feedback');
 // Route::get('/how-to-get-students-and-teaching-jobs', 'StaticPagesController@feedback')->name('feedback');

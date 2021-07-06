@@ -26,18 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Session::flash('error', 'Failed to create there is some issue');
-        $user_id = session('user_id');
-
-        $check_user_account_verified = NULL;
-
-        if ($user_id) {
-            $check_user_account_verified = User::where('users.id', $user_id)
-                ->leftJoin('user_verifications as uv', 'uv.user_id', '=', 'users.id')
-                ->first();
-        }
-
-        return view('index')->with('is_verified', $check_user_account_verified);
+        return view('index');
     }
 
 

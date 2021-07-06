@@ -9,14 +9,14 @@ Tutor Job
 @endpush
 
 @section('content')
-<section class="ls s-py-60 s-pt-lg-100 s-pb-lg-70">
-    <div class="container content">
-        <div class="tab-content">
-            <div id="home" class="tab-pane fade in active show">
+<section>
+    <div class="container">
+        <div>
+            <div>
                 @php
                 $subjects = explode(",",$item->subject);
                 @endphp
-                <div class="col-12 col-md-12">
+                <div>
                     <div class="h-100 bordered rounded">
                         <div class="course-front">
                             <div class="vertical-item mt-5 ml-5 mr-5">

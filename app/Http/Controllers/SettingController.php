@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Common;
+use App\UserVerification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -47,6 +48,17 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function deleteAccount()
+    {
+        $user_id = Auth::user()->id;
+
+        $user = User::find($user_id);
+        $user->delete();
+
+        Session::flash('success', "Successfully Delete Your Account");
+        return redirect()->route('home');
+    }
+
     public function email()
     {
         return view('change-email');
@@ -67,7 +79,14 @@ class SettingController extends Controller
         return redirect()->back();
     }
 
+    public function postVisibility($visibility)
+    {
+        $user_id = Auth::user()->id;
+        UserVerification::where('user_id', $user_id)->update(['post_is_public' =>  $visibility]);
 
+        Session::flash('success', 'Post Visibility Successfully Changed');
+        return redirect()->back();
+    }
     public function profile()
     {
         return view('profile-picture');

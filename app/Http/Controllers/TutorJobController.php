@@ -26,6 +26,7 @@ class TutorJobController extends Controller
                 'request_tutors.id as request_tutors_id',
                 'request_tutors.student_id as request_tutors_student_id',
             )->where('request_tutors.is_closed', '=', 0)
+            ->where('user_verifications.post_is_public', '=', 1)
             ->orderBy('request_tutors.created_at', 'desc');
 
         if (!empty($request->subject)) {

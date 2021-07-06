@@ -51,64 +51,60 @@ Search Tutor Job
         </ul>
     </div>
 </section>
-<section class="ls s-py-60 s-pt-lg-100 s-pb-lg-70">
-    <div class="container content">
-        <div class="tab-content">
-            <div id="home" class="tab-pane fade in active show">
-                @if (count($data)>0)
-                @foreach ($data as $item)
-                @php
-                $subjects = explode(",",$item->subject);
-                @endphp
-                <div
-                    class="col-12 col-md-12 all @if ( $item->online_class == 'yes') online_available @endif @if ( $item->help_type == 'Assignment Help') home_assignment @endif @if ( $item->class_at_student_place == 'yes' || $item->class_at_tutor_place == 'yes' ) class_at_home @endif {{$item->grade_level}}">
-                    <div class="h-100 bordered rounded">
-                        <div class="course-front">
-                            <div class="vertical-item mt-5 ml-5 mr-5">
-                                <div class="item-content">
-                                    <a href="{{route('show_tutor_job',['id'=>$item->request_tutors_id])}}">
-                                        <h4 class="title">{{$item->subject}} teacher needed in {{$item->location}}</h4>
-                                    </a>
-                                    <a href="javascript:void(0)" class="subject pt-3 contact_student"
-                                        data-id='{{$item->request_tutors_student_id}}'
-                                        data-requirement='{{$item->request_tutors_id}}'
-                                        data-created='{{$item->posted_at}}'>Contact
-                                        {{$item->name}}</a>
-                                    <div class="tagcloud pt-4">
-                                        @foreach ($subjects as $subject)
-                                        <a href="?skills={{$subject}}" class="tag-cloud-link Hum"> {{$subject}} </a>
-                                        @endforeach
-                                    </div>
-                                    <div class="listing_desc pt-5">
-                                        <p>
-                                            {{$item->detail}}
-                                        </p>
-                                    </div>
-                                    <div class="listing_icons pt-5">
-                                        <div class="TextIcon">
-                                            <span class="fa fa-calendar icons" aria-hidden="true"></span>
-                                            <p>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$item->posted_at)->diffForHumans()}}
-                                            </p>
-                                        </div>
-                                        <div class="TextIcon">
-                                            <span class="fa fa-map-marker icons" aria-hidden="true"></span>
-                                            <p>{{$item->location}}</p>
-                                        </div>
-                                        <div class="TextIcon">
-                                            <span class="fa fa-usd icons" aria-hidden="true"></span>
-                                            <p>{{$item->budget}}/Week</p>
-                                        </div>
-                                    </div>
-
+<section class="col-12">
+    <div class="row">
+        @if (count($data)>0)
+        @foreach ($data as $item)
+        @php
+        $subjects = explode(",",$item->subject);
+        @endphp
+        <div
+            class="col-12 col-md-12 all @if ( $item->online_class == 'yes') online_available @endif @if ( $item->help_type == 'Assignment Help') home_assignment @endif @if ( $item->class_at_student_place == 'yes' || $item->class_at_tutor_place == 'yes' ) class_at_home @endif {{$item->grade_level}}">
+            <div class="h-100 bordered rounded">
+                <div class="course-front">
+                    <div class="vertical-item mt-5 ml-5 mr-5">
+                        <div class="item-content">
+                            <a href="{{route('show_tutor_job',['id'=>$item->request_tutors_id])}}">
+                                <h4 class="title">{{$item->subject}} teacher needed in {{$item->location}}</h4>
+                            </a>
+                            <a href="javascript:void(0)" class="subject pt-3 contact_student"
+                                data-id='{{$item->request_tutors_student_id}}'
+                                data-requirement='{{$item->request_tutors_id}}'
+                                data-created='{{$item->posted_at}}'>Contact
+                                {{$item->name}}</a>
+                            <div class="tagcloud pt-4">
+                                @foreach ($subjects as $subject)
+                                <a href="?skills={{$subject}}" class="tag-cloud-link Hum"> {{$subject}} </a>
+                                @endforeach
+                            </div>
+                            <div class="listing_desc pt-5">
+                                <p>
+                                    {{$item->detail}}
+                                </p>
+                            </div>
+                            <div class="listing_icons pt-5">
+                                <div class="TextIcon">
+                                    <span class="fa fa-calendar icons" aria-hidden="true"></span>
+                                    <p>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$item->posted_at)->diffForHumans()}}
+                                    </p>
+                                </div>
+                                <div class="TextIcon">
+                                    <span class="fa fa-map-marker icons" aria-hidden="true"></span>
+                                    <p>{{$item->location}}</p>
+                                </div>
+                                <div class="TextIcon">
+                                    <span class="fa fa-usd icons" aria-hidden="true"></span>
+                                    <p>{{$item->budget}}/Week</p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
-                @endforeach
-                @endif
             </div>
         </div>
+        @endforeach
+        @endif
     </div>
 </section>
 {{-- Coin Deduction Confirmation Modal --}}

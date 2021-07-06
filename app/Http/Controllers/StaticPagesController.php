@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Blog;
 use App\Common;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class StaticPagesController extends Controller
@@ -81,6 +82,24 @@ class StaticPagesController extends Controller
     {
         return view('static pages.contact');
     }
+
+    static function contactPost(Request $request)
+    {
+        $data = [
+            'subject' => 'test',
+            'name' => $request->name,
+            'email' => $request->email,
+            'content' => $request->message
+        ];
+
+        Mail::send('static pages.email-template', $data, function ($message) use ($data) {
+            $message->to($data['email'])
+                ->subject($data['subject']);
+        });
+        Session::flash('success', 'Thanks for contacting me, I will get back to you soon!');
+        return redirect()->back();
+    }
+
 
     static function refundPolicy()
     {
