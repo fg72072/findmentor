@@ -28,11 +28,11 @@ Tutor | Home
 
                         <p>This refund policy applies if you are dealing directly with FindMentor&nbsp;staff. If you are
                             dealing with students and teachers listed on the website, please see the&nbsp;<a
-                                target="_blank" href="/terms-and-conditions">terms and conditions</a>.&nbsp;</p>
+                                target="_blank" href="./terms-and-conditions">terms and conditions</a>.&nbsp;</p>
 
                         <h2>Coin Purchase</h2>
 
-                        <p>No refund is given on purchased&nbsp;<a target="_blank" href="/coins">coins</a>.</p>
+                        <p>No refund is given on purchased&nbsp;<a target="_blank" href="./coins">coins</a>.</p>
 
                         <div><strong>Money deducted but didn't get coins?</strong></div>
 

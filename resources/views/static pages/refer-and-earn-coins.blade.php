@@ -31,12 +31,12 @@ Tutor | Home
 
                         <h2>What is my referral link?</h2>
 
-                        <p>You can <a href="/referAndEarn#referralLink">get your referral link here</a>.</p>
+                        <p>You can <a href="./refer-and-earn">get your referral link here</a>.</p>
 
                         <h2>How many coins do I get for each referral?</h2>
 
                         <p>Coins for a referral vary by country of the person you refer. You can <a
-                                href="/referAndEarn#coinCountryTable">check the complete country-coin&nbsp;list
+                                href="./refer-and-earn">check the complete country-coin&nbsp;list
                                 here</a>.</p>
 
                         <h2>What if someone I refer&nbsp;buys coins?</h2>

@@ -39,7 +39,7 @@ Tutor | Home
                         <h2>How much does it cost me if I contact students?</h2>
 
                         <p>You will find that many students are free to contact. For others, you will need <a
-                                target="_blank" href="/coins">coins</a>.</p>
+                                target="_blank" href="./coins">coins</a>.</p>
 
                         <p>Coins required to contact a lead vary from 0 (Free) to 100s of coins.</p>
 
@@ -96,7 +96,7 @@ Tutor | Home
                                     than three teachers apply within 36 hours.</p>
                             </li>
                             <li>
-                                <p>See other options for <a href="/coins#howToGetCoins">how to get coins</a> besides
+                                <p>See other options for <a href="./coins">how to get coins</a> besides
                                     paying for them.</p>
                             </li>
                         </ol>
@@ -110,9 +110,9 @@ Tutor | Home
                         <p>Teachers deal directly with students or hiring organizations. So you decide the amount and
                             payment mode with your&nbsp;students/clients.&nbsp;</p>
 
-                        <p>You can secure your payment by <a target="_blank" href="/get-paid">getting paid via
+                        <p>You can secure your payment by <a target="_blank" href="./get-paid">getting paid via
                                 FindMentor</a>. If you chose to get paid directly, please read <a target="_blank"
-                                href="/stay-safe">stay safe</a> to secure&nbsp;yourself from bad clients.</p>
+                                href="./stay-safe">stay safe</a> to secure&nbsp;yourself from bad clients.</p>
 
                         <p>&nbsp;</p>
 

@@ -51,7 +51,7 @@ Tutor | Admin
                             </div>
                             <div class="form-group mt-4">
                                 <label><strong>Description</strong></label>
-                                <textarea id="ckeditor" class="ckeditor form-control" name="post"></textarea>
+                                <textarea name="post" cols="30" rows="10" class="form-control" id="editor1"></textarea>
                             </div>
                         </form>
                     </div>
@@ -78,9 +78,9 @@ Tutor | Admin
             $('#blog_form').submit();
         })
 
-    CKEDITOR.replace( 'ckeditor', {
-        // filebrowserUploadUrl: "{{route('admin.blog.store', ['_token' => csrf_token() ])}}",
-        // filebrowserUploadMethod: 'form',
+    CKEDITOR.replace( 'editor1', {
+        filebrowserUploadUrl: "{{url('admin.blog.store', ['_token' => csrf_token() ])}}",
+        filebrowserUploadMethod: 'form',
     });
 
     });

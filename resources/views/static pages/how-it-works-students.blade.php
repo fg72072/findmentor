@@ -26,10 +26,11 @@ Tutor | Home
 
                         <h1 class="no-margin-top ">How it works - Students</h1>
 
-                        <p>Once you&nbsp;<a target="_blank" href="/post-requirement">post your
-                                requirements</a>,&nbsp;relevant teachers will contact&nbsp;you.&nbsp;</p>
+                        <p>Once you&nbsp;post your
+                            requirements,&nbsp;relevant teachers will contact&nbsp;you.&nbsp;</p>
 
-                        <p>You can also <a target="_blank" href="/tutors">search for teachers</a> and contact them on
+                        <p>You can also <a target="_blank" href="./find-tutor">search for teachers</a> and contact them
+                            on
                             your own.</p>
 
                         <h2>How much does it cost me when a teacher contacts me?</h2>
@@ -38,7 +39,7 @@ Tutor | Home
 
                         <h2>How many teachers can I contact?</h2>
 
-                        <p>To get you started, we give you 150&nbsp;<a target="_blank" href="/coins">coins</a>&nbsp;to
+                        <p>To get you started, we give you 150&nbsp;<a target="_blank" href="./coins">coins</a>&nbsp;to
                             contact 3 teachers.</p>
 
                         <p>After that, you can wait for teachers to contact you which is free for you.</p>

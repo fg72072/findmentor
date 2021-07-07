@@ -26,10 +26,14 @@ Tutor | Home
 
                         <h1 class="no-margin-top ">Premium membership benefits (for tutors)</h1>
 
-                        <p><strong>Please use the&nbsp;<a target="_blank" href="/goPremium">Premium membership
+                        <p>
+                            <strong>Please use the&nbsp;<a target="_blank" href="./go-premium">Premium membership
                                     calculator</a>&nbsp;to calculate the required coins and <a target="_blank"
-                                    href="/goPremium">buy </a><a target="_blank" href="/goPremium">premium</a><a
-                                    target="_blank" href="/goPremium"> membership</a>.</strong></p>
+                                    href="./go-premium">buy </a>
+                                <a target="_blank" href="./go-premium">premium</a>
+                                <a target="_blank" href="./go-premium"> membership</a>.
+                            </strong>
+                        </p>
 
                         <h2>What are the benefits of premium membership?</h2>
 
@@ -39,10 +43,12 @@ Tutor | Home
 
                         <ul>
                             <li><strong>Early access to jobs</strong>: Premium members <a target="_blank"
-                                    href="/why-is-there-a-wait-time-to-apply-to-jobs">get a lead of up to 2 hours</a> to
+                                    href="./blog/why-is-there-a-wait-time-to-apply-to-jobs">get a lead of up to 2
+                                    hours</a> to
                                 apply to a post. Premium members with the highest coins get lead of 2 hours. The lead
                                 time decreases according to the coins used for the premium membership. See details about
-                                this <a target="_blank" href="/why-is-there-a-wait-time-to-apply-to-jobs">here</a>.</li>
+                                this <a target="_blank"
+                                    href="./blog/why-is-there-a-wait-time-to-apply-to-jobs">here</a>.</li>
                             <li><strong>Top Placement in the search results</strong>: This leads to more exposure and
                                 hence more student inquiries. About 50% of the jobs go directly to teachers without ever
                                 being public. If you are a premium member, and on top of the list, it increases your
@@ -56,7 +62,8 @@ Tutor | Home
                         <ul>
                             <li>You rank higher in the listings than premium members with fewer coins.</li>
                             <li>You get early access than premium members with fewer coins.&nbsp;See details&nbsp;<a
-                                    target="_blank" href="/why-is-there-a-wait-time-to-apply-to-jobs">here</a>.</li>
+                                    target="_blank" href="./blog/why-is-there-a-wait-time-to-apply-to-jobs">here</a>.
+                            </li>
                         </ul>
 
                         <h2>How much does it cost?</h2>
@@ -68,9 +75,10 @@ Tutor | Home
                             </li>
                             <li>Even if you pay just one coin per month, you will rank above free members.</li>
                             <li>The more coins you use, the higher you will rank among other premium members.</li>
-                            <li>You can <strong><a target="_blank" href="/goPremium">check your
+                            <li>You can <strong><a target="_blank" href="./go-premium">check your
                                         rank</a></strong>&nbsp;and the coins required to come at the top using&nbsp;the
-                                <strong><a target="_blank" href="/goPremium">Premium membership calculator</a>.</strong>
+                                <strong><a target="_blank" href="./go-premium">Premium membership
+                                        calculator</a>.</strong>
                             </li>
                         </ol>
 

@@ -32,7 +32,8 @@ Tutor | Home
                             comments.</p>
 
                         <p>For anything else, like suggestions or feedback, please <a target="_blank"
-                                href="/contact">contact us</a> or <a target="_blank" href="/feedback">give feedback</a>.
+                                href="./contact">contact us</a> or <a target="_blank" href="./feedback">give
+                                feedback</a>.
                         </p>
 
                         <h2>Why give a testimonial?</h2>

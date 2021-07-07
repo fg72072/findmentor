@@ -27,15 +27,15 @@ Tutor | Home
                         <h1 class="no-margin-top ">Coins - FindMentor Currency</h1>
 
                         <p class="alert alert-info">For payments between students and teachers, please read <a
-                                target="_blank" class="underline" href="/pay-teachers">Sending payments</a> and <a
-                                target="_blank" class="underline" href="/get-paid">Getting paid</a>.</p>
+                                target="_blank" class="underline" href="./pay-teachers">Sending payments</a> and <a
+                                target="_blank" class="underline" href="./get-paid">Getting paid</a>.</p>
 
                         <p>Since we have teachers and students from over 130 countries, discussing prices
                             in&nbsp;individual currencies can be confusing. Therefore, we use a common currency,
                             "FindMentor coins" or just "coins" for most&nbsp;transactions. You can get 50 coins for
                             1USD.
                             You can view available discounts&nbsp;and prices for other currencies on the&nbsp;<a
-                                target="_blank" href="/buyCoins">Buy coins page</a>.</p>
+                                target="_blank" href="./buy-coin">Buy coins page</a>.</p>
 
                         <h2>How do teachers use coins?</h2>
 
@@ -43,32 +43,32 @@ Tutor | Home
 
                         <ol>
                             <li>Contact students i.e. apply to jobs</li>
-                            <li>Get&nbsp;<a
-                                    href="https://www.FindMentor.com/premium-membership-for-tutors">Premium</a><a
-                                    href="https://www.FindMentor.com/premium-membership-for-tutors"> membership</a></li>
-                            <li><a target="_blank" href="/showContactSettings">Show contact details</a>&nbsp;to students
+                            <li>Get&nbsp;<a href="./premium-membership-for-tutors">Premium</a><a
+                                    href="./premium-membership-for-tutors"> membership</a></li>
+                            <li>Show contact details&nbsp;to students
                                 directly</li>
                         </ol>
 
-                        <p>Please see the details on <a target="_blank" href="/how-it-works-teachers">How it works for
+                        <p>Please see the details on <a target="_blank" href="./how-it-works-teachers">How it works for
                                 teachers</a>.</p>
 
                         <h2>How do students use coins?</h2>
 
                         <p>Students use coins to contact teachers. Please see the details at&nbsp;<a target="_blank"
-                                href="/how-it-works-students">How it works for students</a>.</p>
+                                href="./how-it-works-students">How it works for students</a>.</p>
 
                         <h2 id="howToGetCoins">How can I get coins?&nbsp;</h2>
 
                         <ul>
                             <li><strong>Refer teachers</strong>:&nbsp;If anybody registers after visiting <a
-                                    target="_blank" href="/referAndEarn">your referral link</a>, you will get coins when
+                                    target="_blank" href="./refer-and-earn">your referral link</a>, you will get coins
+                                when
                                 they join. You will also get coins when they buy coins. <a target="_blank"
-                                    href="/refer-and-earn-coins">See&nbsp;details about referral</a>.</li>
+                                    href="./refer-and-earn-coins">See&nbsp;details about referral</a>.</li>
                             <li><strong>Invite Friends:</strong>&nbsp;We include your referral link and send mails on
-                                your behalf when you <a target="_blank" href="/friendsInvite">invite friends</a>. If any
+                                your behalf when you invite friends. If any
                                 of your invited friends join, you get coins as per our referral plan above.</li>
-                            <li><strong>Buy:</strong>&nbsp;You can&nbsp;<a href="http://www.FindMentor.com/buyCoins">buy
+                            <li><strong>Buy:</strong>&nbsp;You can&nbsp;<a href="buy-coin">buy
                                     coins</a>&nbsp;if you need coins instantly.&nbsp;</li>
                         </ul>
 

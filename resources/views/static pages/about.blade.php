@@ -69,8 +69,8 @@ Tutor | Home
 
                         <h2>How does the website work?</h2>
 
-                        <p>Please see&nbsp;<a target="_blank" href="/how-it-works-teachers">how it works for
-                                teachers</a> and <a target="_blank" href="/how-it-works-students">how it works for
+                        <p>Please see&nbsp;<a target="_blank" href="./how-it-works-teachers">how it works for
+                                teachers</a> and <a target="_blank" href="./how-it-works-students">how it works for
                                 students</a>.</p>
 
                         <h2>Our Story</h2>

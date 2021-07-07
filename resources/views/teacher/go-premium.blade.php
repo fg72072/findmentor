@@ -30,12 +30,12 @@ Tutor | Premium
         <form action="{{route('premium.billing')}}" method="post">
             @csrf
             <div class="input-group mb-3" style="width: 30%;">
-                <input required type="number" name="no_of_premium_coins" class="form-control" aria-label="Default"
-                    aria-describedby="inputGroup-sizing-default">
+                <input required type="number" id="my_coins" name="no_of_premium_coins" class="form-control"
+                    aria-label="Default" aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="top-icons" style="line-height: 50px; text-align: start; padding-right: 1rem;">
                 <button type="button" style="padding-left: 1.5rem; padding-right: 1.5rem;cursor: pointer;color:white;"
-                    class="message mr-2">
+                    class="message mr-2 checkRank">
                     CheckRank
                 </button>
                 <button type="submit" style="padding-left: 1.5rem; padding-right: 1.5rem;cursor: pointer;color:white;"
@@ -43,13 +43,54 @@ Tutor | Premium
                     Buy
                 </button>
                 <button type="button" style="padding-left: 1.5rem; padding-right: 1.5rem; cursor: pointer;color:white;"
-                    class="phone">
+                    class="phone reset_btn">
                     Reset
                 </button>
             </div>
         </form>
-        {{-- <p style="font-size: 1.5rem; color: #e74c3c; padding-top: 2rem;">No Subjects Found</p> --}}
+        <p style="font-size: 1.5rem; color: #16a085; padding-top: 2rem;" class="append_res"></p>
     </div>
 
 </section>
 @stop
+
+
+
+@push('include-js')
+<script src="{{ asset('asset/js/Account.js') }}"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $('.checkRank').click(()=>{
+            var coins_find_rank = $('#my_coins').val();
+            $('.append_res').text('');
+            if(coins_find_rank){
+                $.ajax({
+                    url: "{{route('find.rank')}}",
+                    type: 'GET',
+                    data: { coins_find_rank },
+                    success: function(response) {
+                        console.log(response.myRank)
+                        if(response.myRank>0){
+                            $('.append_res').text('If you Buy '+coins_find_rank+' coins then your rank '+response.myRank)
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error)
+                    }
+                });
+            }
+        })
+
+        $('.reset_btn').click(()=>{
+            $('#my_coins').val('');
+        })
+
+    })
+
+</script>
+
+
+
+@endpush

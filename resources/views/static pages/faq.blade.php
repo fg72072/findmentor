@@ -45,7 +45,8 @@ Tutor | Home
                                     <p>Online teaching is the practice of teaching to an individual or a group online.
                                         It's live-real time-instruction where the teacher and student(s) are in
                                         different locations. When teaching online, you can teach anyone anywhere from
-                                        the comfort of your home. Learn <a href="/online-teaching-guide">how to teach
+                                        the comfort of your home. Learn <a href="./blog/online-teaching-guide">how to
+                                            teach
                                             online</a>.</p>
                                 </div>
                             </div>
@@ -78,7 +79,7 @@ Tutor | Home
 
                                     <p>If you are not sure what to charge, start from the minimum and increase gradually
                                         as you get more experienced. You can also check what others are charging <a
-                                            href="/tutors">here</a>.</p>
+                                            href="./find-tutor">here</a>.</p>
                                     <p>&nbsp;</p>
                                 </div>
                             </div>
@@ -106,7 +107,7 @@ Tutor | Home
 
                                     <p>If you don't type sufficiently fast enough, you can type the lesson and
                                         assessments before the session and just copy-paste during the session. Using a
-                                        <a href="/online-teaching-guide#online-whiteboards">whiteboard</a> with a
+                                        <a href="./blog/online-teaching-guide">whiteboard</a> with a
                                         digital pen also bypasses the need to type fast as you can draw directly on the
                                         screen.&nbsp;&nbsp;</p>
 
@@ -143,7 +144,8 @@ Tutor | Home
                                             </ul>
                                         </li>
                                     </ul>
-                                    <p>For details please check our <a href="/online-teaching-guide">detailed guide on
+                                    <p>For details please check our <a href="./blog/online-teaching-guide">detailed
+                                            guide on
                                             online teaching</a>.</p>
                                 </div>
                             </div>
@@ -157,7 +159,7 @@ Tutor | Home
                                     </p>
 
                                     <p>If however, you are teaching Maths or Physics and you have to draw figures on an
-                                        <a href="/online-teaching-guide#online-whiteboard">online whiteboard</a> to
+                                        <a href="./blog/online-teaching-guide">online whiteboard</a> to
                                         explain, then a&nbsp;digital pen is a must.</p>
                                 </div>
                             </div>
@@ -180,10 +182,10 @@ Tutor | Home
                             <div class="answer margin-bottom-20">
                                 <div>
                                     <p>You can ask to be paid via <a
-                                            href="/blog/get-payments-via-FindMentor">FindMentor's
+                                            href="./blog/get-payments-via-findmentor">FindMentor's
                                             escrow system</a>, directly in the bank, Transferwise, PayPal, Western
-                                        Union, Payoneer. Check <a
-                                            href="/online-teaching-guide#howToReceivePayments">details about these
+                                        Union, Payoneer. Check <a href="./blog/online-teaching-guide">details about
+                                            these
                                             payment options</a>.&nbsp;</p>
                                 </div>
                             </div>
@@ -219,7 +221,7 @@ Tutor | Home
                                     <p>Most teachers reply within 24 hours. In any case, if you haven't received a reply
                                         in 48 hours, we recommend that you contact others.</p>
 
-                                    <p>You can also <a href="/post-requirement">post requirements</a> so interested
+                                    <p>You can also post requirements so interested
                                         teachers can contact you.</p>
                                 </div>
                             </div>
@@ -229,7 +231,7 @@ Tutor | Home
                             <div class="question">How to close requirement?</div>
                             <div class="answer margin-bottom-20">
                                 <div>
-                                    <p>You can close/manage&nbsp;your requirements at <a href="/myJobPosts">My
+                                    <p>You can close/manage&nbsp;your requirements at <a href="./requirement">My
                                             posts</a>.</p>
                                 </div>
                             </div>
@@ -270,9 +272,9 @@ Tutor | Home
                             <div class="question">How to get free coins?</div>
                             <div class="answer margin-bottom-20">
                                 <div>
-                                    <p>If anybody registers after visiting <a href="/referAndEarn">your referral
+                                    <p>If anybody registers after visiting <a href="./refer-and-earn">your referral
                                             link</a>, you will get coins when they join. You will also get coins when
-                                        they buy coins. See <a href="/refer-and-earn-coins">details about referral</a>.
+                                        they buy coins. See <a href="./refer-and-earn-coins">details about referral</a>.
                                     </p>
                                 </div>
                             </div>
@@ -332,10 +334,10 @@ Tutor | Home
                             <div class="answer margin-bottom-20">
                                 <div>
                                     <p>Teachers can manage phone numbers by going to Menu &gt; Edit Profile &gt; <a
-                                            href="/userPhone">Phone</a>.</p>
+                                            href="./setting">Phone</a>.</p>
 
                                     <p>Students can manage phone numbers by going to Menu &gt; Settings &gt;&nbsp;<a
-                                            href="/userPhone">Phone</a>.</p>
+                                            href="./setting">Phone</a>.</p>
                                 </div>
                             </div>
                         </li>
@@ -344,7 +346,7 @@ Tutor | Home
                             <div class="question">How to change my email?</div>
                             <div class="answer margin-bottom-20">
                                 <div>
-                                    <p>You can change your email by going to <a href="/changeMyEmail">Change Email
+                                    <p>You can change your email by going to <a href="./setting">Change Email
                                             page</a>.</p>
                                 </div>
                             </div>
@@ -354,7 +356,7 @@ Tutor | Home
                             <div class="question">How to delete my account?</div>
                             <div class="answer margin-bottom-20">
                                 <div>
-                                    <p>You can delete your account by going to <a href="/profileSettings">profile
+                                    <p>You can delete your account by going to <a href="./setting">profile
                                             settings</a>.</p>
                                 </div>
                             </div>
@@ -380,10 +382,10 @@ Tutor | Home
                             <div class="answer margin-bottom-20">
                                 <div>
                                     <p>You can ask to be paid via <a
-                                            href="/blog/get-payments-via-FindMentor">FindMentor's
+                                            href="./blog/get-payments-via-findmentor">FindMentor's
                                             escrow system</a>, directly in the bank, Transferwise, PayPal, Western
-                                        Union, Payoneer. Check <a
-                                            href="/online-teaching-guide#howToReceivePayments">details about these
+                                        Union, Payoneer. Check <a href="./blog/online-teaching-guide">details about
+                                            these
                                             payment options</a>.&nbsp;</p>
                                 </div>
                             </div>

@@ -70,7 +70,7 @@ Tutor | Home
                         <h2>How much does it cost?</h2>
 
                         <p>It's free for you. However, to cover the taxes, payment gateway fees, and snacks, we
-                            charge&nbsp;15% of the payment from teachers. If you pay them in <a href="/coins"
+                            charge&nbsp;15% of the payment from teachers. If you pay them in <a href="./coins"
                                 onclick="window.open(this.href, '', 'resizable=yes,status=no,location=no,toolbar=no,menubar=no,fullscreen=no,scrollbars=no,dependent=no'); return false;">FindMentor
                                 coins</a>, then we reduce the fee to 10%&nbsp;</p>
 

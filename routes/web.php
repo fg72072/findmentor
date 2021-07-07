@@ -95,11 +95,17 @@ Route::group(['middleware' => ['role:teacher', 'auth', 'verified']], function ()
         'as' => 'description_create'
     ])->middleware(['permission:Create', 'user_account_verification']);
 
-    // Add Tutor Description
+    // Buy Premium Coins
     Route::get('/go-premium', [
         'uses' => 'PremiumCoinController@index',
         'as' => 'go_premium'
     ])->middleware(['permission:Create', 'user_account_verification']);
+
+    // Check Rank To Buy Coin
+    Route::get('/check-rank', [
+        'uses' => 'PremiumCoinController@findRank',
+        'as' => 'find.rank'
+    ]);
 
     // Buy Premium Coins
     Route::post('/premium-billing', [
@@ -458,9 +464,6 @@ Route::get('/how-it-works-teachers', 'StaticPagesController@howItWorksTeachers')
 Route::get('/how-to-apply-to-a-job-and-contact-students', 'StaticPagesController@ApplyAndContactStudents')->name('apply_and_contact_students');
 Route::get('/share-stories', 'StaticPagesController@shareStories')->name('share_stories');
 Route::post('/contact/send', 'StaticPagesController@contactPost')->name('contactPost');
-// Route::get('/online-teaching-guide', 'StaticPagesController@feedback')->name('feedback');
-// Route::get('/how-we-rank-teachers-on-teacheron', 'StaticPagesController@feedback')->name('feedback');
-// Route::get('/how-to-get-students-and-teaching-jobs', 'StaticPagesController@feedback')->name('feedback');
 
 
 Route::fallback(function () {

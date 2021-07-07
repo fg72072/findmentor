@@ -116,13 +116,19 @@ Tutor | Buy Coin
                             onchange="getSelectValue();">
                             <option value="" disabled selected>Select</option>
                             @foreach ($coins as $coin)
-                            <option value="{{$coin->id}}">{{$coin->no_of_coin}}</option>
+                            <option value="{{$coin->id}}" data-save="50" data-coin="{{$coin->no_of_coin}}">
+                                {{$coin->no_of_coin}} (Save 50%)</option>
                             @endforeach
                         </select>
 
-                        <div class="currency  mt-5 flex">
-                            <button type="button" id="Pkr" class="btn btn-outline-primary btn-lg ">Pkr : 500</button>
-                            <button type="button" id="Usd" class="btn btn-primary btn-lg">Usd : 50</button>
+                        <div class="currency  mt-5 mb-0 flex" style="width: 100%;justify-content: space-evenly;">
+                            <p id="Pkr" style="text-decoration:line-through; opacity: .7;font-size: 14px;">2 PKR<br></p>
+                            <p id="Usd" style="text-decoration:line-through; opacity: .7;font-size: 14px;">2 USD<br></p>
+                        </div>
+                        <div class="currency flex">
+                            <button type="button" id="Pkr_save" class="btn btn-outline-primary btn-lg ">Pkr :
+                                500</button>
+                            <button type="button" id="Usd_save" class="btn btn-primary btn-lg">Usd : 50</button>
                         </div>
 
                         <div class="currencyBtn  mt-5 flex">

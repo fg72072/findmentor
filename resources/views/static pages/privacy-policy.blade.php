@@ -45,7 +45,7 @@ Tutor | Home
 
                         <h2>I want to delete my account</h2>
 
-                        <p>Please go to <a target="_blank" href="/profileSettings">profile settings</a> to delete your
+                        <p>Please go to <a target="_blank" href="./setting">profile settings</a> to delete your
                             account.&nbsp;</p>
 
                         <p><strong>If you are a student</strong>, all your posts will be automatically closed and no new
@@ -58,12 +58,12 @@ Tutor | Home
                             see the messages you sent to them and your contact details.</p>
 
                         <p>If you require any more information or have any questions about our privacy policy, please
-                            feel free to&nbsp;<a target="_blank" href="/contact">contact us</a>.&nbsp;</p>
+                            feel free to&nbsp;<a target="_blank" href="./contact">contact us</a>.&nbsp;</p>
 
                         <h2>I want to remove data from Google</h2>
 
-                        <p>Please check our guide on&nbsp;<a
-                                href="https://www.FindMentor.com/blog/how-to-remove-personal-data-from-google">how to
+                        <p>Please check our guide on&nbsp;<a href="./blog/how-to-remove-personal-data-from-google">how
+                                to
                                 remove personal data from Google</a>.</p>
 
                         <h2>Data management from Google login</h2>

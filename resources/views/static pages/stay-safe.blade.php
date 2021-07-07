@@ -36,8 +36,9 @@ Tutor | Home
                         <ol>
                             <li>If you are meeting in person, <strong>meet at a public location</strong> like a
                                 library/mall, etc.</li>
-                            <li><strong><a target="_blank" href="/pay-teachers">Pay</a> and <a target="_blank"
-                                        href="/get-paid">receive payments</a> via FindMentor.com</strong>. If payment is
+                            <li><strong><a target="_blank" href="./pay-teachers">Pay</a> and <a target="_blank"
+                                        href="./get-paid">receive payments</a> via FindMentor.com</strong>. If payment
+                                is
                                 made via us, we secure payment for teachers and ensure services for students.&nbsp;</li>
                             <li>For students:
                                 <ol>
@@ -57,7 +58,7 @@ Tutor | Home
                             </li>
                             <li>Stay away from scammers
                                 <ul>
-                                    <li>Here's a&nbsp;<a target="_blank" href="/scammers">list of known scammers</a>.
+                                    <li>Here's a&nbsp;<a target="_blank" href="#">list of known scammers</a>.
                                         Make sure you aren't interacting with them.</li>
                                 </ul>
                             </li>
@@ -72,7 +73,8 @@ Tutor | Home
                         <p><strong>For Teachers</strong></p>
 
                         <ol>
-                            <li>Ask to <a target="_blank" href="/get-paid">be paid via FindMentor</a>. Most students are
+                            <li>Ask to <a target="_blank" href="./get-paid">be paid via FindMentor</a>. Most students
+                                are
                                 unwilling to pay in advance because they are unsure of the services. However, since we
                                 are protecting their payment (via escrow) from bad tutors, they will pay you as it's
                                 risk-free for them. You will get the funds in 30 days even if the student&nbsp;stops
@@ -89,7 +91,7 @@ Tutor | Home
                         <p><strong>For Students</strong></p>
 
                         <ol>
-                            <li><a target="_blank" href="/pay-teachers">Pay via FindMentor</a>. We hold your funds with
+                            <li><a target="_blank" href="./pay-teachers">Pay via FindMentor</a>. We hold your funds with
                                 us until you are happy with the provided service. We also help you secure a&nbsp;refund
                                 if you are unsatisfied with the tutor.</li>
                             <li>If you chose to pay outside of FindMentor, pay with PayPal. They have a buyer protection
@@ -101,7 +103,7 @@ Tutor | Home
                                 can't raise dispute again once you close a dispute in PayPal.</li>
                             <li>If not paying with FindMentor or PayPal, tread carefully, and pay as little as possible
                                 initially.</li>
-                            <li>Check our&nbsp;<a target="_blank" href="/scammers">list of known scammers</a>.</li>
+                            <li>Check our&nbsp;<a target="_blank" href="#">list of known scammers</a>.</li>
                             <li>Search online for known scammers by just googling "{tutor name}+scam".</li>
                             <li>Most scammers won't use real names in their profiles. However, they give you correct
                                 account details when receiving payment. Make sure to double-check that against known

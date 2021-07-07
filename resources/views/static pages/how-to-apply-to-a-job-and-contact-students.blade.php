@@ -63,10 +63,10 @@ Tutor | Home
 
                         <p>Students can contact you directly and that's free for you.&nbsp;You&nbsp;can increase your
                             chances of getting students by getting <a target="_blank"
-                                href="/premium-membership-for-tutors">the premium</a><a target="_blank"
-                                href="/premium-membership-for-tutors"> membership</a>.</p>
+                                href="./premium-membership-for-tutors">the premium</a><a target="_blank"
+                                href="./premium-membership-for-tutors"> membership</a>.</p>
 
-                        <p>You can also <a target="_blank" href="/tutor-jobs">find tutor jobs</a> directly.</p>
+                        <p>You can also <a target="_blank" href="./tutor-jobs">find tutor jobs</a> directly.</p>
 
                         <p>&nbsp;</p>
 

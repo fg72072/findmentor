@@ -73,9 +73,8 @@ Tutor | Home
                         <ul>
                             <li><strong>Bank account</strong>&nbsp;(15% fee) -&nbsp;We can currently send payments to
                                 bank accounts in Australia, Canada, India, and the USA.</li>
-                            <li><strong>PayPal</strong> (15% fee) - PayPal helps us to send money to <a
-                                    href="https://www.paypal.com/webapps/mpp/country-worldwide" target="_blank">over 200
-                                    countries</a>.&nbsp;When we send you a PayPal payment, we pay the fee so you get the
+                            <li><strong>PayPal</strong> (15% fee) - PayPal helps us to send money to over 200
+                                countries.&nbsp;When we send you a PayPal payment, we pay the fee so you get the
                                 full amount we send. You don't pay the usual 4% fee to PayPal for receiving payments.
                             </li>
                             <li><strong>FindMentor Coins</strong> (10% fee) - For everybody else, you can get paid in
@@ -90,8 +89,8 @@ Tutor | Home
 
                         <h2>How to get payment via FindMentor?</h2>
 
-                        <p>Once logged in as a tutor, you can go to Menu &gt; Wallet &gt;&nbsp;<a
-                                href="/userPayoutSettings" target="_blank">Accounts (Getting paid)</a>&nbsp;and set up
+                        <p>Once logged in as a tutor, you can go to Menu &gt; Wallet &gt;&nbsp;Accounts (Getting
+                            paid)&nbsp;and set up
                             all the ways you would like to be paid.&nbsp;</p>
 
                         <p>Students can go to your profile link and click on the "Pay" button to pay you.</p>

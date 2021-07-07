@@ -34,9 +34,8 @@ Tutor | Home
                             <li>You are responsible for your money and safety when dealing with others. Please do your
                                 diligence. We try our best to do our part.</li>
                             <li>We reserve the right to suspend your account any time without notice. This includes
-                                discrediting your&nbsp;<a target="_blank" href="/coins">coins</a>&nbsp;balance.</li>
-                            <li>We reserve the right to put your name in our <a target="_blank"
-                                    href="/scammers">scammer&nbsp;list</a>.&nbsp;</li>
+                                discrediting your&nbsp;<a target="_blank" href="./coins">coins</a>&nbsp;balance.</li>
+                            <li>We reserve the right to put your name in our scammer&nbsp;list.&nbsp;</li>
                         </ul>
 
                         <h2>For Students</h2>
