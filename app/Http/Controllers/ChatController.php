@@ -106,24 +106,24 @@ class ChatController extends Controller
 
         foreach ($messages as $item) {
             if ($item->user_id != $user_id) {
-                $html .= '<h2 class=" pt-3">' .
+                $html .= '<div class="align_left"><h2 class=" pt-3">' .
                     $item->username . ',
                 <span class="pl-5" style="font-size: 10px;padding-left: 0px !important;">' .
                     Common::changeDate($item->created_at)
                     . '</span>
             </h2>
-            <p class="pt-3">
+            <p class="other">
                 ' . $item->body . '
-            </p>';
+            </p></div>';
             } else {
-                $html .= '<h2 class="pt-3 text-right">
+                $html .= '<div class="align_right"><h2 class="pt-3 text-right">
                 <span class="pl-5" style="font-size: 10px;padding-left: 0px !important;">' .
                     Common::changeDate($item->created_at)
                     . '</span>
             </h2>
-            <p class="pt-3 text-right">
+            <p class="text-right me">
             ' . $item->body . '
-            </p>';
+            </p></div>';
             }
         }
 

@@ -24,8 +24,11 @@ body {
 	letter-spacing: 2px;
 }
 #BorderBott {
-	border: 1px solid gray;
-	border-radius: 3px;
+	/* border: 1px solid gray; */
+	/* border-radius: 3px; */
+}
+#BorderBott:focus-visible {
+	outline: none;
 }
 .InputTab {
 	outline: none;
@@ -84,6 +87,7 @@ body {
 
 .top-icons {
 	/* text-align: center; */
+	cursor: pointer;
 }
 
 .top-icons span {
@@ -101,7 +105,7 @@ body {
 }
 
 .message {
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	background: #16a085;
 	font-size: 15px;
 }
@@ -111,7 +115,7 @@ body {
 }
 
 .pay {
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	background: #16a085;
 	font-size: 15px;
 }
@@ -121,7 +125,7 @@ body {
 }
 
 .phone {
-	border-radius: 5px;
+	/* border-radius: 5px; */
 	background: #16a085;
 
 	font-size: 15px;
@@ -129,4 +133,25 @@ body {
 
 .phone:hover {
 	background: #0a5647;
+}
+#messageBox .other {
+	background-color: #80808080;
+	padding: 10px 15px;
+	border-radius: 20px;
+	max-width: 500px;
+	line-height: 130%;
+}
+#messageBox .me {
+	background-color: #16a08561;
+	padding: 10px 15px;
+	border-radius: 20px;
+	max-width: 500px;
+}
+.align_right {
+	clear: both;
+	float: right;
+}
+.align_left {
+	clear: both;
+	float: left;
 }

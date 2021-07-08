@@ -23,6 +23,8 @@ class CoinController extends Controller
             'id' => $request->coin_id
         ], [
             'no_of_coin' => $request->no_of_coins,
+            'discount' => $request->discount,
+            'price' => $request->price,
         ]);
 
         Session::flash('success', 'Successfully Added');

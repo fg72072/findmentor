@@ -19,11 +19,32 @@ Tutor | Chat
     <div class="FrontPage">
         <div class="banner">
             <div class="container">
+                <div class="row" style="position: absolute;right:6.5%">
+                    <div class="col-lg-12 col-md-12 col-12">
+
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="col-lg-9 col-md-12 col-12">
+                    <div class="col-lg-12 col-md-12 col-12">
                         <div class="frontPageContent">
-                            <h1 class="display-4">
+                            <h1 class="display-4 d-flex">
                                 Messages for
+                                <div class="top-icons" style="line-height: 40px; position: absolute;right: 0;">
+                                    @role('student')
+                                    <span style="padding-left:2.3rem; padding-right: 2.3rem;"
+                                        class="fas fa-user phone"><a
+                                            href="{{route('tutor_profile',['id'=>$message_info->user_id])}}">
+                                            View Profile
+                                        </a>
+                                    </span>
+                                    @endrole
+                                    <span style="padding-left:2.6rem; padding-right: 2.6rem;"
+                                        class="fas fa-suitcase pay">
+                                        <a href="{{route('show_tutor_job',['id'=>$message_info->post_id])}}">
+                                            View Post
+                                        </a>
+                                    </span>
+                                </div>
                             </h1>
                             <p class="pt-3">
                                 {{$message_info->post}}
@@ -32,35 +53,19 @@ Tutor | Chat
                             <div id="messageBox" style="max-height: 450px;overflow: auto;">
 
                             </div>
-                            <div style="position: fixed;bottom: 0;width: 65%;">
-                                <div class="skillbutton">
+                            <div class="d-flex" style="position: fixed;bottom: 20px;width: 86.9%;">
+                                <div class="skillbutton w-100">
                                     <input id="BorderBott" class=" pt-2 pb-2 flex pl-2 msgToSend"
                                         style="width: 100% !important;" placeholder="Type a message here"
                                         name="message" />
                                 </div>
-                                <div class="top-icons" style="line-height: 50px;">
-                                    <span class="fa fa-comment message pl-4 pr-4 sendMsgBtn">Send</span>
+                                <div class="top-icons">
+                                    <span class="fa fa-comment message pl-4 pr-4 sendMsgBtn pb-3 pt-3">Send</span>
                                     {{-- <p style="display: inline; padding-left: 3rem;">
                                         See all messages for this post.
                                     </p> --}}
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-12 col-12">
-                        <div class="top-icons" style="line-height: 50px; padding-top: 6rem;">
-                            @role('student')
-                            <span style="padding-left:2.3rem; padding-right: 2.3rem;" class="fas fa-user phone"><a
-                                    href="{{route('tutor_profile',['id'=>$message_info->user_id])}}">
-                                    View Profile
-                                </a>
-                            </span>
-                            @endrole
-                            <span style="padding-left:2.6rem; padding-right: 2.6rem;" class="fas fa-suitcase pay">
-                                <a href="{{route('show_tutor_job',['id'=>$message_info->post_id])}}">
-                                    View Post
-                                </a>
-                            </span>
                         </div>
                     </div>
                 </div>
@@ -79,9 +84,9 @@ Tutor | Chat
     $(document).ready(function () {
         loadDefault();
 
-        setInterval(() => {
-            loadDefault();
-        }, 2500);
+        // setInterval(() => {
+        //     loadDefault();
+        // }, 2500);
 
 
 
@@ -90,7 +95,6 @@ Tutor | Chat
             if(keycode == '13'){
                 sendMSG()
                 loadDefault();
-
             }
         });
         $('.sendMsgBtn').click(function(event){

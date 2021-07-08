@@ -15,23 +15,20 @@ Search Tutor Job
 <section class="flex ">
     <h1 class="TutorHead pl-5 pr-5 text-center mt-5">ALL Tutor</h1>
     <hr class="w-25 mx-auto">
-    <form action="" method="get">
-        <div class='container flex pt-5'>
-            <input class="mr-5" type="text" id="searchInput" placeholder="Skill.." name="subject"
-                @if(isset($params['subject']) ) value="{{ $params['subject']}}" @endif>
-            <div id='submitsearch' class="mr-5">
-                <span>Search</span>
-            </div>
-            <input type="text" id="searchInput" placeholder="Location.." name='location' @if (isset($params['location'])
-                ) value="{{ $params['location']}}" @endif>
-            <div id='submitsearch'>
-                <span>Search</span>
-            </div>
+    <div class='container flex pt-5'>
+        <input class="mr-5 skill" type="text" id="searchInput" placeholder="Skill.." name="subject"
+            @if(isset($_GET['skills']) ) value="{{ $_GET['skills']}}" @endif>
+        <div id='submitsearch' class="mr-5">
+            <span>Search</span>
         </div>
-        <div style="text-align: center;">
-            <button type="submit" class="btn btn-primary  mt-5 FindBtn">Find Course</button>
+        <input type="text" id="searchInput" placeholder="Location.." name='location' class="location">
+        <div id='submitsearch'>
+            <span>Search</span>
         </div>
-    </form>
+    </div>
+    <div style="text-align: center;">
+        <button type="button" class="btn btn-primary  mt-5 FindBtn">Find Course</button>
+    </div>
 </section>
 <section>
     <div class="container categories">
@@ -43,68 +40,17 @@ Search Tutor Job
             <li>
                 <select name="cars" id="Grades" class="level">
                     <option value="" disabled selected>Level</option>
-                    <option value="Beginner">Beginner</option>
-                    <option value="Intermediate">Intermediate</option>
-                    <option value="Expert">Expert</option>
+                    <option value="begginer">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="expert">Expert</option>
                 </select>
             </li>
         </ul>
     </div>
 </section>
 <section class="col-12">
-    <div class="row">
-        @if (count($data)>0)
-        @foreach ($data as $item)
-        @php
-        $subjects = explode(",",$item->subject);
-        @endphp
-        <div
-            class="col-12 col-md-12 all @if ( $item->online_class == 'yes') online_available @endif @if ( $item->help_type == 'Assignment Help') home_assignment @endif @if ( $item->class_at_student_place == 'yes' || $item->class_at_tutor_place == 'yes' ) class_at_home @endif {{$item->grade_level}}">
-            <div class="h-100 bordered rounded">
-                <div class="course-front">
-                    <div class="vertical-item mt-5 ml-5 mr-5">
-                        <div class="item-content">
-                            <a href="{{route('show_tutor_job',['id'=>$item->request_tutors_id])}}">
-                                <h4 class="title">{{$item->subject}} teacher needed in {{$item->location}}</h4>
-                            </a>
-                            <a href="javascript:void(0)" class="subject pt-3 contact_student"
-                                data-id='{{$item->request_tutors_student_id}}'
-                                data-requirement='{{$item->request_tutors_id}}'
-                                data-created='{{$item->posted_at}}'>Contact
-                                {{$item->name}}</a>
-                            <div class="tagcloud pt-4">
-                                @foreach ($subjects as $subject)
-                                <a href="?skills={{$subject}}" class="tag-cloud-link Hum"> {{$subject}} </a>
-                                @endforeach
-                            </div>
-                            <div class="listing_desc pt-5">
-                                <p>
-                                    {{$item->detail}}
-                                </p>
-                            </div>
-                            <div class="listing_icons pt-5">
-                                <div class="TextIcon">
-                                    <span class="fa fa-calendar icons" aria-hidden="true"></span>
-                                    <p>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$item->posted_at)->diffForHumans()}}
-                                    </p>
-                                </div>
-                                <div class="TextIcon">
-                                    <span class="fa fa-map-marker icons" aria-hidden="true"></span>
-                                    <p>{{$item->location}}</p>
-                                </div>
-                                <div class="TextIcon">
-                                    <span class="fa fa-usd icons" aria-hidden="true"></span>
-                                    <p>{{$item->budget}}/Week</p>
-                                </div>
-                            </div>
+    <div class="row set_requirements">
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
-        @endif
     </div>
 </section>
 {{-- Coin Deduction Confirmation Modal --}}
@@ -171,59 +117,29 @@ Search Tutor Job
 @push('include-js')
 <script>
     $(document).ready(function () {
+
+        renderPosts();
+
         var token = $('meta[name="csrf-token"]').attr('content');
-        var search = '';
-        var request_user_id = '';
-        var requirement_id = '';
-        var created_at = '';
 
         $('.categories li a').click(function(e){
-
             search = $(this).html();
-
-            if(search == 'All'){
-                $('.all').show()
-            }
-            if(search == 'Home'){
-                $('.all').hide()
-                $('.home_assignment').show()
-            }
-            if(search == 'Online'){
-                $('.all ').hide()
-                $('.online_available').show()
-            }
+            renderPosts(search);
         });
 
         $('#Grades').change(function(e){
-
-            var level = $(this).val();
-
-            $('.all').hide()
-
-            if(level == 'Beginner'){
-                $('.begginer').show()
-            }
-            if(level == 'Intermediate'){
-                $('.intermediate').show()
-            }
-            if(level == 'Expert'){
-                $('.expert').show()
-            }
-            if(search == 'Home'){
-                $('.home_assignment').show()
-            }
-            if(search == 'Online'){
-                $('.online_available').show()
-            }
+            renderPosts();
         });
 
+        $('.FindBtn').click(function(e){
+            renderPosts();
+        });
 
-        $('.contact_student').click(function(){
+        $(document).on('click','.contact_student',function(){
 
             request_user_id = $(this).attr('data-id');
             requirement_id = $(this).attr('data-requirement');
             created_at = $(this).attr('data-created');
-
             $.ajax({
                 url: "{{route('contact_teacher_to_student')}}",
                 type: 'POST',
@@ -235,7 +151,6 @@ Search Tutor Job
                     created_at
                 },
                 success: function(response) {
-                    // console.log(response)
 
                     if(response.message == 'go-to-message'  ){
                         window.location.href = "{{route('job_messages')}}";
@@ -284,6 +199,53 @@ Search Tutor Job
 
 
     });
+
+
+    function renderPosts(search='') {
+
+        let location =$('.location').val();
+        let subject =$('.skill').val();
+        let online_tutor =''
+        let home_tutor = ''
+        let assignment_tutor =''
+        let level = $('#Grades').val();
+
+        if(search == 'All'){
+            online_tutor =''
+            home_tutor = ''
+            assignment_tutor =''
+        }
+        if(search == 'Home'){
+            home_tutor = 'yes'
+        }
+        if(search == 'Online'){
+            online_tutor = 'yes'
+        }
+        if(search == 'Assignment'){
+            assignment_tutor = 'Assignment Help'
+        }
+
+        $.ajax({
+            url: "{{route('find.tutor.job')}}",
+            type: 'GET',
+            data: {
+                location,
+                subject,
+                online_tutor,
+                home_tutor,
+                assignment_tutor,
+                level,
+            },
+            success: function(response) {
+                $('.set_requirements').html(response)
+
+                // $('.set_requirements').html(`<div class="text-center" id="noRecordFoundOnSearchDiv" style="">
+	            //         No tutors found for your search. Please <a href="https://www.teacheron.com/post-requirement">Post your requirement</a>  so teachers can contact you directly.
+	            //         <a class="btn btn-primary margin-top-30 btn-u-lg" href="https://www.teacheron.com/post-requirement">Post your Requirement</a>
+	            //     </div>`)
+            },
+        });
+    }
 
 </script>
 @endpush

@@ -46,20 +46,25 @@ Tutor | Admin
                         <table class="table table-xl">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Coins</th>
-                                    <th>Action</th>
+                                    <th class="text-center">#</th>
+                                    <th class="text-center">Coins </th>
+                                    <th class="text-center">Price $</th>
+                                    <th class="text-center">discount %</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @if (count($coins)>0)
                                 @foreach ($coins as $key => $coin)
                                 <tr>
-                                    <th scope="row">{{$key+1}}</th>
-                                    <td>{{$coin->no_of_coin}}</td>
-                                    <td>
+                                    <th class="text-center">{{$key+1}}</th>
+                                    <td class="text-center">{{$coin->no_of_coin}}</td>
+                                    <td class="text-center">{{$coin->price}}</td>
+                                    <td class="text-center">{{$coin->discount?$coin->discount:'-'}}</td>
+                                    <td class="text-center">
                                         <a class="edit" href="javascript:void(0)" data-bs-toggle="modal"
                                             data-bs-target="#add_edit_coins" data-id='{{$coin->id}}'
+                                            data-discount='{{$coin->discount}}' data-price='{{$coin->price}}'
                                             data-coins='{{$coin->no_of_coin}}'><i style="color: green"
                                                 data-feather="edit"></i></a>
                                         <a href="{{route('admin_delete_coins',['id'=>$coin->id])}}"
@@ -92,8 +97,12 @@ Tutor | Admin
                 <div class="modal-body">
                     @csrf
                     <div class="mb-3">
-                        <label class="col-form-label" for="recipient-name">No Of Coins:</label>
-                        <input class="form-control" type="number" value="" name="no_of_coins">
+                        <label class="col-form-label" for="recipient-name">No Of Coins</label>
+                        <input class="form-control mb-3" type="number" value="" name="no_of_coins">
+                        <label class="col-form-label" for="recipient-name">Discount</label>
+                        <input class="form-control" type="number" value="" name="discount" min='0' max="100">
+                        <label class="col-form-label" for="recipient-name">Price</label>
+                        <input class="form-control" type="number" value="" name="price" min='1'>
                         <input type="hidden" name='coin_id' value="">
                     </div>
                 </div>
@@ -120,14 +129,20 @@ Tutor | Admin
         $('.edit').click(function(){
             coin_id = $(this).attr('data-id');
             coins = $(this).attr('data-coins');
+            discount = $(this).attr('data-discount');
+            price = $(this).attr('data-price');
 
             $('input[name=coin_id]').val(coin_id)
             $('input[name=no_of_coins]').val(coins)
+            $('input[name=discount]').val(discount)
+            $('input[name=price]').val(price)
         });
 
         $('.add_more').click(function(){
             $('input[name=coin_id]').val('')
             $('input[name=no_of_coins]').val('')
+            $('input[name=discount]').val('')
+            $('input[name=price]').val('')
         });
 
 

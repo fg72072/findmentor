@@ -92,7 +92,7 @@
                         <i class="fas fa-search navIcons"></i>
                         <a class="nav-links" href="{{ route('student.requirement') }}">Requirements</a>
                     </li>
-                    <a style="background-color: #5cb100;color: white !important;margin-left: 10px;"
+                    <a style="background-color: #007bff;color: white !important;margin-left: 10px;"
                         class="btn nav-links requestBtn" href="{{ route('student.request') }}">Request Tutor</a>
                     @endrole
                     <li class="nav-item dropdown  ml-4">

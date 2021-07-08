@@ -12,11 +12,11 @@ Tutor | Home
 <!-- Home Page Styling -->
 <link rel="stylesheet" href="{{ asset('asset/css/index.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/request.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/pricing.css') }}">
 <!-- Home Page Styling -->
 @endpush
 
 @section('content')
-
 <section>
     <div class="FrontPage">
         <div class="banner">
@@ -155,6 +155,70 @@ Tutor | Home
                     <a href="{{$route}}">
                         <button type="button" class="btn btn-primary btn-lg mt-2">Find Course</button>
                     </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="demo">
+        <div class="container">
+            <div class="servicesHeading mb-5">
+                <p class="services text-center text-capitalize pt-5">Empower Yourself</p>
+                <hr class="w-25 mx-auto">
+                <h1 class="display-4 pl-5 pr-5 text-center IT font-weight-bold">Pricing</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <div class="pricingTable">
+                        <div class="pricingTable-header">
+                            <h3 class="heading mb-3">Standard</h3>
+                            {{-- <span class="subtitle">Lorem ipsum dolor sit amet</span> --}}
+                            <div class="price-value">10
+                                <span class="currency">$</span>
+                                <span class="month">/mo</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-content">
+                            <li>5000 Coins</li>
+                        </ul>
+                        <a href="#" class="read">Buy<i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="pricingTable">
+                        <div class="pricingTable-header">
+                            <h3 class="heading mb-3">Business</h3>
+                            {{-- <span class="subtitle">Lorem ipsum dolor sit amet</span> --}}
+                            <div class="price-value">20
+                                <span class="currency">$</span>
+                                <span class="month">/mo</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-content">
+                            <li>6000 Coins</li>
+                        </ul>
+                        <a href="#" class="read">Buy<i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-6">
+                    <div class="pricingTable">
+                        <div class="pricingTable-header">
+                            <h3 class="heading mb-3">Premium</h3>
+                            {{-- <span class="subtitle">Lorem ipsum dolor sit amet</span> --}}
+                            <div class="price-value">30
+                                <span class="currency">$</span>
+                                <span class="month">/mo</span>
+                            </div>
+                        </div>
+                        <ul class="pricing-content">
+                            <li>7000 Coins</li>
+                        </ul>
+                        <a href="#" class="read">Buy<i class="fa fa-angle-right"></i></a>
+                    </div>
                 </div>
             </div>
         </div>

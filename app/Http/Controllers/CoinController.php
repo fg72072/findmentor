@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Coin;
 use App\Common;
 use App\Wallet;
 use App\Payment;
 use App\WalletLog;
-use App\BillingInfo;
 use App\Membership;
+use App\BillingInfo;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,7 @@ class CoinController extends Controller
     {
         $user_id = session('user_id');
 
-        $coins = DB::table('coins')->get();
+        $coins = Coin::get();
         $wallet_log = WalletLog::leftjoin('coin_used as cu', 'cu.id', '=', 'wallet_log.coin_used_id')
             ->leftjoin('coin_used_items as cui', 'cui.coin_used_id', '=', 'cu.id')
             ->leftjoin('users', 'cu.used_against_id', '=', 'users.id')
@@ -67,8 +68,17 @@ class CoinController extends Controller
         $description = 'Buy Premium Coins';
 
         if ($coin_id > 0) {
-            $coins = DB::table('coins')->find($coin_id)->no_of_coin;
+            $coins = Coin::find($coin_id);
+
+            if (!$coins) {
+                return redirect()->back();
+            }
+
+            $discount = $coins->discount ? $coins->discount : 0;
+            $price = $coins->price;
+            $coins = $coins->no_of_coin;
             $description = 'Buy New Coins';
+            $total_price_after_discount = $price - ($price * $discount / 100);
         }
 
         $payment_id = Payment::create([
@@ -80,7 +90,7 @@ class CoinController extends Controller
             'payment_id' => $payment_id,
             'txn_id' => '10254831842313',
             'description' =>  $description,
-            'amount' => 100,
+            'amount' => $total_price_after_discount,
         ]);
 
         BillingInfo::create([

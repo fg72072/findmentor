@@ -3,14 +3,15 @@
 // var selectedValue=10
 function getSelectValue() {
 	//  var selectedValue = document.getElementById("Coins").value;
-	var selectedValue = $('#Coins option:selected').data('coin');
+	var selectedValue = $('#Coins option:selected').data('price');
 	var selectedValueSave = $('#Coins option:selected').data('save') / 100;
+	var selectedValueSave = selectedValueSave * selectedValue;
 
 	document.getElementById('Pkr').innerHTML = `Pkr : ${selectedValue}`;
 	document.getElementById('Usd').innerHTML = `Usd : ${selectedValue / 10}`;
 
-	document.getElementById('Pkr_save').innerHTML = `Pkr : ${selectedValue * selectedValueSave}`;
-	document.getElementById('Usd_save').innerHTML = `Usd : ${selectedValue / 10 * selectedValueSave}`;
+	document.getElementById('Pkr_save').innerHTML = `Pkr : ${selectedValue - selectedValueSave}`;
+	document.getElementById('Usd_save').innerHTML = `Usd : ${selectedValue / 10 - selectedValueSave / 10}`;
 }
 
 var state = false;

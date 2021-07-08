@@ -46,8 +46,12 @@ Route::get('/refer/{reference_id}', [
 
 // Find Tutor Job
 Route::get('/tutor-jobs', [
-    'uses' => 'TutorJobController@find',
+    'uses' => 'TutorJobController@index',
     'as' => 'tutor_job'
+]);
+Route::get('/tutor-jobs/find', [
+    'uses' => 'TutorJobController@find',
+    'as' => 'find.tutor.job'
 ]);
 Route::get('/tutor-job/{id}', [
     'uses' => 'TutorJobController@show',
@@ -56,8 +60,12 @@ Route::get('/tutor-job/{id}', [
 
 // Find Tutor
 Route::get('/find-tutor', [
-    'uses' => 'FindTutorController@search',
+    'uses' => 'FindTutorController@index',
     'as' => 'findtutor'
+]);
+Route::get('/find-tutor/list', [
+    'uses' => 'FindTutorController@find',
+    'as' => 'findtutorlist'
 ]);
 
 // Tutor Profile
