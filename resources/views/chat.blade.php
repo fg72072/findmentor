@@ -29,7 +29,8 @@ Tutor | Chat
                         <div class="frontPageContent">
                             <h1 class="display-4 d-flex">
                                 Messages for
-                                <div class="top-icons" style="line-height: 40px; position: absolute;right: 0;">
+                                <div class="top-icons actionBtnBox"
+                                    style="line-height: 40px; position: absolute;right: 0;">
                                     @role('student')
                                     <span style="padding-left:2.3rem; padding-right: 2.3rem;"
                                         class="fas fa-user phone"><a
@@ -46,14 +47,14 @@ Tutor | Chat
                                     </span>
                                 </div>
                             </h1>
-                            <p class="pt-3">
+                            <p class="pt-3 requirement_box">
                                 {{$message_info->post}}
                             </p>
                             <hr class=" line w-25 mx-1">
-                            <div id="messageBox" style="max-height: 450px;overflow: auto;">
+                            <div id="messageBox">
 
                             </div>
-                            <div class="d-flex" style="position: fixed;bottom: 20px;width: 86.9%;">
+                            <div class="d-flex messageInputBox">
                                 <div class="skillbutton w-100">
                                     <input id="BorderBott" class=" pt-2 pb-2 flex pl-2 msgToSend"
                                         style="width: 100% !important;" placeholder="Type a message here"
@@ -84,9 +85,9 @@ Tutor | Chat
     $(document).ready(function () {
         loadDefault();
 
-        // setInterval(() => {
-        //     loadDefault();
-        // }, 2500);
+        setInterval(() => {
+            loadDefault();
+        }, 2500);
 
 
 

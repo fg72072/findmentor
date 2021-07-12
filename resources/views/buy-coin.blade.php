@@ -58,7 +58,7 @@ Tutor | Buy Coin
                         <p>{{date('M d, Y', strtotime($log->created_at))}}</p>
                     </div>
                     <div class="cont-desdes cont flex">
-                        <p>Coins used against {{$log->name}} requirement <a
+                        <p>{{$log->description}} {{$log->name}} requirement <a
                                 href="{{route('show_tutor_job',['id'=>$log->requirement_id])}}"> I Need
                                 {{$log->subject}} teacher in
                                 {{$log->location}}</a> </p>

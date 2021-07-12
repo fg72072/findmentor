@@ -39,7 +39,7 @@ class StaticPagesController extends Controller
             return view('static pages.blog')->with('blog', $single_blog);
         }
 
-        $blogs = Blog::orderBy('created_at', 'ASC')->paginate(10);
+        $blogs = Blog::orderBy('created_at', 'ASC')->paginate(5);
         return view('static pages.blog')->with('blogs', $blogs);
     }
 

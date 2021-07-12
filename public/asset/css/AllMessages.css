@@ -16,7 +16,7 @@ body {
 }
 .frontPageContent {
 	position: relative;
-	top: 20%;
+	top: 10%;
 	color: #fff;
 }
 .frontPageContent > h1 {
@@ -154,4 +154,60 @@ body {
 .align_left {
 	clear: both;
 	float: left;
+}
+
+#messageBox {
+	max-height: calc(100vh - 370px);
+	overflow: auto;
+}
+.requirement_box {
+	font-weight: normal;
+}
+.messageInputBox {
+	/* position: relative;
+	bottom: 20px; */
+	/* width: calc(100vw - 75px); */
+	position: absolute;
+	width: 100%;
+	top: 90vh;
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+	#messageBox {
+		height: calc(100vh - 370px);
+	}
+}
+@media (min-width: 320px) and (max-width: 425px) {
+	#messageBox {
+		max-height: calc(100vh - 290px);
+	}
+	.requirement_box {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+	.frontPageContent h1 {
+		font-size: 2.5rem;
+	}
+	.frontPageContent .actionBtnBox {
+		display: none;
+	}
+	.messageInputBox {
+		/* width: calc(100vw - 30px) !important; */
+	}
+}
+@media (min-width: 1025px) and (max-width: 1440px) {
+	.messageInputBox {
+		top: 82vh;
+		/* width: calc(100vw - 327px) !important; */
+		/* width: calc(100vw - 167px) !important; */
+	}
+}
+
+@media screen and (min-width: 1441px) {
+	.messageInputBox {
+		/* width: calc(100vw - 1450px) !important; */
+	}
 }

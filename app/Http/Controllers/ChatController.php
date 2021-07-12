@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CoinUsed;
 use App\Common;
 use Illuminate\Http\Request;
 use App\Thread;
@@ -17,7 +18,6 @@ class ChatController extends Controller
 {
     public function jobChatList(Request $request)
     {
-        // dd($request->all());
         $user_id = session('user_id');
 
         $thread_ids = Participant::where('user_id', $user_id)->get()->pluck('thread_id')->toArray();
@@ -139,6 +139,8 @@ class ChatController extends Controller
 
         $message_id = $this->createMessage($mThread, $message);
 
+        $this->coinUtilized($other_user_id, $mThread);
+
         $this->createNotification($message_id, $other_user_id);
     }
 
@@ -207,5 +209,24 @@ class ChatController extends Controller
             ->where('participants.thread_id', $mThread)
             ->where('message_notifications.notify_user_id', $user_id)
             ->update(['is_seen' =>  1]);
+    }
+
+    public function coinUtilized($other_user_id, $mThread)
+    {
+        $user_id = session('user_id');
+
+        $messages_user_1 = Message::where('thread_id', $mThread)->where('user_id', $user_id)->get()->count();
+        $messages_user_2 = Message::where('thread_id', $mThread)->where('user_id', $other_user_id)->get()->count();
+        $participants = Participant::where('thread_id', $mThread)->get()->pluck('user_id')->toArray();
+
+        if ($messages_user_1 > 0 && $messages_user_2 > 0) {
+            CoinUsed::join('coin_used_items as cui', 'cui.coin_used_id', '=', 'coin_used.id')
+                ->where('user_id', $participants[0])
+                ->where('used_against_id', $participants[1])
+                ->where('thread_id', $mThread)
+                ->update([
+                    'coin_utilize_status' => 1
+                ]);
+        }
     }
 }

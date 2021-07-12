@@ -62,7 +62,8 @@ class UserHireController extends Controller
         $user_role = Auth::user()->roles->pluck('name')[0];
         $requirement_created_at = $request->created_at;
 
-        $user_coins = Wallet::where('user_id', $user_id)->first()->coins;
+        $user_coins = Wallet::where('user_id', $user_id)->first();
+        $user_coins = $user_coins ? $user_coins->coins : 0;
 
         $check_coin_used_against_user = CoinUsed::where('user_id', $user_id)
             ->join('coin_used_items as cui', 'cui.coin_used_id', '=', 'coin_used.id')
@@ -141,8 +142,8 @@ class UserHireController extends Controller
             ])->id;
         }
 
-        $this->coinUsedAgainst(50, $requirement_id, $other_user_id);
         $thread_id = $this->createThread($requirement_id, $other_user_id);
+        $this->coinUsedAgainst(50, $requirement_id, $other_user_id, $thread_id);
 
         return redirect('view-messages?mThread=' . $thread_id);
     }
@@ -152,8 +153,8 @@ class UserHireController extends Controller
         $other_user_id =  $request->other_user_id;
         $requirement_id = $request->requirement_id;
 
-        $this->coinUsedAgainst(50, $requirement_id, $other_user_id);
         $thread_id = $this->createThread($requirement_id, $other_user_id);
+        $this->coinUsedAgainst(50, $requirement_id, $other_user_id, $thread_id);
 
         $res = [
             'mThread' => $thread_id
@@ -191,6 +192,7 @@ class UserHireController extends Controller
         $getTimeforEachMemberToAccess = $premiunMembers->count() > 0 ? $timeForPremiumMember / $premiunMembers->count() : 0;
 
         $timeForAuthUserToAccessStudent = 0;
+        $PrviousRankTime = 0;
         foreach ($premiunMembers as $rank => $member) {
             if ($member->member_id == $user_id) {
                 $PrviousRankTime = -$getTimeforEachMemberToAccess * ($rank - 2);
@@ -208,7 +210,7 @@ class UserHireController extends Controller
         }
     }
 
-    public function coinUsedAgainst($no_of_coins_use, $requirement_id, $other_user_id)
+    public function coinUsedAgainst($no_of_coins_use, $requirement_id, $other_user_id, $thread_id)
     {
         $user_id = session('user_id');
         $subjects = RequestTutor::find($requirement_id)->first()->subject;
@@ -216,7 +218,7 @@ class UserHireController extends Controller
         $coin_used_id = CoinUsed::Create([
             'user_id' => $user_id,
             'used_against_id' => $other_user_id,
-
+            'thread_id' => $thread_id,
         ])->id;
 
         CoinUsedItem::Create([
