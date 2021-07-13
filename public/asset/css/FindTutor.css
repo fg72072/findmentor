@@ -6,6 +6,15 @@
 html {
 	font-size: 62.5%;
 }
+.active {
+	color: black !important;
+}
+.nav-tabs a {
+	text-decoration: none;
+}
+.nav-tabs a:hover {
+	color: black !important;
+}
 
 .Account {
 	/* padding-top: 1rem; */
@@ -88,8 +97,15 @@ input:focus {
 }
 
 /* navbar code */
-.content {
+.content .col-md-12 {
 	background: #fafafa;
+	margin-bottom: 20px !important;
+	box-shadow: 0 1em 1em -1em rgba(0, 0, 0, .25);
+	padding-bottom: 20px;
+	cursor: pointer;
+}
+.content .col-md-12:hover {
+	background: #dcdada;
 }
 .categories {
 	height: 20vh;
@@ -115,7 +131,7 @@ input:focus {
 	/* font-size:2rem; */
 }
 .level {
-	width: 60%;
+	/* width: 60%; */
 }
 .content {
 	/* height: 70vh; */
@@ -137,22 +153,23 @@ input:focus {
 	text-decoration: none !important;
 }
 .Maths {
-	padding: 0rem 2rem;
+	padding: .5rem 1rem 0.5rem 1rem;
 	border: 1px solid gray;
-	border-radius: 50px;
+	/* border-radius: 50px; */
 	font-size: 1.7rem !important;
-
+	text-transform: capitalize;
 	outline: none;
 	text-align: center;
 }
 .Hum {
-	padding: 0rem 2rem;
+	padding: .5rem 1rem;
 	border: 1px solid gray;
-	border-radius: 50px;
+	/* border-radius: 50px; */
 	font-size: 1.7rem !important;
 	/* margin-left: 1rem; */
 	outline: none;
 	text-align: center;
+	text-transform: capitalize;
 }
 .tag-cloud-link:hover {
 	background: gray;
@@ -166,6 +183,7 @@ input:focus {
 	font-size: 1.7rem;
 	font-family: 'Montserrat', sans-serif;
 	display: flex;
+	clear: both;
 }
 .icons:hover {
 	color: #007bff;
@@ -187,6 +205,7 @@ input:focus {
 	font-weight: 700;
 	font-family: 'Montserrat', sans-serif;
 	letter-spacing: 2px;
+	text-transform: capitalize;
 }
 
 @media screen and (max-width: 375px) {
@@ -200,4 +219,31 @@ input:focus {
 		margin-left: 10px !important;
 		margin-right: 10px !important;
 	}
+}
+
+.profile-img img {
+	width: 110px;
+	height: 110px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	float: left;
+	border-radius: 3px;
+	/* box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%); */
+}
+.profile-img img {
+	max-width: 110px;
+	max-height: 110px;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	float: left;
+	width: auto;
+	height: auto;
+	border-radius: 3px;
+}
+img {
+	vertical-align: middle;
+}
+.profile-description,
+.job-description {
+	word-wrap: break-word;
 }

@@ -10,7 +10,7 @@ Tutor Job
 
 @section('content')
 <section>
-    <div class="container">
+    <div class="container" style="height: 100vh">
         <div>
             <div>
                 @php

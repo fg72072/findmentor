@@ -33,7 +33,7 @@ Search Tutor Job
 <section>
     <div class="container categories">
         <ul class="nav nav-tabs">
-            <li><a href="javascript:void(0)">All</a></li>
+            <li><a href="javascript:void(0)" class="active">All</a></li>
             <li><a href="javascript:void(0)">Online</a></li>
             <li><a href="javascript:void(0)">Home</a></li>
             <li><a href="javascript:void(0)">Assignment</a></li>
@@ -49,7 +49,7 @@ Search Tutor Job
     </div>
 </section>
 <section class="col-12">
-    <div class="row set_requirements">
+    <div class="content row set_requirements container m-auto">
 
     </div>
 </section>
@@ -125,6 +125,9 @@ Search Tutor Job
         $('.categories li a').click(function(e){
             search = $(this).html();
             renderPosts(search);
+
+            $('.categories li a').removeClass('active')
+            $(this).addClass('active')
         });
 
         $('#Grades').change(function(e){

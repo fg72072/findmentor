@@ -68,6 +68,10 @@ class FindTutorController extends Controller
         if (count($data) > 0) {
             foreach ($data as $item) {
                 if (isset($item['subject'][0])) {
+                    $profile_url = asset('asset/profile') . '/fall-back.png';
+                    if ($item->profile) {
+                        $profile_url = asset('asset/profile') . '/' . $item->profile;
+                    }
                     $html .= '<div class="col-12 col-md-12">
         <div class="h-100 bordered rounded">
             <div class="course-front">
@@ -83,7 +87,8 @@ class FindTutorController extends Controller
                     }
                     $html .= '</div>
                         <div class="listing_desc pt-5">
-                            <p>' . $item['info']->description . '</p>
+                            <div class="profile-img "><img class="lozad-custom-profile-img" data-src="" alt="' . $item->name . ' image" loading="lazy" src="' . $profile_url . '"></div>
+                            <p class="profile-description" itemprop="description">' . $item['info']->description . '</p>
                         </div>
                         <div class="listing_icons pt-5">
                             <div class="TextIcon" data-toggle="tooltip" data-placement="top"

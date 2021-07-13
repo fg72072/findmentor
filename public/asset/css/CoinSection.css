@@ -1,217 +1,210 @@
-*{
-    margin: 0;
-    padding: 0;
-    border: 0;
-  font-family: 'Montserrat', sans-serif;
-
-
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: 'Montserrat', sans-serif;
 }
-html{
-    font-size: 62.5%;
+html {
+	font-size: 62.5%;
 }
-.flex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* .all_content p {
+	font-size: 20px;
+	font-weight: 400;
+	color: #808080;
+}
+.all_content h1 {
+	font-size: 2rem;
+}
+.contentHeading p {
+	font-size: 25px;
+	font-weight: 400;
+	color: #007bff;
+}
+.all_content button {
+	font-size: 15px !important;
+} */
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-                                                    /* //modal */
+/* //modal */
 .close {
-float: right;
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1;
-  color: #000;
-  text-shadow: 0 1px 0 #fff;
-                                 
-  opacity: .5;
-}
-.back{
-    padding-top: 5px;
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: .5;
+	float: right;
+	font-size: 3rem;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
 
+	opacity: .5;
 }
-.back:hover{
-    cursor: pointer;
-    opacity: .6;
-
+.back {
+	padding-top: 5px;
+	font-size: 2rem;
+	font-weight: 700;
+	line-height: 1;
+	color: #000;
+	text-shadow: 0 1px 0 #fff;
+	opacity: .5;
+}
+.back:hover {
+	cursor: pointer;
+	opacity: .6;
 }
 .modal-content {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    width: 100%;
-    pointer-events: auto;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid rgba(0,0,0,.2);
-    border-radius: 10px;
-    outline: 0;
+	position: relative;
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	width: 100%;
+	pointer-events: auto;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 10px;
+	outline: 0;
 }
 
-.modal-body{
-    height: 350px;
-    flex-flow: column;
-    border-radius: 50%;
-
- }
- .modal-body>h1{
-    color: #293246;
-    letter-spacing: 1px;
-    font-weight: bold;
-     
- }
- .level{
-     font-size: 0.7rem;
-     color: #293246;
-    border-radius: 10px;
-    width: 80%;
-    height: 12%;
-     font-weight: 800;
-     text-align: center;
-     padding: 0rem 1rem;
-
-     background: #F5F5F5;
- }
- .sel{
-
-
- }
- .selLev{
-     /* display: inline; */
-    width: 30%;
-    /* float: right; */
-
- }
- 
-
- .btn-group-lg>.btn, .btn-lg {
-    font-family: 'Montserrat', sans-serif !important;
-    font-size: 1.6rem !important;
-    letter-spacing: 1px;
-     
-     margin: 0 1rem;
-    padding: 1.2rem 3rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: .3rem;
+.modal-body {
+	height: 350px;
+	flex-flow: column;
+	border-radius: 50%;
 }
-.get{
-    width: 300px;
+.modal-body > h1 {
+	color: #293246;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+.level {
+	font-size: 0.7rem;
+	color: #293246;
+	border-radius: 10px;
+	width: 80%;
+	height: 12%;
+	font-weight: 800;
+	text-align: center;
+	padding: 0rem 1rem;
+
+	background: #f5f5f5;
+}
+.sel {
+}
+.selLev {
+	/* display: inline; */
+	width: 30%;
+	/* float: right; */
 }
 
- .modalIcons>a>i{
-     font-size: 3rem;
-   
-     color: #293246;
- }
- .modalIcons>i:hover{
-    cursor: pointer;
-  
-    opacity: 0.9;
+.btn-group-lg > .btn,
+.btn-lg {
+	font-family: 'Montserrat', sans-serif !important;
+	font-size: 1.6rem !important;
+	letter-spacing: 1px;
+
+	margin: 0 1rem;
+	padding: 1.2rem 3rem;
+	font-size: 1.25rem;
+	line-height: 1.5;
+	border-radius: .3rem;
 }
-.CoinSubHead{
-    font-size: 2rem;
-}
-.CoinHead{
-    color: #293246;
-    letter-spacing: 3px;
-    font-weight: 700;
-
-}
-.FindBtn{
-    font-size: 1.5rem !important;
-   padding: 1rem 3rem !important;
-   border-radius: 100px !important;
-  }
-  #searchInput {
-    width: 28%;
-
-    border: 1px solid #000;
-    border-radius: 30px;
-    font-size: 16px;
-    background-color: white;
-    background:url('https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png');
-
-    background-position: 10px 7px;
-    background-repeat: no-repeat;
-    padding: 8px 20px 8px 40px;
-    
-    outline: none;
-    opacity: 0.9;
-
-  }
-.Rec{
-    display: inline;
-    font-size: 2rem;
-    /* padding-left: 400px; */
-    /* float: right; */
-
-}
-.level{
-    font-size: 2rem;
-
-
-}
-.columns-head{
-    background: #ffff;
-    display: grid;
-    grid-template-columns: 30fr 55fr 15fr;
-    grid-template-areas: "date description coins";
-    align-items: flex-end;
-    
-
+.get {
+	width: 300px;
 }
 
-.contentHeading{
-    /* border: solid 1px black; */
-    font-size: 2.5rem;
-    color:rgb(0, 123, 255);
-    font-family: var(--parafont);
+.modalIcons > a > i {
+	font-size: 3rem;
 
+	color: #293246;
 }
-.columns-content{
-    /* background: sienna; */
-    height: 160px;
-    /* overflow-y: scroll; */
-   
+.modalIcons > i:hover {
+	cursor: pointer;
 
+	opacity: 0.9;
 }
-.outercontent{
-    background: #ffff;
-    display: grid;
-    grid-template-columns: 30fr 55fr 15fr;
-    grid-template-areas: "date description coins";
-    padding: 2rem 0rem;
-    border-bottom: 1px solid gray;
+.CoinSubHead {
+	font-size: 2rem;
 }
-.cont{
-    font-size: 2rem;
-    color:gray;
-    font-family: var(--parafont);
-    
+.CoinHead {
+	color: #293246;
+	letter-spacing: 3px;
+	font-weight: 700;
+}
+.FindBtn {
+	font-size: 1.5rem !important;
+	padding: 1rem 3rem !important;
+	border-radius: 100px !important;
+}
+#searchInput {
+	width: 28%;
 
-}
-.contIcon{
-    text-align: end;
-}
-.cont-icons{
-    /* padding-left: 3rem; */
-}
-.cont-icons>i{
-    padding: 0rem 1rem;
-    color: #293246;
+	border: 1px solid #000;
+	border-radius: 30px;
+	font-size: 16px;
+	background-color: white;
+	background: url('https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/search-24.png');
 
+	background-position: 10px 7px;
+	background-repeat: no-repeat;
+	padding: 8px 20px 8px 40px;
+
+	outline: none;
+	opacity: 0.9;
 }
-.cont-icons>i:hover{
-    cursor: pointer;
-    color: rgb(0, 123, 255);
+.Rec {
+	display: inline;
+	font-size: 2rem;
+	/* padding-left: 400px; */
+	/* float: right; */
+}
+.level {
+	font-size: 2rem;
+}
+.columns-head {
+	background: #ffff;
+	display: grid;
+	grid-template-columns: 30fr 55fr 15fr;
+	grid-template-areas: "date description coins";
+	align-items: flex-end;
 }
 
+.contentHeading {
+	/* border: solid 1px black; */
+	font-size: 2.5rem;
+	color: rgb(0, 123, 255);
+	font-family: var(--parafont);
+}
+.columns-content {
+	/* background: sienna; */
+	height: 160px;
+	/* overflow-y: scroll; */
+}
+.outercontent {
+	background: #ffff;
+	display: grid;
+	grid-template-columns: 30fr 55fr 15fr;
+	grid-template-areas: "date description coins";
+	padding: 2rem 0rem;
+	border-bottom: 1px solid gray;
+}
+.cont {
+	font-size: 2rem;
+	color: gray;
+	font-family: var(--parafont);
+}
+.contIcon {
+	text-align: end;
+}
+.cont-icons {
+	/* padding-left: 3rem; */
+}
+.cont-icons > i {
+	padding: 0rem 1rem;
+	color: #293246;
+}
+.cont-icons > i:hover {
+	cursor: pointer;
+	color: rgb(0, 123, 255);
+}

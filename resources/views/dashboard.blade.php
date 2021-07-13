@@ -4,13 +4,19 @@
 Tutor | Dashboard
 @stop
 
+@section('header')
+@include('includes.header')
+@stop
+
+
 @push('include-css')
+<link rel="stylesheet" href="{{ asset('asset/css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/Dashboard.css') }}">
 @endpush
 
 @section('content')
-<section class="servicesSection py-2">
-    <div class="container">
+<section class="servicesSection py-2 pt-5">
+    <div class="container pt-5">
         <div class="serviceHeading">
             <div class="container">
                 <p class="text-center text-capitalize  DashSubHead">Our Dashboard</p>

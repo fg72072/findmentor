@@ -4,12 +4,17 @@
 Tutor | Refer & Earn
 @stop
 
+@section('header')
+@include('includes.header')
+@stop
+
 @push('include-css')
+<link rel="stylesheet" href="{{ asset('asset/css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/Refer&Earn.css') }}" class="color-switcher-link">
 @endpush
 
 @section('content')
-<section class="servicesSection py-2">
+<section class="servicesSection py-2 mt-5">
     <div class="container">
         <div class="serviceHeading">
             <div class="container">

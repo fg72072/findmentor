@@ -4,15 +4,20 @@
 Tutor | Messages
 @stop
 
+@section('header')
+@include('includes.header')
+@stop
+
 @push('include-css')
+<link rel="stylesheet" href="{{ asset('asset/css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/AllMessages.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/plugins/Select-2/css/select2.min.css') }}">
 @endpush
 
 @section('content')
 <section>
-    <div class="FrontPage">
-        <div class="banner">
+    <div class="FrontPage ">
+        <div class="banner pt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">

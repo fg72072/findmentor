@@ -4,7 +4,12 @@
 Tutor | Setting
 @stop
 
+@section('header')
+@include('includes.header')
+@stop
+
 @push('include-css')
+<link rel="stylesheet" href="{{ asset('asset/css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/Setting.css') }}">
 @endpush
 

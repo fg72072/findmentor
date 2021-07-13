@@ -4,15 +4,21 @@
 Tutor | Buy Coin
 @stop
 
+@section('header')
+@include('includes.header')
+@stop
+
 @push('include-css')
+<link rel="stylesheet" href="{{ asset('asset/css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/CoinSection.css') }}">
 @endpush
 
 @section('content')
+{{-- <div class="all_content"> --}}
 <section>
-    <div class="container">
-        <p class="text-center text-capitalize pt-5 CoinSubHead">Our Services</p>
-        <hr class="w-25 mx-auto">
+    <div class="container pt-5 mt-5">
+        {{-- <p class="text-center text-capitalize pt-5 CoinSubHead">Our Services</p>
+        <hr class="w-25 mx-auto"> --}}
         <h1 class="display-1 pl-5 pr-5 text-center CoinHead">Coin Wallet</h1>
         <h1 class="display-1 pl-5 pr-5 text-center CoinHead">{{$my_coins}}</h1>
         <div style="text-align: center;">
@@ -124,8 +130,10 @@ Tutor | Buy Coin
                         </select>
 
                         <div class="currency  mt-5 mb-0 flex" style="width: 100%;justify-content: space-evenly;">
-                            <p id="Pkr" style="text-decoration:line-through; opacity: .7;font-size: 14px;">0 PKR<br></p>
-                            <p id="Usd" style="text-decoration:line-through; opacity: .7;font-size: 14px;">0 USD<br></p>
+                            <p id="Pkr" style="text-decoration:line-through; opacity: .7;font-size: 14px;">0 PKR<br>
+                            </p>
+                            <p id="Usd" style="text-decoration:line-through; opacity: .7;font-size: 14px;">0 USD<br>
+                            </p>
                         </div>
                         <div class="currency flex">
                             <button type="button" id="Pkr_save" class="btn btn-outline-primary btn-lg ">Pkr :
@@ -156,8 +164,8 @@ Tutor | Buy Coin
             </div>
         </div>
     </div>
-    </div>
 </section>
+{{-- </div> --}}
 @stop
 
 

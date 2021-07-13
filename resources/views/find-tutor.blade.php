@@ -14,7 +14,7 @@ Tutor | Find
 </div>
 
 <section class="flex ">
-    <h1 class="TutorHead pl-5 pr-5 text-center mt-5">All Tutor</h1>
+    <h1 class="TutorHead pl-5 pr-5 text-center mt-5">Tutor</h1>
     <hr class="w-25 mx-auto">
     <div class='container flex pt-5'>
         <input class="mr-5 skill" type="text" id="searchInput" name="subject" placeholder="Skill.."
@@ -36,7 +36,7 @@ Tutor | Find
 <section>
     <div class="container categories">
         <ul class="nav nav-tabs">
-            <li><a href="javascript:void(0)">All</a></li>
+            <li><a href="javascript:void(0)" class="active">All</a></li>
             <li><a href="javascript:void(0)">Online</a></li>
             <li><a href="javascript:void(0)">Home</a></li>
             <li><a href="javascript:void(0)">Assignment</a></li>
@@ -52,7 +52,7 @@ Tutor | Find
     </div>
 </section>
 <section class="ls s-py-60 s-pt-lg-100 s-pb-lg-70">
-    <div class="content row set_tutor_list">
+    <div class="content row set_tutor_list m-auto container">
 
     </div>
 </section>
@@ -70,6 +70,9 @@ Tutor | Find
         $('.categories li a').click(function(e){
             search = $(this).html();
             renderPosts(search);
+
+            $('.categories li a').removeClass('active')
+            $(this).addClass('active')
         });
 
         $('#Grades').change(function(e){
