@@ -9,10 +9,11 @@ body {
 }
 .banner {
 	height: 100vh;
-	background: url("./images/FrontPagebanner.svg");
-	background: url("../images/FrontPagebanner.svg");
+	/* background: url("./images/FrontPagebanner.svg");
+	background: url("../images/FrontPagebanner.svg"); */
 	background-size: cover;
 	/* background-repeat: no-repeat; */
+	background-color: #293246;
 }
 .frontPageContent {
 	position: relative;

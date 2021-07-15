@@ -66,6 +66,7 @@ Tutor | Find
     $(document).ready(function () {
 
         renderPosts();
+        var search = '';
 
         $('.categories li a').click(function(e){
             search = $(this).html();
@@ -83,9 +84,18 @@ Tutor | Find
             renderPosts();
         });
 
+
+        $(document).on('click', '.pagination a', function(event){
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            renderPosts(search,page)
+        });
+
     });
 
-    function renderPosts(search='') {
+    function renderPosts(search='',page=1) {
+
+        $.LoadingOverlay("show");
 
         let location =$('.location').val();
         let subject =$('.skill').val();
@@ -110,7 +120,7 @@ Tutor | Find
         }
 
         $.ajax({
-            url: "{{route('findtutorlist')}}",
+            url: "{{route('findtutorlist')}}"+"?page="+page,
             type: 'GET',
             data: {
                 location,
@@ -122,11 +132,7 @@ Tutor | Find
             },
             success: function(response) {
                 $('.set_tutor_list').html(response)
-
-                // $('.set_requirements').html(`<div class="text-center" id="noRecordFoundOnSearchDiv" style="">
-                //         No tutors found for your search. Please <a href="https://www.teacheron.com/post-requirement">Post your requirement</a>  so teachers can contact you directly.
-                //         <a class="btn btn-primary margin-top-30 btn-u-lg" href="https://www.teacheron.com/post-requirement">Post your Requirement</a>
-                //     </div>`)
+                $.LoadingOverlay("hide");
             },
         });
 }

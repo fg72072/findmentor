@@ -245,6 +245,16 @@ Route::group(['middleware' => ['role:student|teacher', 'user_account_verificatio
         'as' => 'refer_and_earn'
     ]);
 
+    // Invite Friends
+    Route::get('/invite-friends', [
+        'uses' => 'InviteController@index',
+        'as' => 'invite-friends'
+    ]);
+    Route::post('/send-invitation', [
+        'uses' => 'InviteController@sendInvitation',
+        'as' => 'send-invitation'
+    ]);
+
     // Chat list
     Route::get('/job-messages', [
         'uses' => 'ChatController@jobChatList',

@@ -10,6 +10,7 @@ Tutor | Home
 
 @push('include-css')
 <!-- Home Page Styling -->
+<link rel="stylesheet" href="{{ asset('asset/css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/index.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/request.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/pricing.css') }}">

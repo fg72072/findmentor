@@ -121,7 +121,7 @@ Search Tutor Job
         renderPosts();
 
         var token = $('meta[name="csrf-token"]').attr('content');
-
+        var search = '';
         $('.categories li a').click(function(e){
             search = $(this).html();
             renderPosts(search);
@@ -201,10 +201,19 @@ Search Tutor Job
         })
 
 
+        $(document).on('click', '.pagination a', function(event){
+            event.preventDefault();
+            var page = $(this).attr('href').split('page=')[1];
+            renderPosts(search,page)
+        });
+
+
     });
 
 
-    function renderPosts(search='') {
+    function renderPosts(search='',page=1) {
+
+        $.LoadingOverlay("show");
 
         let location =$('.location').val();
         let subject =$('.skill').val();
@@ -229,7 +238,7 @@ Search Tutor Job
         }
 
         $.ajax({
-            url: "{{route('find.tutor.job')}}",
+            url: "{{route('find.tutor.job')}}"+"?page="+page,
             type: 'GET',
             data: {
                 location,
@@ -241,11 +250,7 @@ Search Tutor Job
             },
             success: function(response) {
                 $('.set_requirements').html(response)
-
-                // $('.set_requirements').html(`<div class="text-center" id="noRecordFoundOnSearchDiv" style="">
-	            //         No tutors found for your search. Please <a href="https://www.teacheron.com/post-requirement">Post your requirement</a>  so teachers can contact you directly.
-	            //         <a class="btn btn-primary margin-top-30 btn-u-lg" href="https://www.teacheron.com/post-requirement">Post your Requirement</a>
-	            //     </div>`)
+                $.LoadingOverlay("hide");
             },
         });
     }

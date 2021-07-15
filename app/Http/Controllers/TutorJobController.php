@@ -54,7 +54,7 @@ class TutorJobController extends Controller
             $data = $data->where('request_tutors.grade_level', $request->level);
         }
 
-        $data = $data->get();
+        $data = $data->paginate(10);
 
 
         $html = '';
@@ -106,9 +106,12 @@ class TutorJobController extends Controller
             </div>';
             }
         }
+
+        $html .= $data->links();
+
         if (count($data) == 0) {
-            Session::flash('error', 'No Record Found');
         }
+
         echo $html;
     }
 

@@ -106,7 +106,7 @@ Tutor | Dashboard
                     </a>
                 </div>
                 <div class="Serv1 col-lg-3 col-md-6 col-12 mb-4">
-                    <a href="javascript:void(0)" style="text-decoration: none;">
+                    <a href="{{route('invite-friends')}}" style="text-decoration: none;">
                         <div class="card ServCard flex">
                             <div class="Servicondiv flex mt-2">
                                 <i class="shield fas fa-user-plus"></i>

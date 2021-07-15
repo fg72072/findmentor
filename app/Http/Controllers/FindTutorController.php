@@ -61,7 +61,7 @@ class FindTutorController extends Controller
                 $query->where('level_to', $request->level);
             });
         }
-        $data = $data->get();
+        $data = $data->paginate(1);
 
         $html = '';
 
@@ -121,6 +121,8 @@ class FindTutorController extends Controller
                 }
             }
         };
+
+        $html .= $data->links();
 
         if (count($data) == 0) {
             Session::flash('error', 'No Record Found');

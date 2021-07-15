@@ -55,6 +55,7 @@
 
         {{-- Toaster Script --}}
         <script src="{{ asset('asset/plugins/Toastr/js/toastr.min.js') }}"></script>
+        <script src="{{ asset('asset/plugins/Loading-Overlay/js/loadingoverlay.min.js') }}"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
         <script>
@@ -75,6 +76,10 @@
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip()
             })
+            // $.LoadingOverlay("show");
+            // setTimeout(function(){
+            //     $.LoadingOverlay("hide");
+            // }, 3000);
         </script>
 
     </body>
