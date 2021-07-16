@@ -1,68 +1,62 @@
-*{
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-family: 'Montserrat', sans-serif;
-
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-family: 'Montserrat', sans-serif;
 }
-.flex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.flex {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-.html{
-    font-size: 62.5%;
+.html {
+	font-size: 62.5%;
 }
-.ReferSubHead{
-    color: #293246;
-  
+.ReferSubHead {
+	color: #293246;
 }
 
-.ReferHead{
-    color: #293246;
-    letter-spacing: 3px;
-    font-weight: 700;
-
+.ReferHead {
+	color: #293246;
+	letter-spacing: 3px;
+	font-weight: 700;
 }
 
-.btn {
-    display: inline;
-    font-weight: 400;
-    color: #ffff;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background: rgb(0, 123, 255);
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+.servicesSection .btn {
+	display: inline;
+	font-weight: 400;
+	color: #ffff;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background: rgb(0, 123, 255);
+	border: 1px solid transparent;
+	padding: .375rem .75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: .25rem;
+	transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out,
+		box-shadow .15s ease-in-out;
 }
-.cont{
-    font-size: 1.5rem;
-    color:gray;
-    font-family: var(--parafont);
-    
-
+.cont {
+	font-size: 1.5rem;
+	color: gray;
+	font-family: var(--parafont);
 }
-.contIcon{
-    text-align: end;
+.contIcon {
+	text-align: end;
 }
-.cont-icons{
-    /* padding-left: 3rem; */
+.cont-icons {
+	/* padding-left: 3rem; */
 }
-.cont-icons>i{
-    padding: 0rem 1rem;
-    color: #293246;
-
+.cont-icons > i {
+	padding: 0rem 1rem;
+	color: #293246;
 }
-.cont-icons>i:hover{
-    cursor: pointer;
-    color: rgb(0, 123, 255);
+.cont-icons > i:hover {
+	cursor: pointer;
+	color: rgb(0, 123, 255);
 }
-

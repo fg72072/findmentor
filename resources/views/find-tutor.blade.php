@@ -4,6 +4,11 @@
 Tutor | Find
 @stop
 
+@section('header')
+@include('includes.header')
+@stop
+
+
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/FindTutor.css') }}" class="color-switcher-link">
 @endpush
@@ -13,12 +18,12 @@ Tutor | Find
     <div class="preloader_image"></div>
 </div>
 
-<section class="flex ">
+<section class="flex search_section">
     <h1 class="TutorHead pl-5 pr-5 text-center mt-5">Tutor</h1>
     <hr class="w-25 mx-auto">
     <div class='container flex pt-5'>
         <input class="mr-5 skill" type="text" id="searchInput" name="subject" placeholder="Skill.."
-            @if(isset($_GET['subject']) ) value="{{ $_GET['subject']}}" @endif>
+            value="{{ $_GET['subject'] ?? '' }}">
         <div id='submitsearch' class="mr-5">
             <span>Search</span>
         </div>
@@ -33,13 +38,13 @@ Tutor | Find
     </div>
 </section>
 
-<section>
+<section class="search_section bottom_shadow">
     <div class="container categories">
         <ul class="nav nav-tabs">
             <li><a href="javascript:void(0)" class="active">All</a></li>
-            <li><a href="javascript:void(0)">Online</a></li>
-            <li><a href="javascript:void(0)">Home</a></li>
-            <li><a href="javascript:void(0)">Assignment</a></li>
+            <li><a href="javascript:void(0)" class="online-tutors">Online</a></li>
+            <li><a href="javascript:void(0)" class="home-tutors">Home</a></li>
+            <li><a href="javascript:void(0)" class="assignment-tutors">Assignment</a></li>
             <li>
                 <select name="cars" id="Grades" class="level">
                     <option value="" disabled selected>Level</option>
@@ -51,7 +56,7 @@ Tutor | Find
         </ul>
     </div>
 </section>
-<section class="ls s-py-60 s-pt-lg-100 s-pb-lg-70">
+<section class="ls s-py-60 s-pt-lg-100 s-pb-lg-70 search_section">
     <div class="content row set_tutor_list m-auto container">
 
     </div>
@@ -90,6 +95,11 @@ Tutor | Find
             var page = $(this).attr('href').split('page=')[1];
             renderPosts(search,page)
         });
+
+
+        @isset($_GET['search'])
+        $('.{{$_GET['search']}}').click()
+        @endisset
 
     });
 

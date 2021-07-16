@@ -4,6 +4,10 @@
 Search Tutor Job
 @stop
 
+@section('header')
+@include('includes.header')
+@stop
+
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/FindTutor.css') }}" class="color-switcher-link">
 @endpush
@@ -12,12 +16,12 @@ Search Tutor Job
 <div class="preloader">
     <div class="preloader_image"></div>
 </div>
-<section class="flex ">
+<section class="flex search_section">
     <h1 class="TutorHead pl-5 pr-5 text-center mt-5">ALL Tutor</h1>
     <hr class="w-25 mx-auto">
     <div class='container flex pt-5'>
         <input class="mr-5 skill" type="text" id="searchInput" placeholder="Skill.." name="subject"
-            @if(isset($_GET['skills']) ) value="{{ $_GET['skills']}}" @endif>
+            @if(isset($_GET['subject']) ) value="{{ $_GET['subject']}}" @endif>
         <div id='submitsearch' class="mr-5">
             <span>Search</span>
         </div>
@@ -30,13 +34,13 @@ Search Tutor Job
         <button type="button" class="btn btn-primary  mt-5 FindBtn">Find Course</button>
     </div>
 </section>
-<section>
-    <div class="container categories">
+<section class="search_section bottom_shadow">
+    <div class="container categories ">
         <ul class="nav nav-tabs">
             <li><a href="javascript:void(0)" class="active">All</a></li>
-            <li><a href="javascript:void(0)">Online</a></li>
-            <li><a href="javascript:void(0)">Home</a></li>
-            <li><a href="javascript:void(0)">Assignment</a></li>
+            <li><a href="javascript:void(0)" class="online-tutor-jobs">Online</a></li>
+            <li><a href="javascript:void(0)" class="home-tutor-jobs">Home</a></li>
+            <li><a href="javascript:void(0)" class="assignment-tutor-jobs">Assignment</a></li>
             <li>
                 <select name="cars" id="Grades" class="level">
                     <option value="" disabled selected>Level</option>
@@ -49,7 +53,7 @@ Search Tutor Job
     </div>
 </section>
 <section class="col-12">
-    <div class="content row set_requirements container m-auto">
+    <div class="content row set_requirements container m-auto search_section">
 
     </div>
 </section>
@@ -137,6 +141,10 @@ Search Tutor Job
         $('.FindBtn').click(function(e){
             renderPosts();
         });
+
+        @isset($_GET['search'])
+        $('.{{$_GET['search']}}').click()
+        @endisset
 
         $(document).on('click','.contact_student',function(){
 

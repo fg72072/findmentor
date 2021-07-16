@@ -9,7 +9,6 @@ Tutor | Refer & Earn
 @stop
 
 @push('include-css')
-<link rel="stylesheet" href="{{ asset('asset/css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/Refer&Earn.css') }}" class="color-switcher-link">
 @endpush
 

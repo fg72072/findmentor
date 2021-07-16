@@ -9,7 +9,6 @@ Tutor | Buy Coin
 @stop
 
 @push('include-css')
-<link rel="stylesheet" href="{{ asset('asset/css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/CoinSection.css') }}">
 @endpush
 

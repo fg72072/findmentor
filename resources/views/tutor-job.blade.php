@@ -4,6 +4,10 @@
 Tutor Job
 @stop
 
+@section('header')
+@include('includes.header')
+@stop
+
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/FindTutor.css') }}" class="color-switcher-link">
 @endpush

@@ -4,6 +4,10 @@
 Tutor | Review
 @stop
 
+@section('header')
+@include('includes.header')
+@stop
+
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/CoinSection.css') }}">
 @endpush

@@ -125,13 +125,23 @@ class FindTutorController extends Controller
         $html .= $data->links();
 
         if (count($data) == 0) {
-            Session::flash('error', 'No Record Found');
-            //     $html = '<div class="text-center" id="noRecordFoundOnSearchDiv" style="">
-            //     No tutors found for your search. Please <a href="https://www.teacheron.com/post-requirement">Post your requirement</a>  so teachers can contact you directly.
-            //     <a class="btn btn-primary margin-top-30 btn-u-lg" href="https://www.teacheron.com/post-requirement">Post your Requirement</a>
-            // </div>';
-            //     echo $html;
-            // return 0;
+            $html = '
+            <div class="col-12 col-md-12">
+                <div class="h-100 bordered rounded">
+                    <div class="course-front">
+                        <div class="vertical-item mt-5 ml-5 mr-5">
+                            <div class="item-content">
+                                <div class="text-center" id="noRecordFoundOnSearchDiv" style="">
+                                    No tutors found for your search. Please <a href="">Post your requirement</a>  so teachers can contact you directly.
+                                    <div>
+                                        <a class="btn btn-primary margin-top-30 btn-u-lg" href="">Post your Requirement</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>';
         }
 
         echo $html;

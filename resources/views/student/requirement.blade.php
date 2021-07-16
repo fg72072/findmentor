@@ -4,6 +4,12 @@
 Tutor | Home
 @stop
 
+
+@section('header')
+@include('includes.header')
+@stop
+
+
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/MyRequirement.css') }}">
 @endpush
