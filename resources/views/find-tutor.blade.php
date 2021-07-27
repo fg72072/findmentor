@@ -98,7 +98,7 @@ Tutor | Find
 
 
         @isset($_GET['search'])
-        $('.{{$_GET['search']}}').click()
+        $('.{{$_GET['search']}}-tutors').click()
         @endisset
 
     });

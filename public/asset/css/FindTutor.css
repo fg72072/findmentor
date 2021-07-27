@@ -178,10 +178,10 @@ input:focus {
 	display: flex;
 	clear: both;
 }
-.icons:hover {
+/* .icons:hover {
 	color: #007bff;
 	cursor: pointer;
-}
+} */
 .icons {
 	font-size: 2rem;
 }

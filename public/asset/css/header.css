@@ -64,6 +64,12 @@
 	position: relative;
 	top: 12px;
 }
+.header .logo span {
+	font-size: 18px !important;
+	font-weight: 600 !important;
+	color: black !important;
+	line-height: 18px !important;
+}
 a,
 a:focus,
 a:hover,
@@ -103,6 +109,10 @@ img {
 .header .topbar {
 	margin-bottom: 0;
 	padding: 3px 0;
+}
+.header .topbar .hidden-xs {
+	font-size: 17px;
+	color: #687074;
 }
 .header .topbar {
 	z-index: 12;
@@ -533,6 +543,8 @@ ul.topbarDropdown {
 }
 .header .navbar-nav li a {
 	color: #687074;
+	font-size: 17px;
+	font-weight: 500;
 }
 @media (min-width: 1200px) {
 	.container {

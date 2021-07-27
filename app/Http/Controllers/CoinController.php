@@ -59,6 +59,12 @@ class CoinController extends Controller
         return view('billing');
     }
 
+    public function premiumPackageCoinBilling(Request $request)
+    {
+        session(['coin_id' => 0, 'coins' => $request->no_of_premium_coins]);
+        return view('billing');
+    }
+
 
     public function coin_payment(Request $request)
     {

@@ -143,7 +143,7 @@ Search Tutor Job
         });
 
         @isset($_GET['search'])
-        $('.{{$_GET['search']}}').click()
+        $('.{{$_GET['search']}}-tutor-jobs').click()
         @endisset
 
         $(document).on('click','.contact_student',function(){

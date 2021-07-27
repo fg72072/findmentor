@@ -61,7 +61,7 @@ class FindTutorController extends Controller
                 $query->where('level_to', $request->level);
             });
         }
-        $data = $data->paginate(1);
+        $data = $data->paginate(10);
 
         $html = '';
 

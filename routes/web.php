@@ -120,6 +120,12 @@ Route::group(['middleware' => ['role:teacher', 'auth', 'verified']], function ()
         'uses' => 'CoinController@premiumCoinBilling',
         'as' => 'premium.billing'
     ])->middleware(['permission:Create', 'user_account_verification']);
+
+    // Buy Premium Package Coins
+    Route::post('/premium-package', [
+        'uses' => 'CoinController@premiumPackageCoinBilling',
+        'as' => 'premium.package'
+    ])->middleware(['permission:Create', 'user_account_verification']);
 });
 
 // Middleware For Student Route
