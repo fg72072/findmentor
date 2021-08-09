@@ -65,14 +65,14 @@
                     <h5 class="text-uppercase footerHead">Resources</h5>
 
                     <ul class="list-unstyled mb-0 followPara">
-                        <li><a href="{{route('about')}}"> About us</a></li>
-                        <li><a href="{{route('stay_safe')}}"> Stay safe</a></li>
-                        <li><a href="{{route('blogs')}}">Blog</a></li>
-                        <li><a href="{{route('refer')}}">Refer &amp; earn coins</a></li>
-                        <li><a href="{{route('faq')}}">FAQs</a></li>
-                        <li><a href="{{route('coins')}}">Coins &amp; Pricing</a></li>
-                        <li><a href="{{route('how_it_works_student')}}">How it works - Students</a></li>
-                        <li><a href="{{route('pay_teachers')}}">Pay teachers</a></li>
+                        <li><a href="{{ route('about') }}"> About us</a></li>
+                        <li><a href="{{ route('stay_safe') }}"> Stay safe</a></li>
+                        <li><a href="{{ route('blogs') }}">Blog</a></li>
+                        <li><a href="{{ route('refer') }}">Refer &amp; earn coins</a></li>
+                        <li><a href="{{ route('faq') }}">FAQs</a></li>
+                        <li><a href="{{ route('coins') }}">Coins &amp; Pricing</a></li>
+                        <li><a href="{{ route('how_it_works_student') }}">How it works - Students</a></li>
+                        <li><a href="{{ route('pay_teachers') }}">Pay teachers</a></li>
                     </ul>
                 </div>
                 <!--Grid column-->
@@ -82,18 +82,19 @@
                     <h5 class="text-uppercase followHead">For teachers</h5>
 
                     <ul class="list-unstyled mb-0 followPara">
-                        <li><a href="{{route('get_paid')}}">Get paid</a></li>
-                        <li><a href="{{route('premium_membership')}}">Premium membership</a></li>
-                        <li><a href="{{route('single.blog',["title"=>"online-teaching-guide"])}}">Online teaching
+                        <li><a href="{{ route('get_paid') }}">Get paid</a></li>
+                        <li><a href="{{ route('premium_membership') }}">Premium membership</a></li>
+                        <li><a href="{{ route('single.blog', ['title' => 'online-teaching-guide']) }}">Online teaching
                                 guide</a>
                         </li>
-                        <li><a href="{{route('how_it_works_teachers')}}">How it works - Teachers</a></li>
-                        <li><a href="{{route('single.blog',["title"=>"how-to-get-students-and-teaching-jobs"])}}">How to
+                        <li><a href="{{ route('how_it_works_teachers') }}">How it works - Teachers</a></li>
+                        <li><a href="{{ route('single.blog', ['title' => 'how-to-get-students-and-teaching-jobs']) }}">How
+                                to
                                 get jobs</a></li>
-                        <li><a href="{{route('apply_and_contact_students')}}">Applying to jobs</a></li>
-                        <li><a href="{{route('single.blog',["title"=>"how-we-rank-teachers-on-findmentor"])}}">Teacher
+                        <li><a href="{{ route('apply_and_contact_students') }}">Applying to jobs</a></li>
+                        <li><a href="{{ route('single.blog', ['title' => 'how-we-rank-teachers-on-findmentor']) }}">Teacher
                                 Rankings</a></li>
-                        <li><a href="{{route('share_stories')}}">Share a story</a></li>
+                        <li><a href="{{ route('share_stories') }}">Share a story</a></li>
                     </ul>
                 </div>
                 <!--Grid column-->
@@ -103,12 +104,12 @@
 
                     <ul class="list-unstyled mb-0 footerPara">
                         <ul class="list-unstyled black-bg-links">
-                            <li><a href="{{route('feedback')}}">Feedback</a></li>
-                            <li><a href="{{route('testimonials')}}">Testimonials</a></li>
-                            <li><a href="{{route('contact')}}"> Contact us</a></li>
-                            <li><a href="{{route('refund_policy')}}"> Refund Policy</a></li>
-                            <li><a href="{{route('privacy_policy')}}"> Privacy Policy</a></li>
-                            <li><a href="{{route('terms_and_conditions')}}"> Terms</a></li>
+                            <li><a href="{{ route('feedback') }}">Feedback</a></li>
+                            <li><a href="{{ route('testimonials') }}">Testimonials</a></li>
+                            <li><a href="{{ route('contact') }}"> Contact us</a></li>
+                            <li><a href="{{ route('refund_policy') }}"> Refund Policy</a></li>
+                            <li><a href="{{ route('privacy_policy') }}"> Privacy Policy</a></li>
+                            <li><a href="{{ route('terms_and_conditions') }}"> Terms</a></li>
                         </ul>
                     </ul>
                 </div>
@@ -160,7 +161,7 @@
 </footer>
 <!-- Footer -->
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         load_unseen_notification();
 
         setInterval(() => {
@@ -168,8 +169,7 @@
         }, 3000);
     })
 
-    var get_message_notifications_url = "{{route('notification')}}";
-
+    var get_message_notifications_url = "{{ route('notification') }}";
 </script>
 
 {{-- Chat Functions --}}
