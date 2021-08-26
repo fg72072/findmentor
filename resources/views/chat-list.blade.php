@@ -12,6 +12,7 @@ Tutor | Messages
 <link rel="stylesheet" href="{{ asset('asset/css/header.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/AllMessages.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/plugins/Select-2/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/footer.css') }}">
 @endpush
 
 @section('content')
@@ -21,7 +22,7 @@ Tutor | Messages
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-12">
-                        <div class="" style="color: white;">
+                        <div>
                             <h1 class="display-4">
                                 All Messages
                             </h1>
@@ -119,3 +120,9 @@ Tutor | Messages
 {{-- Chat Functions --}}
 <script src="{{ asset('asset/js/chat.js') }}"></script>
 @endpush
+
+
+@section('footer')
+@include('includes.footer')
+@stop
+

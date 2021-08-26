@@ -319,6 +319,8 @@ ul.topbarDropdown {
 }
 .header .btn-group.show > .dropdown-menu {
 	display: block;
+	left: auto !important;
+	right: -70px !important;
 }
 .header .dropdown > a:after {
 	top: 5px;
@@ -599,5 +601,13 @@ ul.topbarDropdown {
 	}
 	.header .navbar-nav li.dropdown.show {
 		border-bottom: none !important;
+	}
+	.header .dropdown-menu li a {
+		color: #687074;
+		font-size: 13px;
+		font-weight: 400;
+		padding: 6px 15px;
+		border-bottom: solid 1px #eee;
+		display: block;
 	}
 }

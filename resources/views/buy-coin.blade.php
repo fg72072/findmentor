@@ -10,6 +10,7 @@ Tutor | Buy Coin
 
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/CoinSection.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/footer.css') }}">
 @endpush
 
 @section('content')
@@ -171,3 +172,7 @@ Tutor | Buy Coin
 @push('include-js')
 <script src="{{ asset('asset/js/index.js') }}"></script>
 @endpush
+
+@section('footer')
+@include('includes.footer')
+@stop

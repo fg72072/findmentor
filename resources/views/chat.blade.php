@@ -17,7 +17,7 @@ Tutor | Chat
 @section('content')
 <section>
     <div class="FrontPage">
-        <div class="banner">
+        <div class="banner" style="background-color: #293246">
             <div class="container">
                 <div class="row" style="position: absolute;right:6.5%">
                     <div class="col-lg-12 col-md-12 col-12">

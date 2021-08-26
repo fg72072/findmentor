@@ -72,6 +72,8 @@ class CoinController extends Controller
         $user_id = session('user_id');
         $coins = session('coins');
         $description = 'Buy Premium Coins';
+        $total_price_after_discount = 0;
+        // This for Test we have to use this dynamic
 
         if ($coin_id > 0) {
             $coins = Coin::find($coin_id);

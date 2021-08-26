@@ -10,6 +10,7 @@ Tutor | Review
 
 @push('include-css')
 <link rel="stylesheet" href="{{ asset('asset/css/CoinSection.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/footer.css') }}">
 @endpush
 
 @section('content')
@@ -23,7 +24,7 @@ Tutor | Review
     </div>
 </section>
 <section>
-    <div class="container pt-5">
+    <div class="container pt-5 pb-5 mb-5">
         @if (count($reviews)>0)
         @foreach ($reviews as $review)
         <div>
@@ -34,9 +35,16 @@ Tutor | Review
         </div>
         @endforeach
         @else
-        <b>No Review</b>
+        <h2 class="alert alert-danger">
+            <b>No Review Found...</b>
+        </h2>
         @endif
     </div>
 </section>
 
 @stop
+
+@section('footer')
+@include('includes.footer')
+@stop
+

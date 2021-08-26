@@ -292,12 +292,12 @@ Tutor | Home
                         <ul class="pricing-content">
                             <li>5000 Coins</li>
                         </ul>
-                        {{-- <form action="{{route('premium.package')}}" method="post">
+                        <form action="{{route('premium.package')}}" method="post">
                         @csrf
                         <input type="hidden" name="no_of_premium_coins" value="5000">
                         <button type="submit" class="read">Buy<i class="fa fa-angle-right"></i></button>
-                        </form> --}}
-                        <a href="#" class="read">Buy<i class="fa fa-angle-right"></i></a>
+                        </form>
+                        {{-- <a href="#" class="read">Buy<i class="fa fa-angle-right"></i></a> --}}
                     </div>
                 </div>
 
@@ -314,12 +314,12 @@ Tutor | Home
                         <ul class="pricing-content">
                             <li>6000 Coins</li>
                         </ul>
-                        {{-- <form action="{{route('premium.package')}}" method="post">
+                        <form action="{{route('premium.package')}}" method="post">
                         @csrf
                         <input type="hidden" name="no_of_premium_coins" value="6000">
                         <button type="submit" class="read">Buy<i class="fa fa-angle-right"></i></button>
-                        </form> --}}
-                        <a href="#" class="read">Buy<i class="fa fa-angle-right"></i></a>
+                        </form>
+                        {{-- <a href="#" class="read">Buy<i class="fa fa-angle-right"></i></a> --}}
                     </div>
                 </div>
 
@@ -336,12 +336,12 @@ Tutor | Home
                         <ul class="pricing-content">
                             <li>7000 Coins</li>
                         </ul>
-                        {{-- <form action="{{route('premium.package')}}" method="post">
+                        <form action="{{route('premium.package')}}" method="post">
                         @csrf
                         <input type="hidden" name="no_of_premium_coins" value="7000">
                         <button type="submit" class="read">Buy<i class="fa fa-angle-right"></i></button>
-                        </form> --}}
-                        <a href="#" class="read">Buy<i class="fa fa-angle-right"></i></a>
+                        </form>
+                        {{-- <a href="#" class="read">Buy<i class="fa fa-angle-right"></i></a> --}}
                     </div>
                 </div>
             </div>
@@ -458,20 +458,24 @@ Tutor | Home
         var bar = document.getElementById('search_bar');
         if(startProductBarPos<0)startProductBarPos=findPosY(bar);
 
-        if(pageYOffset>startProductBarPos){
-            bar.style.position='fixed';
-            bar.style.top=0;
-            bar.style.left=0;
-            bar.style.zIndex=1;
-            bar.style.backgroundColor ="white";
-            bar.style.width ="100%";
-            bar.style.paddingBottom ="10px";
-            bar.style.display ="flex";
-            bar.style.justifyContent ="center";
-        }else{
-            bar.style.position='relative';
-            bar.style.backgroundColor ="transparent";
-            bar.style.display ="block";
+        console.log()
+
+        if(screen.width>768){
+            if(pageYOffset>startProductBarPos){
+                bar.style.position='fixed';
+                bar.style.top=0;
+                bar.style.left=0;
+                bar.style.zIndex=1;
+                bar.style.backgroundColor ="white";
+                bar.style.width ="100%";
+                bar.style.paddingBottom ="10px";
+                bar.style.display ="flex";
+                bar.style.justifyContent ="center";
+            }else{
+                bar.style.position='relative';
+                bar.style.backgroundColor ="transparent";
+                bar.style.display ="block";
+            }
         }
     };
 

@@ -1,0 +1,68 @@
+.FooterSection,
+.FooterSection a {
+	color: #fafafa !important;
+	font-size: 1.5rem;
+	font-weight: 700;
+	font: 600 16px/18px 'Montserrat', sans-serif !important;
+}
+.footerPara {
+	line-height: 25px !important;
+}
+
+.followPara li,
+.footerPara li {
+	line-height: 30px;
+}
+.Foot {
+	background: #293246;
+}
+
+.footerHead {
+	margin-top: 4rem;
+	line-height: 2rem;
+	text-align: justify;
+	font-size: 3rem;
+	font-weight: 700;
+}
+
+.footerPara {
+	margin-top: 4rem;
+	line-height: 2rem;
+	text-align: justify;
+	font-size: 1.5rem;
+}
+
+.followHead {
+	margin-top: 4rem;
+	line-height: 1.5rem;
+	font-weight: 700;
+	font-size: 3rem;
+	text-align: justify;
+	letter-spacing: 2px;
+}
+
+.followPara {
+	margin-top: 4rem;
+	line-height: 2rem;
+	text-align: justify;
+}
+
+.text-white:hover {
+	text-decoration: none;
+}
+
+.footerHead {
+	letter-spacing: 3px;
+}
+
+.foot-lnk {
+	text-align: center;
+	letter-spacing: 2px;
+}
+.footer_bottom_bar {
+	font: 600 16px/18px 'Montserrat', sans-serif !important;
+}
+.Foot .btn-floating {
+	padding: .375rem 1rem;
+	font-size: 2rem;
+}

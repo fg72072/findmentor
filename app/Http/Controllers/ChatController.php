@@ -77,7 +77,7 @@ class ChatController extends Controller
             ->select(
                 'users.id as user_id',
                 'threads.requirement_id as post_id',
-                'request_tutors.detail as post',
+                'request_tutors.detail as post'
             )
             ->where('user_id', '!=', $user_id)
             ->where('threads.id', $request->mThread)
@@ -178,7 +178,7 @@ class ChatController extends Controller
             ->select(
                 'threads.requirement_id as post_id',
                 'mn.created_at as notification_time',
-                DB::raw('count(*) as msg_count'),
+                DB::raw('count(*) as msg_count')
             )
             ->where('participants.user_id', '!=', $user_id)
             ->where('messages.user_id', '!=', $user_id)
