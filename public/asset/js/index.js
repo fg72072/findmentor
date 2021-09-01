@@ -24,15 +24,16 @@ function myFunction() {
 	document.getElementById('myModal').style.display = 'none';
 	console.log('hello');
 }
-function toggle() {
-	if (state) {
-		document.getElementById('inputHide').setAttribute('type', 'password');
-		state = false;
-	} else {
-		document.getElementById('inputHide').setAttribute('type', 'text');
-		state = true;
-	}
-}
+// function toggle() {
+// 	alert('');
+// 	if (state) {
+// 		document.getElementById('pass').setAttribute('type', 'password');
+// 		state = false;
+// 	} else {
+// 		document.getElementById('pass').setAttribute('type', 'text');
+// 		state = true;
+// 	}
+// }
 
 //Multi Form
 var currentTab = 0; // Current tab is set to be the first tab (0)

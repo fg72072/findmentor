@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Membership;
+use App\Review;
 
 class UserController extends Controller
 {
@@ -37,11 +38,12 @@ class UserController extends Controller
             ->select('users.*')
             ->where('user_verifications.active_status', 0)
             ->get();
-
+        $bad_review = Review::where('status', '1')->pluck('review_to_user_id')->toArray();
         return view('admin.users')
             ->with('teachers', $teachers)
             ->with('premiumTeachers', $premiumTeachers)
             ->with('students', $students)
-            ->with('blockedUsers', $blockedUsers);
+            ->with('blockedUsers', $blockedUsers)
+            ->with('bad_review', $bad_review);
     }
 }

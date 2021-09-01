@@ -36,8 +36,11 @@ class LoginController extends Controller
             case 'super-admin':
                 return route('admin_dashboard');
                 break;
-            default:
-                return route('home');
+            case 'student':
+                return url('requirement');
+                break;
+            case 'teacher':
+                return url('find-tutor');
                 break;
         }
     }

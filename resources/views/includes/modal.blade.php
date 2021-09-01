@@ -1,13 +1,25 @@
 <!-- Modal Code Start -->
+{{-- <script>
+    function toggle() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script> --}}
 <section>
     <div class="login-wrap modal " id="myModal" style="overflow-y: hidden;">
         <div class="login-html pt-5">
 
             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign
+            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
+                class="tab">Sign
                 In</label>
-            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2"
+                class="tab">Sign Up</label>
 
             <div class="login-form">
                 <form id="sign_in" method="POST" action="{{ route('login') }}">
@@ -19,7 +31,8 @@
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Password</label>
-                            <input id="pass" type="password" name="password" class="input" data-type="password">
+                            <input id="pass" type="password" name="password" class="input"
+                                data-type="password">
                         </div>
                         <div class="group">
                             <div class="form-check">
@@ -42,7 +55,7 @@
                         <div class="hr"></div>
 
                         <div class="foot-lnk">
-                            <a href="{{route('password.request')}}">Forgot Password?</a>
+                            <a href="{{ route('password.request') }}">Forgot Password?</a>
                         </div>
                     </div>
                 </form>
@@ -57,17 +70,19 @@
                         <div class="group">
                             <label for="pass" class="label">Password</label>
 
-                            <input id="inputHide" type="password" class="input" name="password" required>
-                            <i class="far fa-eye-slash hide" onclick="toggle()"></i>
+                            <input id="password" type="password" class="input" name="password" required>
+                            {{-- <i class="far fa-eye-slash hide" onclick="toggle()"></i> --}}
 
                         </div>
+
                         <div class="group">
                             <label for="pass" class="label">Phone</label>
                             <input id="pass" type="text" class="input">
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Email Address</label>
-                            <input id="pass" type="text" class="input" name="email" value="{{ old('email') }}" required>
+                            <input id="pass" type="text" class="input" name="email"
+                                value="{{ old('email') }}" required>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">I am a</label>

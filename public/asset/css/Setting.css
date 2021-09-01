@@ -14,12 +14,12 @@
 }
 .banner {
 	height: 100vh;
-	background: url("../images/FrontPagebanner.svg");
+	/* background: url("../images/FrontPagebanner.svg"); */
 	background-size: cover;
 	/* background-repeat: no-repeat; */
 }
 
-.col-lg-3 {
+.setting-col-lg-3 {
 	-ms-flex: 0 0 25%;
 	flex: 0 0 25%;
 	max-width: 20% !important;
@@ -140,7 +140,6 @@
 		border-radius: 0;
 		padding: 20px 40px;
 		background: transparent !important;
-		color: white;
 	}
 	.profileSetting {
 		margin-bottom: 20px;

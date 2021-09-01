@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper">
     <div>
         <div class="logo-wrapper">
-            <a href="{{route('admin_dashboard')}}">
+            <a href="{{ route('admin_dashboard') }}">
                 <img class="img-fluid for-light" src="{{ asset('asset/images/logo.png') }}" alt="">
                 <img class="img-fluid for-dark" src="{{ asset('asset/images/logo.png') }}" alt="">
             </a>
@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="logo-icon-wrapper">
-            <a href="{{route('admin_dashboard')}}">
+            <a href="{{ route('admin_dashboard') }}">
                 <img class="img-fluid" src="../assets/images/logo/logo-icon.png" alt="">
             </a>
         </div>
@@ -22,7 +22,7 @@
             <div id="sidebar-menu">
                 <ul class="sidebar-links" id="simple-bar">
                     <li class="back-btn">
-                        <a href="{{route('admin_dashboard')}}">
+                        <a href="{{ route('admin_dashboard') }}">
                             <img class="img-fluid" src="../assets/images/logo/logo-icon.png" alt="">
                         </a>
                         <div class="mobile-back text-end">
@@ -31,43 +31,44 @@
                         </div>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav active" href="{{route('admin_dashboard')}}">
+                        <a class="sidebar-link sidebar-title link-nav active" href="{{ route('admin_dashboard') }}">
                             <i data-feather="home"></i>
                             <span>Dashboards</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_users')}}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin_users') }}">
                             <i data-feather="user"></i>
-                            <span>Users</span>
+                            <span>Users <span class="badge badge-danger"
+                                    style="right: 128px;">{{ $v_review_report }}</span></span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_account_verify')}}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin_account_verify') }}">
                             <i data-feather="user-check"></i>
                             <span>Account Verify</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_coins')}}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin_coins') }}">
                             <i data-feather="stop-circle"></i>
                             <span>Coins</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_request')}}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin_request') }}">
                             <i data-feather="book-open"></i>
                             <span>Requirements</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin.blog')}}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.blog') }}">
                             <i data-feather="bold"></i>
                             <span>Blogs</span>
                         </a>
                     </li>
                     <li class="sidebar-list">
-                        <a class="sidebar-link sidebar-title link-nav" href="{{route('admin_setting')}}">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin_setting') }}">
                             <i data-feather="settings"></i>
                             <span>Settings</span>
                         </a>

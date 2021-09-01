@@ -14,7 +14,7 @@ class ReviewController extends Controller
     {
         $data = Review::join('users', 'users.id', '=', 'reviews.review_to_user_id')
             ->select('reviews.*', 'users.*', 'reviews.id as review_id')
-            ->where('reviews.user_id', $id)->get();
+            ->where('reviews.review_to_user_id', $id)->get();
 
         return view('admin.review')->with('data', $data);
     }

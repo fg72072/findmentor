@@ -6,7 +6,7 @@
         <!-- Section: Social media -->
 
         <!-- Section: Form -->
-        <section class="">
+        <section class="___class_+?2___">
             <form action="">
                 <!--Grid row-->
                 <div class="row d-flex justify-content-center">
@@ -61,7 +61,7 @@
 
             <div class="row">
                 <!--Grid column-->
-                <div class="col-lg-3 col-md-5 mb-3 mb-md-0">
+                <div class="col-lg-3 col-md-5 mb-3 mb-md-0 col-sm-12">
                     <h5 class="text-uppercase footerHead">Resources</h5>
 
                     <ul class="list-unstyled mb-0 followPara">
@@ -78,17 +78,19 @@
                 <!--Grid column-->
 
                 <!--Grid column-->
-                <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6 col-sm-12">
                     <h5 class="text-uppercase followHead">For teachers</h5>
 
                     <ul class="list-unstyled mb-0 followPara">
                         <li><a href="{{ route('get_paid') }}">Get paid</a></li>
                         <li><a href="{{ route('premium_membership') }}">Premium membership</a></li>
-                        <li><a href="{{ route('single.blog', ['title' => 'online-teaching-guide']) }}">Online teaching
+                        <li><a href="{{ route('single.blog', ['title' => 'online-teaching-guide']) }}">Online
+                                teaching
                                 guide</a>
                         </li>
                         <li><a href="{{ route('how_it_works_teachers') }}">How it works - Teachers</a></li>
-                        <li><a href="{{ route('single.blog', ['title' => 'how-to-get-students-and-teaching-jobs']) }}">How
+                        <li><a
+                                href="{{ route('single.blog', ['title' => 'how-to-get-students-and-teaching-jobs']) }}">How
                                 to
                                 get jobs</a></li>
                         <li><a href="{{ route('apply_and_contact_students') }}">Applying to jobs</a></li>
@@ -99,7 +101,7 @@
                 </div>
                 <!--Grid column-->
                 <!--Grid column-->
-                <div class="col-lg-5 col-md-7">
+                <div class="col-lg-5 col-md-7 col-sm-12">
                     <h5 class="text-uppercase footerHead">Help and Feedback</h5>
 
                     <ul class="list-unstyled mb-0 footerPara">

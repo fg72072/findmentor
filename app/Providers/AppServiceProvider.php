@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Review;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
@@ -34,7 +35,8 @@ class AppServiceProvider extends ServiceProvider
                         ->leftJoin('user_verifications as uv', 'uv.user_id', '=', 'users.id')
                         ->first();
                 }
-                $view->with('is_verified', $check_user_account_verified);
+                $v_review_report = Review::where('status', '1')->count();
+                $view->with(['is_verified' => $check_user_account_verified, 'v_review_report' => $v_review_report]);
             }
         });
     }

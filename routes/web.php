@@ -86,6 +86,7 @@ Route::group(['middleware' => ['role:teacher', 'auth', 'verified']], function ()
         'uses' => 'TeacherAccountVerificationController@index',
         'as' => 'account'
     ]);
+    Route::post('review-report', 'TutorProfileController@reviewReport');
     Route::post('/account-verify/create', [
         'uses' => 'TeacherAccountVerificationController@store',
         'as' => 'account.create'
