@@ -84,22 +84,23 @@ class UserHireController extends Controller
         $checkPremiumAccess = $this->checkTeacherRankToAccessStudent($requirement_created_at);
         if ($user_role == 'teacher') {
 
-            if ($check_coin_used_against_user ||  $check_coin_used_against_me) {
+
+            if ($user_coins < 50) {
+                $res = [
+                    'message' => 'buy-coin',
+                    'coins' => $user_coins
+                ];
+            } else if ($check_coin_used_against_user ||  $check_coin_used_against_me) {
                 $res = [
                     'message' => 'go-to-message'
                 ];
             } else if ($checkPremiumAccess && $checkPremiumAccess['message'] == 'wait') {
                 $res = [
-                    'message' => 'wait for your access'
+                    'message' =>  'wait for your access'
                 ];
             } else if (!$check_coin_used_against_user && !$check_coin_used_against_me && $user_coins >= 50) {
                 $res = [
                     'message' => 'deduct-coins'
-                ];
-            } else if ($user_coins < 50) {
-                $res = [
-                    'message' => 'buy-coin',
-                    'coins' => $user_coins
                 ];
             }
         }
@@ -166,7 +167,7 @@ class UserHireController extends Controller
     public function checkTeacherRankToAccessStudent($requirement_created_at)
     {
         $user_id = session('user_id');
-        $timeForPremiumMember = 120 - 8;
+        $timeForPremiumMember = 120;
 
         $RequirementPostTimeDiff = $this->getDiffInMinutes($requirement_created_at);
 
@@ -189,7 +190,7 @@ class UserHireController extends Controller
             ->get();
 
 
-        $getTimeforEachMemberToAccess = $premiunMembers->count() > 0 ? $timeForPremiumMember / $premiunMembers->count() : 0;
+        $getTimeforEachMemberToAccess = $premiunMembers->count() > 1 ? $timeForPremiumMember / $premiunMembers->count() : 0;
 
         $timeForAuthUserToAccessStudent = 0;
         $PrviousRankTime = 0;
@@ -266,7 +267,7 @@ class UserHireController extends Controller
     }
     private function getDiffInMinutes($date)
     {
-        $to = Carbon::createFromFormat('Y-m-d H:s:i', $date);
+        $to = Carbon::createFromFormat('Y-m-d H:i:s', $date);
         $from = Carbon::now()->toDateTimeString();
 
         $diff_in_minutes = $to->diffInMinutes($from);
