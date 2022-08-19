@@ -4,29 +4,46 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Common;
+use App\Review;
 use App\Thread;
 use App\Wallet;
+use App\Country;
 use App\CoinUsed;
-use App\CoinUsedItem;
 use App\Membership;
 use App\Participant;
+use App\CoinUsedItem;
 use App\RequestTutor;
-use App\Review;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 
 class UserHireController extends Controller
 {
+    function country_wise_deduction()
+    {
+        $country_wise_deduction = Country::where("name", session('apidata')['country_name'])->where('status', '1')->first();
+        $defualt_country_wise_deduction = Country::where("name", '!=', session('apidata')['country_name'])->where('status', '0')->first();
+        if ($country_wise_deduction) {
+            return $country_wise_deduction->coins;
+        } else {
+            return $defualt_country_wise_deduction->coins;
+        }
+    }
     public function contactStudentToTeacher(Request $request)
     {
 
         $user_id = session('user_id');
         $user_role = Auth::user()->roles->pluck('name')[0];
 
-        $user_coins = Wallet::where('user_id', $user_id)->first()->coins;
-
+        $user_coins = Wallet::where('user_id', $user_id)->first();
+        if (!$user_coins) {
+            $user_coins = 0;
+        } else {
+            $user_coins = $user_coins->coins;
+        }
         $check_coin_used_against_user = CoinUsed::where('user_id', $user_id)
             ->join('coin_used_items as cui', 'cui.coin_used_id', '=', 'coin_used.id')
             ->join('request_tutors as rt', 'rt.id', '=', 'cui.requirement_id')
@@ -34,19 +51,28 @@ class UserHireController extends Controller
             ->where('used_against_id', $request->other_user_id)
             ->first();
 
+        $check_coin_used_against_user1 = CoinUsed::where('user_id', $request->other_user_id)
+            ->join('coin_used_items as cui', 'cui.coin_used_id', '=', 'coin_used.id')
+            ->join('request_tutors as rt', 'rt.id', '=', 'cui.requirement_id')
+            ->where('rt.is_closed', 0)
+            ->where('used_against_id', $user_id)
+            ->first();
+
 
         if ($user_role == 'student') {
-            if ($check_coin_used_against_user) {
+            if ($check_coin_used_against_user || $check_coin_used_against_user1) {
                 $res = [
                     'message' => 'go-to-message'
                 ];
-            } else if (!$check_coin_used_against_user && $user_coins >= 50) {
+            } else if (!$check_coin_used_against_user && $user_coins >= $this->country_wise_deduction()) {
                 $res = [
-                    'message' => 'deduct-coins'
+                    'message' => 'deduct-coins',
+                    'd_coins' => $this->country_wise_deduction()
                 ];
-            } else if ($user_coins < 50) {
+            } else if ($user_coins < $this->country_wise_deduction()) {
                 $res = [
                     'message' => 'buy-coin',
+                    'd_coins' => $this->country_wise_deduction(),
                     'coins' => $user_coins
                 ];
             }
@@ -85,9 +111,10 @@ class UserHireController extends Controller
         if ($user_role == 'teacher') {
 
 
-            if ($user_coins < 50) {
+            if ($user_coins < $this->country_wise_deduction()) {
                 $res = [
                     'message' => 'buy-coin',
+                    'd_coins' => $this->country_wise_deduction(),
                     'coins' => $user_coins
                 ];
             } else if ($check_coin_used_against_user ||  $check_coin_used_against_me) {
@@ -98,9 +125,10 @@ class UserHireController extends Controller
                 $res = [
                     'message' =>  'wait for your access'
                 ];
-            } else if (!$check_coin_used_against_user && !$check_coin_used_against_me && $user_coins >= 50) {
+            } else if (!$check_coin_used_against_user && !$check_coin_used_against_me && $user_coins >= $this->country_wise_deduction()) {
                 $res = [
-                    'message' => 'deduct-coins'
+                    'message' => 'deduct-coins',
+                    'd_coins' => $this->country_wise_deduction()
                 ];
             }
         }
@@ -144,7 +172,7 @@ class UserHireController extends Controller
         }
 
         $thread_id = $this->createThread($requirement_id, $other_user_id);
-        $this->coinUsedAgainst(50, $requirement_id, $other_user_id, $thread_id);
+        $this->coinUsedAgainst($this->country_wise_deduction(), $requirement_id, $other_user_id, $thread_id);
 
         return redirect('view-messages?mThread=' . $thread_id);
     }
@@ -155,7 +183,7 @@ class UserHireController extends Controller
         $requirement_id = $request->requirement_id;
 
         $thread_id = $this->createThread($requirement_id, $other_user_id);
-        $this->coinUsedAgainst(50, $requirement_id, $other_user_id, $thread_id);
+        $this->coinUsedAgainst($this->country_wise_deduction(), $requirement_id, $other_user_id, $thread_id);
 
         $res = [
             'mThread' => $thread_id
@@ -299,10 +327,19 @@ class UserHireController extends Controller
         $user_id = session('user_id');
         $user_role = Auth::user()->roles->pluck('name')[0];
 
-        $user_coins = Wallet::where('user_id', $user_id)->first()->coins;
+        $user_coins = Wallet::where('user_id', $user_id)->first();
+        if (!$user_coins) {
+            $user_coins = 0;
+        } else {
+            $user_coins = $user_coins->coins;
+        }
 
         $check_coin_used_against_user = CoinUsed::where('user_id', $user_id)
             ->where('used_against_id', $request->other_user_id)
+            ->first();
+
+        $check_coin_used_against_user1 = CoinUsed::where('user_id', $request->other_user_id)
+            ->where('used_against_id', $user_id)
             ->first();
 
         $check_user_phone_verified = User::leftJoin('user_verifications as uv', 'uv.user_id', '=', 'users.id')
@@ -318,18 +355,20 @@ class UserHireController extends Controller
                 $res = [
                     'message' => 'phone-not-verified'
                 ];
-            } else if ($check_coin_used_against_user) {
+            } else if ($check_coin_used_against_user || $check_coin_used_against_user1) {
                 $res = [
                     'message' => 'show-number',
                     'phone' => $user_phone
                 ];
-            } else if (!$check_coin_used_against_user && $user_coins >= 50) {
+            } else if (!$check_coin_used_against_user && $user_coins >= $this->country_wise_deduction()) {
                 $res = [
-                    'message' => 'deduct-coins'
+                    'message' => 'deduct-coins',
+                    'd_coins' => $this->country_wise_deduction()
                 ];
-            } else if ($user_coins < 50) {
+            } else if ($user_coins < $this->country_wise_deduction()) {
                 $res = [
                     'message' => 'buy-coin',
+                    'd_coins' => $this->country_wise_deduction(),
                     'coins' => $user_coins
                 ];
             }

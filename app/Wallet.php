@@ -11,4 +11,8 @@ class Wallet extends Model
     protected $dates = ['deleted_at'];
     protected $guarded = [];
     protected $table = 'wallet';
+    public function checkRank()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

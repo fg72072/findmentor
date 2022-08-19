@@ -30,7 +30,7 @@ class TutorJobController extends Controller
                 'request_tutors.*',
                 'request_tutors.created_at as posted_at',
                 'request_tutors.id as request_tutors_id',
-                'request_tutors.student_id as request_tutors_student_id',
+                'request_tutors.student_id as request_tutors_student_id'
             )->where('request_tutors.is_closed', '=', 0)
             ->where('user_verifications.post_is_public', '=', 1)
             ->orderBy('request_tutors.created_at', 'desc');
@@ -77,7 +77,7 @@ class TutorJobController extends Controller
 
 
                 foreach ($subjects as $subject) {
-                    $html .= '<a href="?skills=' . $subject . '" class="tag-cloud-link Hum">' . $subject . '</a>';
+                    $html .= '<a href="?subject=' . $subject . '" class="tag-cloud-link Hum">' . $subject . '</a>';
                 }
 
 

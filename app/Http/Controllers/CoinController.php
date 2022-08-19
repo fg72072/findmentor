@@ -9,6 +9,7 @@ use App\Payment;
 use App\WalletLog;
 use App\Membership;
 use App\BillingInfo;
+use App\PaymentSetting;
 use App\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,7 @@ class CoinController extends Controller
     {
         $user_id = session('user_id');
 
-        $coins = Coin::get();
+        $coins = Coin::where('is_limited', '0')->get();
         $wallet_log = WalletLog::leftjoin('coin_used as cu', 'cu.id', '=', 'wallet_log.coin_used_id')
             ->leftjoin('coin_used_items as cui', 'cui.coin_used_id', '=', 'cu.id')
             ->leftjoin('users', 'cu.used_against_id', '=', 'users.id')
@@ -50,11 +51,15 @@ class CoinController extends Controller
     public function billing(Request $request)
     {
         session(['coin_id' => $request->coin_id]);
-        return view('billing');
+        $payment_gateway = PaymentSetting::first();
+        return view('billing', compact('payment_gateway'));
     }
 
     public function premiumCoinBilling(Request $request)
     {
+        $validated = $request->validate([
+            'no_of_premium_coins' => 'required|integer|min:1',
+        ]);
         session(['coin_id' => 0, 'coins' => $request->no_of_premium_coins]);
         return view('billing');
     }

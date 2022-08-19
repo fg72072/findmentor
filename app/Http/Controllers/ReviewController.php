@@ -19,7 +19,7 @@ class ReviewController extends Controller
             ->join('users', 'users.id', '=', 'reviews.review_to_user_id')
             ->select(
                 'users.name',
-                'reviews.*',
+                'reviews.*'
             )
             ->get();
 

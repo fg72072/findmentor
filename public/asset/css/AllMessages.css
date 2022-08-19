@@ -173,7 +173,7 @@ html {
 	/* width: calc(100vw - 75px); */
 	position: absolute;
 	width: 100%;
-	top: 90vh;
+	top: 87vh;
 }
 
 @media (min-width: 426px) and (max-width: 768px) {

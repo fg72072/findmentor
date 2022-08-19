@@ -73,10 +73,13 @@
                     <div>
                         <p style="display: none" id="acceptTermsAndCondTutorPhnNotVerified"><b>This tutor's phone is not
                                 verified. IT MAY BE WRONG.</b></p>
-                        <p id="acceptTermsAndCondDeductCoinMsg" style=""> <b>50 coins will be deducted</b> to contact this
+                        <p id="acceptTermsAndCondDeductCoinMsg" style=""> <b><span id="c_to_pad_coins"></span> coins will be
+                                deducted</b> to contact this
                             tutor.</p>
-                        <p>Please read our tips on how to <a target="_blank" href="/stay-safe">stay safe</a>.</p>
-                        <p>By contacting this tutor, you agree to our <a target="_blank" href="/terms-and-conditions">terms
+                        <p>Please read our tips on how to <a target="_blank" href="{{ url('stay-safe') }}">stay safe</a>.
+                        </p>
+                        <p>By contacting this tutor, you agree to our <a target="_blank"
+                                href="{{ url('terms-and-conditions') }}">terms
                                 and conditions</a>.</p>
                         <div id="studentContactDetailsDiv" style="display: none">
                             <p>Following details will be shared with the tutors you will contact:</p>
@@ -108,7 +111,7 @@
 
                 <div class="modal-body">
                     <div>
-                        50 coins required to view contact.
+                        <span id="to_pad_coins"></span> coins required to view contact.
                     </div>
                     You have <span id="remaining_coins"></span> coins.
                     <a target="_blank" href="{{ route('buyCoin') }}">Buy Coins</a>
@@ -171,9 +174,11 @@
 
                         if (response.message == 'deduct-coins') {
                             $('#coin-confirm').modal('show');
+                            $('#c_to_pad_coins').html(response.d_coins)
                         }
 
                         if (response.message == 'buy-coin') {
+                            $('#to_pad_coins').html(response.d_coins)
                             $('#buy-coin').modal('show');
                             $('#remaining_coins').html(response.coins)
                         }
@@ -188,7 +193,7 @@
                             $('.alert').removeClass('d-none')
                             $('.alert').html(
                                 `User is not <a href="{{ route('home') }}">logged in</a>.`
-                                )
+                            )
                         }
 
                     }

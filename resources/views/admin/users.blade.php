@@ -52,6 +52,10 @@
                                     <li class="nav-item"><a class="nav-link" id="contact-top-tab"
                                             data-bs-toggle="tab" href="#top-block" role="tab" aria-controls="top-contact"
                                             aria-selected="false"><i data-feather="lock"></i>Blocked_Users </a></li>
+                                    <li class="nav-item"><input type="text" name="search" id="search"
+                                            placeholder="Search" class="form-control" style="width: 200px !important;">
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -66,7 +70,8 @@
                                     <div class="row">
                                         @if (count($students) > 0)
                                             @foreach ($students as $student)
-                                                <div class="col-xl-4 box-col-6">
+                                                <div class="col-xl-4 box-col-6 username"
+                                                    data-username="{{ $student->name }}">
                                                     <div class="card custom-card">
                                                         <div class="card-header">
                                                             <img class="img-fluid"
@@ -108,7 +113,8 @@
                                     <div class="row">
                                         @if (count($teachers) > 0)
                                             @foreach ($teachers as $teacher)
-                                                <div class="col-xl-4 box-col-6">
+                                                <div class="col-xl-4 box-col-6 username"
+                                                    data-username="{{ $teacher->name }}">
                                                     <div class="card custom-card">
                                                         <div class="card-header">
                                                             <img class="img-fluid"
@@ -151,7 +157,8 @@
                                     <div class="row">
                                         @if (count($premiumTeachers) > 0)
                                             @foreach ($premiumTeachers as $teacher)
-                                                <div class="col-xl-4 box-col-6">
+                                                <div class="col-xl-4 box-col-6 username"
+                                                    data-username="{{ $teacher->name }}">
                                                     <div class="card custom-card">
                                                         <div class="card-header">
                                                             <img class="img-fluid"
@@ -198,7 +205,8 @@
                                     <div class="row">
                                         @if (count($blockedUsers) > 0)
                                             @foreach ($blockedUsers as $blockedUser)
-                                                <div class="col-xl-4 box-col-6">
+                                                <div class="col-xl-4 box-col-6 username"
+                                                    data-username="{{ $blockedUser->name }}">
                                                     <div class="card custom-card">
                                                         <div class="card-header">
                                                             <img class="img-fluid"
@@ -234,7 +242,24 @@
     </div>
 @stop
 
-
+@push('include-js')
+    <script>
+        $(document).ready(function() {
+            $("#search").keyup(function() {
+                var search_keyword = this.value
+                $(".username").each(function(index) {
+                    console.log($(this).attr('data-username'));
+                    $(this).hide();
+                    if ($(this).attr('data-username').toLowerCase().indexOf(search_keyword
+                            .toLowerCase()) > -1) {
+                        $(this).show();
+                    }
+                });
+            });
+        })
+    </script>
+@endpush
 @section('footer')
     @include('admin.includes.footer')
+
 @stop

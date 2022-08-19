@@ -64,7 +64,7 @@ class ChatController extends Controller
             ->select(
                 'users.id as user_id',
                 'threads.requirement_id as post_id',
-                'request_tutors.detail as post',
+                'request_tutors.detail as post'
             )
             ->where('user_id', '!=', $user_id)
             ->where('threads.id', $request->mThread)

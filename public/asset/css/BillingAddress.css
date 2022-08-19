@@ -26,7 +26,7 @@ html {
 p {
 	margin-top: 0;
 	margin-bottom: 0rem !important;
-	color: rgba(0, 0, 0, 0.692) !important;
+	/* color: rgba(0, 0, 0, 0.692) !important; */
 }
 .ProgressBar {
 	width: 100px;
@@ -145,7 +145,7 @@ input {
 	font-weight: 400;
 	font-size: 1.2rem !important;
 	letter-spacing: 1px !important;
-	color: #212529;
+	/* color: #212529; */
 	text-align: center;
 	vertical-align: middle;
 	-webkit-user-select: none;

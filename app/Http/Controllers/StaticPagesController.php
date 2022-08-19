@@ -85,6 +85,12 @@ class StaticPagesController extends Controller
 
     static function contactPost(Request $request)
     {
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'message' => 'required',
+
+        ]);
         $data = [
             'subject' => 'test',
             'name' => $request->name,
@@ -93,7 +99,7 @@ class StaticPagesController extends Controller
         ];
 
         Mail::send('static pages.email-template', $data, function ($message) use ($data) {
-            $message->to($data['email'])
+            $message->to('fazal.pluton@gmail.com')
                 ->subject($data['subject']);
         });
         Session::flash('success', 'Thanks for contacting me, I will get back to you soon!');

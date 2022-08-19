@@ -6,6 +6,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Rules\MatchOldPassword;
 use App\Http\Controllers\Controller;
+use App\PaymentSetting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
@@ -86,5 +87,18 @@ class SettingController extends Controller
         }
 
         return false;
+    }
+    public function paymentSetting()
+    {
+        $payment_gateway = PaymentSetting::first();
+        return view('admin.payment-setting', compact('payment_gateway'));
+    }
+    public function updatePaymentSetting(Request $req)
+    {
+        $payment_gateway = PaymentSetting::find($req->id);
+        $payment_gateway->paypal_key = $req->key;
+        $payment_gateway->type = $req->type;
+        $payment_gateway->save();
+        return redirect()->back();
     }
 }

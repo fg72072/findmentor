@@ -293,6 +293,7 @@ Route::group(['middleware' => ['role:student|teacher', 'user_account_verificatio
         'uses' => 'UserHireController@contactStudentToTeacher',
         'as' => 'contact_user'
     ]);
+
     // Contact Teacher To Student Ajax Request
     Route::post('/contact-student-to-discuss-requirement', [
         'uses' => 'UserHireController@contactTeacherToStudent',
@@ -328,7 +329,6 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         'uses' => 'Admin\AdminDasboardController@index',
         'as' => 'admin_dashboard'
     ]);
-
     // Admin Teacher Account Verify View Route
     Route::get('/admin/account-verify', [
         'uses' => 'Admin\AccountVerifyController@index',
@@ -393,6 +393,14 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('/admin/setting', [
         'uses' => 'Admin\SettingController@index',
         'as' => 'admin_setting'
+    ]);
+    // paymentSetting
+    Route::get('/admin/payment-setting', [
+        'uses' => 'Admin\SettingController@paymentSetting',
+    ]);
+    Route::post('/admin/update-payment-setting', [
+        'uses' => 'Admin\SettingController@updatePaymentSetting',
+        'as' => 'payment_setting'
     ]);
 
     // Admin Setting change password Route
@@ -464,6 +472,17 @@ Route::group(['middleware' => ['role:super-admin']], function () {
     Route::get('/admin/blog/destroy/{id}', [
         'uses' => 'Admin\BlogController@destroy',
         'as' => 'admin.blog.delete'
+    ]);
+    Route::get('/admin/coins-setting', [
+        'uses' => 'Admin\CoinController@coinSetting',
+        'as' => 'coin_setting'
+    ]);
+    Route::post('/admin/coins-setting', [
+        'uses' => 'Admin\CoinController@coinDeduction',
+        'as' => 'add_coin_deduction'
+    ]);
+    Route::get('/admin/coins-setting-delete/{id}', [
+        'uses' => 'Admin\CoinController@coinDelete',
     ]);
 });
 Route::get('/about-us', 'StaticPagesController@aboutUs')->name('about');

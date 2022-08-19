@@ -40,7 +40,7 @@ class LoginController extends Controller
                 return url('requirement');
                 break;
             case 'teacher':
-                return url('find-tutor');
+                return url('tutor-jobs');
                 break;
         }
     }

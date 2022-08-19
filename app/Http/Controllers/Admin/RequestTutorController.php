@@ -20,7 +20,7 @@ class RequestTutorController extends Controller
                 'request_tutors.*',
                 'request_tutors.created_at as posted_at',
                 'request_tutors.id as request_tutors_id',
-                'request_tutors.student_id as request_tutors_student_id',
+                'request_tutors.student_id as request_tutors_student_id'
             )->orderBy('request_tutors.created_at', 'desc');
 
         if (!empty($request->std_id)) {

@@ -56,6 +56,12 @@
                         </a>
                     </li>
                     <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ url('admin/coins-setting') }}">
+                            <i data-feather="stop-circle"></i>
+                            <span>Coins Setting</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list">
                         <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin_request') }}">
                             <i data-feather="book-open"></i>
                             <span>Requirements</span>
@@ -65,6 +71,12 @@
                         <a class="sidebar-link sidebar-title link-nav" href="{{ route('admin.blog') }}">
                             <i data-feather="bold"></i>
                             <span>Blogs</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title link-nav" href="{{ url('admin/payment-setting') }}">
+                            <i data-feather="credit-card"></i>
+                            <span>Payment Setting</span>
                         </a>
                     </li>
                     <li class="sidebar-list">

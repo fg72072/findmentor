@@ -41,13 +41,13 @@
                                             </div>
                                             @if (Auth::user() && Auth::user()->id == $data->id)
                                                 @role('teacher')
-                                                <div class="top-icons"
-                                                    style="line-height: 50px; text-align: end; padding-right: 4rem;">
-                                                    <span data-toggle="modal" data-target="#description"
-                                                        style="padding-left: 1rem; padding-right: 1.5rem;"
-                                                        class="fa fa-comment message"><a> Edit
-                                                        </a></span>
-                                                </div>
+                                                    <div class="top-icons"
+                                                        style="line-height: 50px; text-align: end; padding-right: 4rem;">
+                                                        <span data-toggle="modal" data-target="#description"
+                                                            style="padding-left: 1rem; padding-right: 1.5rem;"
+                                                            class="fa fa-comment message"><a> Edit
+                                                            </a></span>
+                                                    </div>
                                                 @endrole
                                             @endif
                                         </div>
@@ -664,7 +664,7 @@
                             $('.alert').removeClass('d-none')
                             $('.alert').html(`
                         <div>
-                            50 coins required to view contact.
+                            ${response.d_coins} coins required to view contact.
                         </div>
                         You have ${response.coins} coins.
                         <a target="_blank" href="{{ route('buyCoin') }}">Buy Coins</a>
@@ -717,7 +717,7 @@
                             $('.alert').removeClass('d-none')
                             $('.alert').html(`
                         <div>
-                            50 coins required to view contact.
+                            ${response.d_coins} coins required to view contact.
                         </div>
                         You have ${response.coins} coins.
                         <a target="_blank" href="{{ route('buyCoin') }}">Buy Coins</a>
